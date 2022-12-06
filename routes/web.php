@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\ExcelController;
+use App\Imports\UsulanImport;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+// Route::get('/excel', function () {
+//     $path = 'C:/laragon/www/capstone-project-laravel/usulan.xlsx';
+//     $arr = Excel::toCollection(new UsulanImport, $path);
+//     return view('excel',[
+//         'data'=> $arr
+//     ]);
+// });
+Route::get('/excel', function () {
+    return view('excel');
+});
+Route::post('/excel/store',[ExcelController::class,'store']);
