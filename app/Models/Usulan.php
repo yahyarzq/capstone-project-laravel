@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Usulan extends Model
 {
     use HasFactory;
-    protected $guard = 'id';
+    protected $guarded = 'id';
 }
