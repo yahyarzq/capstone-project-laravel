@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Usulan;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,6 @@ class UsulanSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Usulan::factory()->count(10)->create();
     }
 }

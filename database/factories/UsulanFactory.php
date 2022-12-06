@@ -17,7 +17,35 @@ class UsulanFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'No'=>$this->faker->regexify('[A-Z]{5}[0-4]{3}'),
+            'Tgl_Usul'=>$this->faker->date(),
+            'Pengusul'=>$this->faker->name(),
+            'Profil'=>"Kepala".$this->faker->city(),
+            'Urusan'=>$this->faker->sentence(),
+            'Usulan'=>$this->faker->paragraph(),
+            'Permasalahan'=>$this->faker->paragraph(),
+            'Alamat'=>$this->faker->address(),
+            'Kecamatan'=>$this->faker->city(),
+            'Kelurahan'=>$this->faker->city(),
+            'Usul_Ke'=>$this->faker->randomDigit(),
+            'SKPD_Tujuan_Awal'=>$this->faker->sentence(),
+            'SKPD_Tujuan_Akhir'=>$this->faker->sentence(),
+            'Rekomendasi_Bappeda_Mitra_OPD'=>$this->faker->paragraph(),
+            'Koefisien'=>$this->faker->randomDigit(),
+            'Anggaran'=>$this->faker->randomNumber(9, true),
+            'Kategori_Usulan'=>$this->faker->sentence(),
+            'Koefisien_1'=>$this->faker->randomDigit(),
+            'Rekomendasi_Kelurahan_Desa'=>$this->faker->paragraph(),
+            'Rekomendasi_Kecamatan'=>$this->faker->paragraph(),
+            'Koefisien_2'=>$this->faker->randomDigit(),
+            'Anggaran_1'=>$this->faker->randomNumber(9, true),
+            'Rekomendasi_SKPD'=>$this->faker->paragraph(),
+            'Koefisien_3'=>$this->faker->randomDigit(),
+            'Anggaran_2'=>$this->faker->randomNumber(9, true),
+            'Rekomendasi_Bappeda'=>$this->faker->paragraph(),
+            'Koefisien_4'=>$this->faker->randomDigit(),
+            'Anggaran_3'=>$this->faker->randomNumber(9, true),
+            'Status'=>$this->faker->paragraph()
         ];
     }
 }
