@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\UsulanImport;
 use App\Models\Usulan;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UsulanController extends Controller
 {
@@ -117,5 +119,16 @@ class UsulanController extends Controller
     public function destroy(Usulan $usulan)
     {
         //
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|file'
+        ]);
+        
+        Excel::import(new UsulanImport , $request->file('file'));
+
+        return redirect('/import-usulan')->with('success','Data Usulan Behasil Di Upload');
     }
 }
