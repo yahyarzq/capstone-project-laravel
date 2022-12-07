@@ -16,7 +16,7 @@ class UsulanImport implements ToModel
     {
         return new Usulan([
             'No' => $row[0],
-            'Tgl_Usul' => $row[1],
+            'Tgl_Usul' => date('Y-m-d', strtotime($row[1])),
             'Pengusul' => $row[2],
             'Profil' => $row[3],
             'Urusan' => $row[4],
@@ -45,5 +45,10 @@ class UsulanImport implements ToModel
             'Anggaran_3' => $row[27],
             'Status' => $row[28],
         ]);
+    }
+
+    public function chunkSize(): int
+    {
+        return 1000;
     }
 }
