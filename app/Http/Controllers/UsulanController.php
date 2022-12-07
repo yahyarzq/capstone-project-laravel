@@ -14,7 +14,43 @@ class UsulanController extends Controller
      */
     public function index()
     {
-        //
+        return view('history_usulan',[
+            'collection' => Usulan::all()
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function history()
+    {
+        return view('history_usulan',[
+            'collection' => Usulan::all()
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function groupByFisik(){
+        return view('usulan_fisik',[
+            'collection' => Usulan::all()
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function groupByNonFisik(){
+        return view('usulan_non_fisik',[
+            'collection' => Usulan::all()
+        ]);
     }
 
     /**
