@@ -16,6 +16,8 @@ return new class extends Migration
     {
         Schema::create('desas', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->foreignIdFor(Kecamatan::class);
             $table->timestamps();
         });
     }
