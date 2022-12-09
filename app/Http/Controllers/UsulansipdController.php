@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\UsulanImport;
 use App\Models\Usulansipd;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UsulansipdController extends Controller
 {
@@ -81,5 +83,17 @@ class UsulansipdController extends Controller
     public function destroy(Usulansipd $usulansipd)
     {
         //
+    }
+
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|file'
+        ]);
+        
+        Excel::import(new UsulanImport, $request->file('file'));
+
+        return redirect('/import-usulan')->with('success','Data Usulan Behasil Di Upload');
     }
 }
