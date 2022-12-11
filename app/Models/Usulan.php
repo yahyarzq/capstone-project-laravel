@@ -11,6 +11,6 @@ class Usulan extends Model
     protected $guarded = ['id'];
 
     public function desa(){
-        return $this->belongsTo(Desa::class);
+        return $this->belongsTo(Desa::class,'Desa_id');
     }
 }
