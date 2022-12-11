@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Desa;
+use App\Models\Kecamatan;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -23,8 +25,8 @@ return new class extends Migration
             $table->text('Usulan');
             $table->text('Permasalahan');
             $table->string('Alamat');
-            $table->string('Kecamatan');
-            $table->string('Kelurahan');
+            $table->foreignIdFor(Desa::class,'Desa_id');
+            $table->foreignIdFor(Kecamatan::class,'Kecamatan_id');
             $table->string('Usul_Ke');
             $table->string('SKPD_Tujuan_Awal');
             $table->string('SKPD_Tujuan_Akhir');
@@ -32,17 +34,18 @@ return new class extends Migration
             $table->string('Koefisien');
             $table->string('Anggaran');
             $table->string('Kategori_Usulan');
-            $table->string('Koefisien_1');
             $table->text('Rekomendasi_Kelurahan_Desa');
+            $table->string('Koefisien_1');
+            $table->string('Anggaran_1');
             $table->text('Rekomendasi_Kecamatan');
             $table->string('Koefisien_2');
-            $table->string('Anggaran_1');
+            $table->string('Anggaran_2');
             $table->text('Rekomendasi_SKPD');
             $table->string('Koefisien_3');
-            $table->string('Anggaran_2');
+            $table->string('Anggaran_3');
             $table->text('Rekomendasi_Bappeda');
             $table->string('Koefisien_4');
-            $table->string('Anggaran_3');
+            $table->string('Anggaran_4');
             $table->string('Status');
             $table->timestamps();
         });
