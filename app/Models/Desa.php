@@ -11,10 +11,10 @@ class Desa extends Model
     protected $guarded = ['id'];
 
     public function kecamatan(){
-        return $this->belongsTo(Kecamatan::class);
+        return $this->belongsTo(Kecamatan::class,'Kecamatan_id');
     }
 
     public function usulans(){
-        return $this->hasMany(Usulan::class);
+        return $this->hasMany(Usulan::class,'id');
     }
 }
