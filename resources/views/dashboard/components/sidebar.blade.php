@@ -1,16 +1,29 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-        <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-            style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+    <a href="#" class="brand-link">
+        <div class="row">
+            <div class="col-sm-3" >
+                <img src="../../img/kab-malang-logo.png" alt="AdminLTE Logo" class="brand-image elevation-3 align-middle mt-4"
+                 style="opacity: 1">
+            </div>
+            <div class="col-sm-3">
+                <div class="col">
+                    <span class="brand-text font-weight-light">Bappeda</span>
+                </div>
+                <div class="col">
+                    <span class="brand-text font-weight-light">Kabupaten</span>
+                </div>
+                <div class="col">
+                    <span class="brand-text font-weight-light">Malang</span>
+                </div>
+            </div>
+        </div>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
@@ -26,6 +39,7 @@
                         </p>
                     </a>
                 </li>
+                <div class="dropdown-divider" style="border-top:1px solid #4f5962"></div>
                 <li class="nav-item">
                     <a href="/dashboard/import-usulan" class="nav-link {{ Request::is('dashboard/import-usulan') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-edit"></i>
