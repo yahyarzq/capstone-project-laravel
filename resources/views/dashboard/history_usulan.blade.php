@@ -1,4 +1,4 @@
-@extends('layouts/main')
+@extends('dashboard/layouts/main')
 @section('container')
     <!-- Main content -->
 <section class="content">
