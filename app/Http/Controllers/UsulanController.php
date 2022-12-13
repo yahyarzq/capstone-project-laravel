@@ -16,7 +16,7 @@ class UsulanController extends Controller
      */
     public function index()
     {
-        return view('dashboard/history_usulan',[
+        return view('dashboard/index',[
             'collection' => Usulan::all()
         ]);
     }
