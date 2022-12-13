@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UsulanController;
+use App\Http\Controllers\UsulansipdController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,12 +21,11 @@ Route::get('/', function (){
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dashboard/index');
 });
-Route::get('/import-usulan', function () {
-    return view('import_usulan');
-});
-Route::post('/import-usulan',[UsulanController::class,'import']);
-Route::get('/usulan-fisik',[UsulanController::class,'groupByFisik']);
-Route::get('/usulan-non-fisik',[UsulanController::class,'groupByNonFisik']);
-Route::get('/history-usulan',[UsulanController::class,'history']);
+Route::resource('/dashboard/import-usulan',UsulansipdController::class );
+
+Route::post('/dashboard/import-usulan',[UsulanController::class,'import']);
+Route::get('/dashboard/usulan-fisik',[UsulanController::class,'groupByFisik']);
+Route::get('/dashboard/usulan-non-fisik',[UsulanController::class,'groupByNonFisik']);
+Route::get('/dashboard/history-usulan',[UsulanController::class,'history']);
