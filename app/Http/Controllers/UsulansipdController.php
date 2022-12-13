@@ -19,7 +19,9 @@ class UsulansipdController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard/import_usulan',[
+            'collections' => Usulansipd::all()
+        ]);
     }
 
     /**
