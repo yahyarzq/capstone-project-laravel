@@ -29,7 +29,8 @@
                         <!-- /.card-header -->
                         <div class="card-body ">
                             <div id="example1_head" class="mb-3"></div>
-                            <table id="example1" class="table table-bordered table-responsive table-striped text-nowrap" style="width:100%">
+                            {{--add table-responsive to maka table responsive horizontal--}}
+                            <table id="example1" class="table table-bordered table-hover table-striped text-nowrap" >
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -101,7 +102,7 @@
                                             <td>Action</td>
                                         </tr>
                                     @endforeach
-                                    <tfoot>
+                                    {{-- <tfoot>
                                         <tr>
                                             <th>No</th>
                                             <th>Tanggal Usul</th>
@@ -135,7 +136,7 @@
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
-                                    </tfoot>
+                                    </tfoot> --}}
                                 </tbody>
                             </table>
                         </div>
