@@ -17,7 +17,7 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Navbar Search -->
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" data-widget="navbar-search" href="#" role="button">
                         <i class="fas fa-search"></i>
                     </a>
@@ -37,7 +37,27 @@
                             </div>
                         </form>
                     </div>
+                </li> --}}
+                @auth
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown">
+                       {{ auth()->user()->name }}<span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu">
+                      <form action="logout" method="post">
+                        @csrf
+                        <button class="dropdown-item">
+                            <a class="" tabindex="-1"  style="color: inherit">Log out </a>
+                        </button>
+                      </form>
+                      
+                      {{-- <a class="dropdown-item" tabindex="-1" href="#">Another action</a>
+                      <a class="dropdown-item" tabindex="-1" href="#">Something else here</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" tabindex="-1" href="#">Separated link</a> --}}
+                    </div>
                 </li>
+                @endauth
 
                 <!-- Messages Dropdown Menu -->
                 {{-- <li class="nav-item dropdown">
