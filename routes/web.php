@@ -23,6 +23,9 @@ Route::get('/', function (){
 Route::get('/dashboard', function () {
     return view('dashboard/index');
 });
+Route::get('/login', function () {
+    return view('login/index');
+});
 Route::resource('/dashboard/import-usulan',UsulansipdController::class );
 
 Route::post('/dashboard/import-usulan',[UsulanController::class,'import']);
