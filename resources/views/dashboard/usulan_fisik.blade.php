@@ -39,6 +39,7 @@
                                         <th>Profil</th>
                                         <th>Urusan</th>
                                         <th>Usulan</th>
+                                        <th>Tipe Usulan</th>
                                         <th>Permasalahan</th>
                                         <th>Alamat</th>
                                         <th>Desa</th>
@@ -75,6 +76,7 @@
                                             <td>{{ $item->Pengusul }}</td>
                                             <td>{{ $item->Urusan }}</td>
                                             <td>{{ $item->Usulan }}</td>
+                                            <td>{{ $item->TipeUsulan }}</td>
                                             <td>{{ $item->Permasalahan }}</td>
                                             <td>{{ $item->Alamat }}</td>
                                             <td>{{ $item->desa->nama }}</td>

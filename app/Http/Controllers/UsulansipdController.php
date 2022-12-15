@@ -130,6 +130,7 @@ class UsulansipdController extends Controller
                 'Profil' => $usulan->Profil,
                 'Urusan' => $usulan->Urusan,
                 'Usulan' => $usulan->Usulan,
+                // 'Tipe Usulan' =>  getValueUsingRegex('/((K|k)oefisien\s?+:\s?)+([0-9]+\s?+(L|l)okasi)/', $usulan->Rekomendasi_Bappeda_Mitra_OPD, 3),
                 'Permasalahan' => $usulan->Permasalahan,
                 'Alamat' => $usulan->Alamat,
                 'Desa_id' => $desa->id ?? null,

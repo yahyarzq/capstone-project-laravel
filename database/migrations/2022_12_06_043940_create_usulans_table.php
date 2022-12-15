@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('Profil');
             $table->string('Urusan');
             $table->text('Usulan');
+            $table->string('TipeUsulan');
             $table->text('Permasalahan');
             $table->string('Alamat');
             $table->foreignIdFor(Desa::class,'Desa_id');
