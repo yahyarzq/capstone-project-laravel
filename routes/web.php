@@ -3,6 +3,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UsulanController;
 use App\Http\Controllers\UsulansipdController;
+use App\Models\Usulansipd;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,15 +25,16 @@ Route::get('/home', function (){
     return redirect('/dashboard');
 });
 
-Route::get('/dashboard', [UsulanController::class,'index'])->middleware('auth');
 
 Route::get('/login',[LoginController::class,'index'])->name('login')->middleware('guest');
 Route::post('/login',[LoginController::class,'authenticate']);
 Route::post('/logout',[LoginController::class,'logout']);
 
-Route::resource('/dashboard/import-usulan',UsulansipdController::class )->middleware('auth');
+// Route::resource('/dashboard/import-usulan',UsulansipdController::class )->middleware('auth');
+Route::get('/dashboard/import-usulan',[UsulansipdController::class,'index'])->middleware('auth');
+Route::post('/dashboard/import-usulan',[UsulansipdController::class,'import']);
 
-Route::post('/dashboard/import-usulan',[UsulanController::class,'import']);
+Route::get('/dashboard', [UsulanController::class,'index'])->middleware('auth');
 Route::get('/dashboard/usulan-fisik',[UsulanController::class,'groupByFisik'])->middleware('auth');
 Route::get('/dashboard/usulan-non-fisik',[UsulanController::class,'groupByNonFisik'])->middleware('auth');
 Route::get('/dashboard/history-usulan',[UsulanController::class,'history'])->middleware('auth');
