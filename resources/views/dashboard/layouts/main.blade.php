@@ -107,7 +107,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             //             </div>`;
 
                             var column = this;
-                            var select = $('<select class="form-control col-sm-2"><option value="Filter">Filter</option></select>')
+                            var select = $('<select class="form-control col-sm-2"><option value="">Filter</option></select>')
                                 .appendTo('#filter_row')
                                 .on('change', function() {
                                     var val = $.fn.dataTable.util.escapeRegex($(this).val());
