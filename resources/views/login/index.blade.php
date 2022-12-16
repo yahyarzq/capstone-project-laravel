@@ -17,7 +17,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>SIFULAN</b> Ltd</a>
+    <a href="#"><b>SIFULAN</b></a>
   </div>
   @if (session()->has('error'))
   <div class="card-body">
