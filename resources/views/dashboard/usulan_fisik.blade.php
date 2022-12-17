@@ -99,7 +99,25 @@
                                             <td>{{ $item->Koefisien_4 }}</td>
                                             <td>{{ $item->Anggaran_4 }}</td>
                                             <td>{{ $item->Status }}</td>
-                                            <td>Action</td>
+                                            <td class="project-actions text-right">
+                                                {{-- <div class="d-flex justify-content-between"> --}}
+                                                    <a class="btn btn-primary btn-sm" href="#">
+                                                        <i class="fas fa-folder">
+                                                        </i>
+                                                        View
+                                                    </a>
+                                                    <a class="btn btn-info btn-sm" href="#">
+                                                        <i class="fas fa-pencil-alt">
+                                                        </i>
+                                                        Edit
+                                                    </a>
+                                                {{-- </div> --}}
+                                                <a class="btn btn-danger btn-sm" href="#">
+                                                    <i class="fas fa-trash">
+                                                    </i>
+                                                    Delete
+                                                </a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     {{-- <tfoot>
