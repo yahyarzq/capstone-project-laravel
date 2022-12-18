@@ -23,6 +23,7 @@ class UsulanFactory extends Factory
             'Profil'=>"Kepala".$this->faker->city(),
             'Urusan'=>$this->faker->sentence(),
             'Usulan'=>$this->faker->paragraph(),
+            'TipeUsulan'=> $this->faker->randomElement(['N','NF']),
             'Permasalahan'=>$this->faker->paragraph(),
             'Alamat'=>$this->faker->address(),
             'Desa_id'=>3507010003,
