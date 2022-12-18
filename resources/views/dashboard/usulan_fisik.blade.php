@@ -29,8 +29,14 @@
                         <!-- /.card-header -->
                         <div class="card-body ">
                             <div id="example1_head" class="mb-3"></div>
-                            {{--add table-responsive to maka table responsive horizontal--}}
-                            <table id="example1" class="table table-bordered table-hover table-striped text-nowrap" >
+                            <a class="btn btn-primary btn-sm" id="btn-item-create" data-toggle="modal"
+                                data-target="#modal-create">
+                                <i class="fas fa-folder">
+                                </i>
+                                Create
+                            </a>
+                            {{-- add table-responsive to maka table responsive horizontal --}}
+                            <table id="example1" class="table table-bordered table-hover table-striped text-nowrap">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -101,18 +107,24 @@
                                             <td>{{ $item->Status }}</td>
                                             <td class="project-actions text-right">
                                                 {{-- <div class="d-flex justify-content-between"> --}}
-                                                    <a class="btn btn-primary btn-sm" href="#">
-                                                        <i class="fas fa-folder">
-                                                        </i>
-                                                        View
-                                                    </a>
-                                                    <a class="btn btn-info btn-sm" href="#">
-                                                        <i class="fas fa-pencil-alt">
-                                                        </i>
-                                                        Edit
-                                                    </a>
+                                                <a class="btn btn-primary btn-sm" id="btn-item-view"
+                                                    data-id="{{ $item->id }}" data-toggle="modal"
+                                                    data-attr="/usulan/{{ $item->id }}" data-target="#modal-viewS">
+                                                    <i class="fas fa-folder">
+                                                    </i>
+                                                    View
+                                                </a>
+                                                <a class="btn btn-info btn-sm" id="btn-item-edit"
+                                                    data-id="{{ $item->id }}" data-toggle="modal"
+                                                    data-attr="/usulan/{{ $item->id }}" data-target="#modal-editS">
+                                                    <i class="fas fa-pencil-alt">
+                                                    </i>
+                                                    Edit
+                                                </a>
                                                 {{-- </div> --}}
-                                                <a class="btn btn-danger btn-sm" href="#">
+                                                <a class="btn btn-danger btn-sm" id="btn-item-delete"
+                                                    data-id="{{ $item->id }}" data-toggle="modal"
+                                                    data-attr="/usulan/{{ $item->id }}" data-target="#modal-delete">
                                                     <i class="fas fa-trash">
                                                     </i>
                                                     Delete
@@ -167,6 +179,12 @@
             <!-- /.row -->
         </div>
         <!-- /.container-fluid -->
+
+        @include('dashboard/components/modals/modal_view')
+        @include('dashboard/components/modals/modal_create')
+        @include('dashboard/components/modals/modal_edit')
+        @include('dashboard/components/modals/modal_delete')
+
     </section>
     <!-- /.content -->
 @endsection
