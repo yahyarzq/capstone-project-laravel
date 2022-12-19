@@ -1,5 +1,5 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-light-success elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
         <div class="row">
@@ -39,15 +39,8 @@
                         </p>
                     </a>
                 </li>
-                <div class="dropdown-divider" style="border-top:1px solid #4f5962"></div>
-                <li class="nav-item">
-                    <a href="/dashboard/import-usulan" class="nav-link {{ Request::is('dashboard/import-usulan') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-edit"></i>
-                        <p>
-                            Import Usulan
-                        </p>
-                    </a>
-                </li>
+                {{-- <div class="dropdown-divider" style="border-top:1px solid #4f5962"></div> --}}
+                
                 <li class="nav-item  {{ Request::is('dashboard/usulan*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
@@ -80,15 +73,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                    <a href="/dashboard/import-usulan" class="nav-link {{ Request::is('dashboard/import-usulan') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-edit"></i>
                         <p>
-                            Simple Link
-                            <span class="right badge badge-danger">New</span>
+                            Import Usulan
                         </p>
                     </a>
                 </li>
-
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

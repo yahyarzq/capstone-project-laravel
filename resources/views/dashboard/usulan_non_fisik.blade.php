@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>DataTables</h1>
+                    <h1>Usulan non Fisik</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">DataTables</li>
+                        <li class="breadcrumb-item active">Usulan</li>
                     </ol>
                 </div>
             </div>
@@ -23,9 +23,9 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">DataTable with default features</h3>
-                        </div>
+                        {{-- <div class="card-header">
+                            <h3 class="card-title">Usulan</h3>
+                        </div> --}}
                         <!-- /.card-header -->
                         <div class="card-body ">
                             <div id="example1_head" class="mb-3"></div>
@@ -39,6 +39,7 @@
                                         <th>Profil</th>
                                         <th>Urusan</th>
                                         <th>Usulan</th>
+                                        <th>Tipe Usulan</th>
                                         <th>Permasalahan</th>
                                         <th>Alamat</th>
                                         <th>Desa</th>
@@ -75,6 +76,7 @@
                                             <td>{{ $item->Pengusul }}</td>
                                             <td>{{ $item->Urusan }}</td>
                                             <td>{{ $item->Usulan }}</td>
+                                            <td>{{ $item->TipeUsulan }}</td>
                                             <td>{{ $item->Permasalahan }}</td>
                                             <td>{{ $item->Alamat }}</td>
                                             <td>{{ $item->desa->nama }}</td>
@@ -99,7 +101,25 @@
                                             <td>{{ $item->Koefisien_4 }}</td>
                                             <td>{{ $item->Anggaran_4 }}</td>
                                             <td>{{ $item->Status }}</td>
-                                            <td>Action</td>
+                                            <td class="project-actions text-right">
+                                                {{-- <div class="d-flex justify-content-between"> --}}
+                                                    <a class="btn btn-primary btn-sm" href="#">
+                                                        <i class="fas fa-folder">
+                                                        </i>
+                                                        View
+                                                    </a>
+                                                    <a class="btn btn-info btn-sm" href="#">
+                                                        <i class="fas fa-pencil-alt">
+                                                        </i>
+                                                        Edit
+                                                    </a>
+                                                {{-- </div> --}}
+                                                <a class="btn btn-danger btn-sm" href="#">
+                                                    <i class="fas fa-trash">
+                                                    </i>
+                                                    Delete
+                                                </a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     {{-- <tfoot>

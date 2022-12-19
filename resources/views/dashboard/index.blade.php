@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="card-body">
-                            <div class="row">
+                            <div class="row d-flex justify-content-around">
                                 <div class="col-sm-3 col-6">
                                     <div class="description-block border-right">
                                         {{-- <span class="description-percentage text-success"><i class="fas fa-caret-up"></i>
@@ -54,30 +54,30 @@
                                         {{-- <span class="description-percentage text-warning"><i class="fas fa-caret-left"></i>
                                             0%</span> --}}
                                         <h5 class="description-header">10,390</h5>
-                                        <span class="description-text">USULAN TOTAL</span>
-                                    </div>
-                                    <!-- /.description-block -->
-                                </div>
-                                <!-- /.col -->
-                                <div class="col-sm-3 col-6">
-                                    <div class="description-block border-right">
-                                        {{-- <span class="description-percentage text-success"><i class="fas fa-caret-up"></i>
-                                            20%</span> --}}
-                                        <h5 class="description-header">24,813</h5>
-                                        <span class="description-text">USULAN TOTAL</span>
+                                        <span class="description-text">HARI INI</span>
                                     </div>
                                     <!-- /.description-block -->
                                 </div>
                                 <!-- /.col -->
                                 <div class="col-sm-3 col-6">
                                     <div class="description-block">
-                                        {{-- <span class="description-percentage text-danger"><i class="fas fa-caret-down"></i>
-                                            18%</span> --}}
+                                        {{-- <span class="description-percentage text-success"><i class="fas fa-caret-up"></i>
+                                            20%</span> --}}
+                                        <h5 class="description-header">24,813</h5>
+                                        <span class="description-text">USULAN BUlAN INI</span>
+                                    </div>
+                                    <!-- /.description-block -->
+                                </div>
+                                <!-- /.col -->
+                                {{-- <div class="col-sm-3 col-6">
+                                    <div class="description-block">
+                                        <span class="description-percentage text-danger"><i class="fas fa-caret-down"></i>
+                                            18%</span> 
                                         <h5 class="description-header">1200</h5>
                                         <span class="description-text">GOAL COMPLETIONS</span>
                                     </div>
                                     <!-- /.description-block -->
-                                </div>
+                                </div> --}}
                             </div>
                             <!-- /.row -->
                         </div>
@@ -224,68 +224,6 @@
               <!-- /.col -->
             </div>
             <!-- /.row -->
-
-
-
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-
-                            <p class="card-text">
-                                Some quick example text to build on the card title and make up the bulk of the card's
-                                content.
-                            </p>
-
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
-                        </div>
-                    </div>
-
-                    <div class="card card-primary card-outline">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-
-                            <p class="card-text">
-                                Some quick example text to build on the card title and make up the bulk of the card's
-                                content.
-                            </p>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
-                        </div>
-                    </div><!-- /.card -->
-                </div>
-                <!-- /.col-md-6 -->
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="m-0">Featured</h5>
-                        </div>
-                        <div class="card-body">
-                            <h6 class="card-title">Special title treatment</h6>
-
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-
-                    <div class="card card-primary card-outline">
-                        <div class="card-header">
-                            <h5 class="m-0">Featured</h5>
-                        </div>
-                        <div class="card-body">
-                            <h6 class="card-title">Special title treatment</h6>
-
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.col-md-6 -->
-            </div>
-            <!-- /.row -->
-
 
         </div><!-- /.container-fluid -->
     </div>
