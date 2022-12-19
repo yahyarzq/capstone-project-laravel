@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Imports\UsulanImport;
+use App\Models\Desa;
+use App\Models\Kecamatan;
 use App\Models\Usulan;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -17,7 +19,8 @@ class UsulanController extends Controller
     public function index()
     {
         return view('dashboard/index',[
-            'collection' => Usulan::all()
+            'collection' => Usulan::all(),
+            
         ]);
     }
 
@@ -40,7 +43,9 @@ class UsulanController extends Controller
      */
     public function groupByFisik(){
         return view('dashboard.usulan_fisik',[
-            'collection' => Usulan::all()
+            'collection' => Usulan::all(),
+            'desas' => Desa::all(),
+            'kecamatans' => Kecamatan::all()
         ]);
     }
 
@@ -73,7 +78,42 @@ class UsulanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'No'=> 'required',
+            'Tgl_Usul'=> 'required',
+            'Pengusul'=> 'required',
+            'Profil'=> 'required',
+            'Urusan'=> 'required',
+            'Usulan'=> 'required',
+            'TipeUsulan'=> 'required',
+            'Permasalahan'=> 'required',
+            'Alamat'=> 'required',
+            'Desa_id'=>'required',
+            'Kecamatan_id'=>'required',
+            'Usul_Ke'=> 'required',
+            'SKPD_Tujuan_Awal'=> 'required',
+            'SKPD_Tujuan_Akhir'=> 'required',
+            'Rekomendasi_Bappeda_Mitra_OPD'=> 'nullable|sometimes',
+            'Koefisien'=> 'nullable|sometimes',
+            'Anggaran'=> 'nullable|sometimes',
+            'Kategori_Usulan'=> 'nullable|sometimes',
+            'Rekomendasi_Kelurahan_Desa'=> 'nullable|sometimes',
+            'Koefisien_1'=> 'nullable|sometimes',
+            'Anggaran_1'=> 'nullable|sometimes',
+            'Rekomendasi_Kecamatan'=> 'nullable|sometimes',
+            'Koefisien_2'=> 'nullable|sometimes',
+            'Anggaran_2'=> 'nullable|sometimes',
+            'Rekomendasi_SKPD'=> 'nullable|sometimes',
+            'Koefisien_3'=> 'nullable|sometimes',
+            'Anggaran_3'=> 'nullable|sometimes',
+            'Rekomendasi_Bappeda'=> 'nullable|sometimes',
+            'Koefisien_4'=> 'nullable|sometimes',
+            'Anggaran_4'=> 'nullable|sometimes',
+            'Status'=> 'nullable|sometimes'
+        ]);
+        Usulan::create($validated);
+        return redirect()->back()->with('succes','Data berhasil di simpan');
+
     }
 
     /**
@@ -84,7 +124,11 @@ class UsulanController extends Controller
      */
     public function show(Usulan $usulan)
     {
-        //
+        return response()->json([
+            'success' => true,
+             'message' => 'Detail data usulan',
+             'data' => $usulan
+        ]);
     }
 
     /**
@@ -107,7 +151,41 @@ class UsulanController extends Controller
      */
     public function update(Request $request, Usulan $usulan)
     {
-        //
+        $validated = $request->validate([
+            'No'=> 'required',
+            'Tgl_Usul'=> 'required',
+            'Pengusul'=> 'required',
+            'Profil'=> 'required',
+            'Urusan'=> 'required',
+            'Usulan'=> 'required',
+            'TipeUsulan'=> 'required',
+            'Permasalahan'=> 'required',
+            'Alamat'=> 'required',
+            'Desa_id'=>'required',
+            'Kecamatan_id'=>'required',
+            'Usul_Ke'=> 'required',
+            'SKPD_Tujuan_Awal'=> 'required',
+            'SKPD_Tujuan_Akhir'=> 'required',
+            'Rekomendasi_Bappeda_Mitra_OPD'=> 'nullable|sometimes',
+            'Koefisien'=> 'nullable|sometimes',
+            'Anggaran'=> 'nullable|sometimes',
+            'Kategori_Usulan'=> 'nullable|sometimes',
+            'Rekomendasi_Kelurahan_Desa'=> 'nullable|sometimes',
+            'Koefisien_1'=> 'nullable|sometimes',
+            'Anggaran_1'=> 'nullable|sometimes',
+            'Rekomendasi_Kecamatan'=> 'nullable|sometimes',
+            'Koefisien_2'=> 'nullable|sometimes',
+            'Anggaran_2'=> 'nullable|sometimes',
+            'Rekomendasi_SKPD'=> 'nullable|sometimes',
+            'Koefisien_3'=> 'nullable|sometimes',
+            'Anggaran_3'=> 'nullable|sometimes',
+            'Rekomendasi_Bappeda'=> 'nullable|sometimes',
+            'Koefisien_4'=> 'nullable|sometimes',
+            'Anggaran_4'=> 'nullable|sometimes',
+            'Status'=> 'nullable|sometimes'
+        ]);
+        Usulan::where('id',$usulan->id)->update($validated);
+        return redirect()->back()->with('success','Data berhasil di update');
     }
 
     /**
@@ -118,7 +196,8 @@ class UsulanController extends Controller
      */
     public function destroy(Usulan $usulan)
     {
-        //
+        Usulan::destroy($usulan->id);
+        return redirect()->back()->with('success','Data berhasil di hapus');
     }
 
     public function import(Request $request)
