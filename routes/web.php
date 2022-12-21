@@ -31,13 +31,12 @@ Route::post('/login',[LoginController::class,'authenticate']);
 Route::post('/logout',[LoginController::class,'logout']);
 
 // Route::resource('/dashboard/import-usulan',UsulansipdController::class )->middleware('auth');
-Route::get('/dashboard/import-usulan',[UsulansipdController::class,'index'])->middleware('auth');
+// Route::get('/dashboard/import-usulan',[UsulansipdController::class,'index'])->middleware('auth');
 Route::post('/dashboard/import-usulan',[UsulansipdController::class,'import']);
 
 
 Route::get('/dashboard', [UsulanController::class,'index'])->middleware('auth');
-Route::get('/dashboard/usulan-fisik',[UsulanController::class,'groupByFisik'])->middleware('auth');
-Route::get('/dashboard/usulan-non-fisik',[UsulanController::class,'groupByNonFisik'])->middleware('auth');
+Route::get('/dashboard/usulan',[UsulanController::class,'usulan'])->middleware('auth');
 Route::get('/dashboard/history-usulan',[UsulanController::class,'history'])->middleware('auth');
 
 // Route::post('/usulan',[UsulanController::class,'store']);
