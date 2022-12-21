@@ -84,6 +84,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <script src="../../plugins/datatables-fixedheader/js/dataTables.fixedHeader.min.js"></script>
     <script src="../../plugins/datatables-fixedheader/js/fixedHeader.bootstrap4.min.js"></script>
+    <!-- bs-custom-file-input -->
+    <script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
     <!-- Select2 -->
     <script src="../../plugins/select2/js/select2.full.min.js"></script>
     {{-- MomentJs --}}
@@ -106,8 +108,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             $("#example1").DataTable({
                 initComplete: function() {
-                    var filter_row = $('<div class="row" id="filter_row"> </div>').appendTo(
-                        '#example1_head');
+                    var filter_row = $('<div class="row ml-2" id="filter_row"> </div>').appendTo(
+                        ' #example1_wrapper .row');
                     this.api()
                         .columns([1, 2, 8, 9])
                         .every(function() {
@@ -156,14 +158,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     // columns.adjust();
                 },
                 "responsive": false,
-                "lengthChange": true,
+                "lengthChange": false,
                 "autoWidth": false,
                 "scrollX": true,
                 "fixedHeader": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-
-
+                // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                "buttons": ["excel", "print", "colvis"]
+            }).buttons().container('').appendTo('#example1_head');
 
             $('#table_import').DataTable({
                 "paging": true,
@@ -176,16 +177,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 "scrollX": true,
                 "fixedHeader": true,
             }).columns.adjust();
-            $('#example2').DataTable({
+
+            $('#table-history').DataTable({
                 "paging": true,
-                "lengthChange": false,
-                "searching": false,
+                "lengthChange": true,
+                "searching": true,
                 "ordering": true,
-                "info": true,
+                "info": false,
                 "autoWidth": false,
-                "responsive": true,
+                "responsive": false,
+                "scrollX": true,
             });
         });
+        $(function () {
+  bsCustomFileInput.init();
+});
 
         //     $(document).ready(function () {
         //      var scrolledOnce;
