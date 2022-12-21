@@ -41,7 +41,7 @@
                 </li>
                 {{-- <div class="dropdown-divider" style="border-top:1px solid #4f5962"></div> --}}
                 
-                <li class="nav-item  {{ Request::is('dashboard/usulan*') ? 'menu-open' : '' }}">
+                {{-- <li class="nav-item  {{ Request::is('dashboard/usulan*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
@@ -63,6 +63,14 @@
                             </a>
                         </li>
                     </ul>
+                </li> --}}
+                <li class="nav-item">
+                    <a href="/dashboard/usulan" class="nav-link {{ Request::is('dashboard/usulan') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                          Usulan
+                        </p>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a href="/dashboard/history-usulan" class="nav-link {{ Request::is('dashboard/history-usulan') ? 'active' : '' }}">
@@ -72,14 +80,14 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="/dashboard/import-usulan" class="nav-link {{ Request::is('dashboard/import-usulan') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
                             Import Usulan
                         </p>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
