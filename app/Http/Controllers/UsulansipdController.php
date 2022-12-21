@@ -98,8 +98,8 @@ class UsulansipdController extends Controller
         ]);
 
         Excel::import(new UsulansipdImport, $request->file('file'));
-
-        return redirect('/import-usulan')->with('success', 'Data Usulan Behasil Di Upload');
+        $this->processUsulanSipd();
+        return redirect()->back()->with('success', 'Data Usulan Behasil Di Upload');
     }
 
     public function processUsulanSipd()
@@ -130,7 +130,7 @@ class UsulansipdController extends Controller
                 'Profil' => $usulan->Profil,
                 'Urusan' => $usulan->Urusan,
                 'Usulan' => $usulan->Usulan,
-                // 'Tipe Usulan' =>  getValueUsingRegex('/((K|k)oefisien\s?+:\s?)+([0-9]+\s?+(L|l)okasi)/', $usulan->Rekomendasi_Bappeda_Mitra_OPD, 3),
+                'TipeUsulan' =>  getValueUsingRegex('/((P|p)rioritas\s?+:\s?)+(((f|F)|(NF|nf))([0-9])+\s?)/', $usulan->Rekomendasi_Bappeda_Mitra_OPD, 3) ?? 'F',
                 'Permasalahan' => $usulan->Permasalahan,
                 'Alamat' => $usulan->Alamat,
                 'Desa_id' => $desa->id ?? null,
