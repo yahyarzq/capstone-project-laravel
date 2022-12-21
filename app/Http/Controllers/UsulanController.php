@@ -18,7 +18,7 @@ class UsulanController extends Controller
      */
     public function index()
     {
-        return view('dashboard/index',[
+        return view('dashboard/dashboard',[
             'collection' => Usulan::all(),
             
         ]);
@@ -32,17 +32,6 @@ class UsulanController extends Controller
     public function history()
     {
         return view('dashboard/history_usulan',[
-            'collection' => Usulan::all()
-        ]);
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function groupByFisik(){
-        return view('dashboard.usulan_fisik',[
             'collection' => Usulan::all(),
             'desas' => Desa::all(),
             'kecamatans' => Kecamatan::all()
@@ -54,9 +43,11 @@ class UsulanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function groupByNonFisik(){
-        return view('dashboard/usulan_non_fisik',[
-            'collection' => Usulan::all()
+    public function usulan(){
+        return view('dashboard/usulan',[
+            'collection' => Usulan::all(),
+            'desas' => Desa::all(),
+            'kecamatans' => Kecamatan::all()
         ]);
     }
 
