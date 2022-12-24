@@ -15,6 +15,6 @@ class Desa extends Model
     }
 
     public function usulans(){
-        return $this->hasMany(Usulan::class,'id');
+        return $this->hasMany(Usulan::class,'Desa_id');
     }
 }
