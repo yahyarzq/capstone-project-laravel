@@ -14,15 +14,16 @@
                         <!-- general form elements -->
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="exampleInputFile">Input File</label>
+                                <label for="exampleInputFile">Masukkan File</label>
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" name="file" class="custom-file-input"
                                             id="exampleInputFile">
-                                        <label class="custom-file-label" for="exampleInputFile">Choose
+                                        <label class="custom-file-label" for="exampleInputFile">Pilih
                                             file</label>
                                     </div>
                                 </div>
+                                <small>Pastikan format file adalah <strong>.excel</strong></small>
                             </div>
                         </div>
                         <!-- /.card-body -->
