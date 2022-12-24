@@ -54,7 +54,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <footer class="main-footer">
             <!-- To the right -->
             <div class="float-right d-none d-sm-inline">
-                
+
             </div>
             <!-- Default to the left -->
             <strong>Copyright &copy; <a>SIFULAN</a>.</strong> All rights
@@ -94,6 +94,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../../dist/js/adminlte.min.js"></script>
+
     <script>
         $(function() {
             //Initialize Select2 Elements
@@ -104,15 +105,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
             $('#reservationdate').datetimepicker({
                 format: 'L'
             });
-
-
-            $("#example1").DataTable({
+        })
+        bsCustomFileInput.init();
+    </script>
+    <script>
+        $(function() {
+            var datatable = $("#example1").DataTable({
                 initComplete: function() {
-                    var filter_row = $('<div class="row ml-2" id="filter_row"> </div>').appendTo(
-                        ' #example1_wrapper .row');
+                    $("#example1_wrapper > div:nth-child(1").after(
+                        '<div class="d-flex row ml-0 mb-1" id="filter_row"> </div>');
+                    // var filter_row = $('<div class=" d-flex row ml-2" id="filter_row"> </div>')
+                    //     .appendTo(
+                    //         ' #example1_wrapper > div:nth-child(2)');
                     this.api()
-                        .columns([1, 2, 8, 9])
-                        .every(function() {
+                        .columns([6, 1, 9, 10, 13])
+                        .every(function(d) {
                             // var s1=$(`<div class="col-sm-2">
                         //                 <div class="form-group" id="example1_wr_form_control">
                         //                     <label>Select</label>
@@ -131,15 +138,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         //                         </select>
                         //                 </div>
                         //             </div>`;
-
                             var column = this;
+                            var theadname = $('#example1 th').eq([d]).text();
                             var select = $(
-                                    '<select class="form-control col-sm-2"><option value="">Filter</option></select>'
-                                    )
+                                    '<select class="form-control "style="max-width: 140px; height: 38px;" ><option value="">By ' +
+                                    theadname + '</option></select>'
+                                )
                                 .appendTo('#filter_row')
                                 .on('change', function() {
                                     var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
                                     column.search(val ? '^' + val + '$' : '', true, false)
                                         .draw();
                                 });
@@ -149,23 +156,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 .unique()
                                 .sort()
                                 .each(function(d, j) {
-
                                     select.append('<option value="' + d + '">' + d +
                                         '</option>');
-
                                 });
                         });
                     // columns.adjust();
                 },
                 "responsive": false,
-                "lengthChange": false,
+                "lengthChange": true,
                 "autoWidth": false,
                 "scrollX": true,
                 "fixedHeader": false,
                 // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
                 "buttons": ["excel", "print", "colvis"]
-            }).buttons().container('').appendTo('#example1_head');
+            }).buttons().container().appendTo('#example1_head');
 
+        });
+    </script>
+    <script>
+        $(function() {
             $('#table_import').DataTable({
                 "paging": true,
                 "lengthChange": true,
@@ -189,9 +198,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 "scrollX": true,
             });
         });
-        $(function () {
-  bsCustomFileInput.init();
-});
+
 
         //     $(document).ready(function () {
         //      var scrolledOnce;
