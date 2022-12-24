@@ -6,7 +6,9 @@ use App\Imports\UsulanImport;
 use App\Models\Desa;
 use App\Models\Kecamatan;
 use App\Models\Usulan;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class UsulanController extends Controller
@@ -18,9 +20,24 @@ class UsulanController extends Controller
      */
     public function index()
     {
+        $dt =  Carbon::now()->setTimezone('Asia/Jakarta');
         return view('dashboard/dashboard',[
             'collection' => Usulan::all(),
-            
+            'usulan_total' => Usulan::count(),
+            'usulan_weekly' => Usulan::whereBetween("Tgl_Usul",[
+               $dt->startOfWeek()->format('Y-m-d'), 
+               $dt->endOfWeek()->format('Y-m-d')
+            ])->count(),
+            'usulan_monthly' => Usulan::whereBetween("Tgl_Usul",[
+                $dt->startOfMonth()->format('Y-m-d'), 
+                $dt->endOfMonth()->format('Y-m-d')
+             ])->count(),
+            'desas' => Desa::all(),
+            'kecamatans' => Kecamatan::all(),
+            'dinas' => DB::table('Usulans')
+                        ->select('SKPD_Tujuan_Akhir AS nama', DB::raw('count(*) as total'))
+                        ->groupBy('SKPD_Tujuan_Akhir')
+                        ->get()
         ]);
     }
 

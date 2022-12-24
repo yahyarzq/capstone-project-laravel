@@ -43,7 +43,7 @@
                                     <div class="description-block border-right">
                                         {{-- <span class="description-percentage text-success"><i class="fas fa-caret-up"></i>
                                             17%</span> --}}
-                                        <h5 class="description-header">35,210.</h5>
+                                        <h5 class="description-header">{{ $collection->count() }}</h5>
                                         <span class="description-text">USULAN TOTAL</span>
                                     </div>
                                     <!-- /.description-block -->
@@ -53,8 +53,8 @@
                                     <div class="description-block border-right">
                                         {{-- <span class="description-percentage text-warning"><i class="fas fa-caret-left"></i>
                                             0%</span> --}}
-                                        <h5 class="description-header">10,390</h5>
-                                        <span class="description-text">HARI INI</span>
+                                        <h5 class="description-header">{{ $usulan_weekly }}</h5>
+                                        <span class="description-text">HARI MINGGU INI</span>
                                     </div>
                                     <!-- /.description-block -->
                                 </div>
@@ -63,7 +63,7 @@
                                     <div class="description-block">
                                         {{-- <span class="description-percentage text-success"><i class="fas fa-caret-up"></i>
                                             20%</span> --}}
-                                        <h5 class="description-header">24,813</h5>
+                                        <h5 class="description-header">{{ $usulan_monthly }}</h5>
                                         <span class="description-text">USULAN BUlAN INI</span>
                                     </div>
                                     <!-- /.description-block -->
@@ -96,7 +96,7 @@
                     <h3 class="card-title">Usulan PerDesa/Kelurahan</h3>
                   </div>
                   <!-- /.card-header -->
-                  <div class="card-body p-0 ">
+                  <div class="card-body p-0 table-responsive" style="height: 300px">
                     <table class="table table-striped">
                       <thead>
                         <tr>
@@ -106,16 +106,13 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>1.</td>
-                          <td>Pondokagung</td>
-                          <td><span class="badge bg-danger">55%</span></td>
-                        </tr>
-                        <tr>
-                          <td>2.</td>
-                          <td>Wonoagung</td>
-                          <td><span class="badge bg-warning">70%</span></td>
-                        </tr>
+                        @foreach ($desas as $desa)
+                          <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $desa->nama }}</td>
+                            <td><span class="badge bg-danger">{{ $desa->usulans->count() }}</span></td>
+                          </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>
@@ -129,7 +126,7 @@
                   </div>
                   <!-- /.card-header -->
                   <div class="card-body p-0">
-                    <table class="table table-striped">
+                    <table class="table table-striped table-responsive" style="height: 300px">
                       <thead>
                         <tr>
                           <th style="width: 10px">#</th>
@@ -138,16 +135,13 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>1.</td>
-                          <td>Pondokagung</td>
-                          <td><span class="badge bg-danger">55%</span></td>
-                        </tr>
-                        <tr>
-                          <td>2.</td>
-                          <td>Wonoagung</td>
-                          <td><span class="badge bg-warning">70%</span></td>
-                        </tr>
+                        @foreach ($dinas as $item)
+                          <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $item->nama }}</td>
+                            <td><span class="badge bg-danger">{{ $item->total }}</span></td>
+                          </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>
@@ -162,7 +156,7 @@
                     <h3 class="card-title">Usulan PerKecamatan</h3>
                   </div>
                   <!-- /.card-header -->
-                  <div class="card-body p-0">
+                  <div class="card-body p-0 table-responsive" style="height: 300px">
                     <table class="table table-striped">
                       <thead>
                         <tr>
@@ -172,16 +166,13 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>1.</td>
-                          <td>Pondokagung</td>
-                          <td><span class="badge bg-danger">55%</span></td>
-                        </tr>
-                        <tr>
-                          <td>2.</td>
-                          <td>Wonoagung</td>
-                          <td><span class="badge bg-warning">70%</span></td>
-                        </tr>
+                        @foreach ($kecamatans as $kecamatan)
+                          <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $kecamatan->nama }}</td>
+                            <td><span class="badge bg-danger">{{ $kecamatan->usulans->count() }}</span></td>
+                          </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>
