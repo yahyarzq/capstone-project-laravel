@@ -98,7 +98,7 @@ class UsulansipdController extends Controller
         ]);
 
         Excel::import(new UsulansipdImport, $request->file('file'));
-        $this->processUsulanSipd();
+        //$this->processUsulanSipd();
         return redirect()->back()->with('success', 'Data Usulan Behasil Di Upload');
     }
 
@@ -122,7 +122,7 @@ class UsulansipdController extends Controller
 
         function createNewUsulan($usulan, $desa)
         {
-            // regex for prioritas ((P|p)rioritas\s?+:\s?)+(((f|F)|(NF|nf))([0-9])+\s?)
+            // regex for prioritas /((P|p)rioritas\s?+:\s?)+(((f|F)|(NF|nf))([0-9])+\s?)/
             Usulan::create([
                 'No' => $usulan->No,
                 'Tgl_Usul' => date('Y-m-d', strtotime($usulan->Tgl_Usul)),
@@ -130,7 +130,8 @@ class UsulansipdController extends Controller
                 'Profil' => $usulan->Profil,
                 'Urusan' => $usulan->Urusan,
                 'Usulan' => $usulan->Usulan,
-                'TipeUsulan' =>  getValueUsingRegex('/((P|p)rioritas\s?+:\s?)+(((f|F)|(NF|nf))([0-9])+\s?)/', $usulan->Rekomendasi_Bappeda_Mitra_OPD, 3) ?? 'F',
+                // 'TipeUsulan' =>  getValueUsingRegex('/((P|p)rioritas\s?+:\s?)+(((f|F)|(NF|nf))([0-9])+\s?)/', $usulan->Rekomendasi_Bappeda_Mitra_OPD, 3) ?? 'F',
+                'TipeUsulan' => '',
                 'Permasalahan' => $usulan->Permasalahan,
                 'Alamat' => $usulan->Alamat,
                 'Desa_id' => $desa->id ?? null,
