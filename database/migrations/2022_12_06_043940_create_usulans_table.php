@@ -26,8 +26,8 @@ return new class extends Migration
             $table->string('TipeUsulan');
             $table->text('Permasalahan');
             $table->string('Alamat');
-            $table->foreignIdFor(Desa::class,'Desa_id');
-            $table->foreignIdFor(Kecamatan::class,'Kecamatan_id');
+            $table->string('Desa');
+            $table->string('Kecamatan');
             $table->string('Usul_Ke');
             $table->string('SKPD_Tujuan_Awal');
             $table->string('SKPD_Tujuan_Akhir');

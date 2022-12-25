@@ -83,26 +83,26 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inputStatus">Desa</label>
-                                    <select id="modal-form-edit-Desa_id" class="form-control custom-select" name="Desa_id">
+                                    <select id="modal-form-edit-Desa" class="form-control custom-select" name="Desa">
                                         @foreach ($desas as $desa)
-                                            @if (old('Desa_id') == $desa->id)
-                                                <option value="{{ $desa->id }}" selected>{{ $desa->nama }}
+                                            @if (old('Desa') == $desa->nama)
+                                                <option value="{{ $desa->nama }}" selected>{{ $desa->nama }}
                                                 </option>
                                             @else
-                                                <option value="{{ $desa->id }}">{{ $desa->nama }}</option>
+                                                <option value="{{ $desa->nama }}">{{ $desa->nama }}</option>
                                             @endif
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputStatus">Kecamatan</label>
-                                    <select id="modal-form-edit-Kecamatan_id" class="form-control custom-select" name="Kecamatan_id">
+                                    <select id="modal-form-edit-Kecamatan" class="form-control custom-select" name="Kecamatan">
                                         @foreach ($kecamatans as $kecamatan)
-                                            @if (old('Kecamatan_id') == $kecamatan->id)
-                                                <option value="{{ $kecamatan->id }}" selected>{{ $kecamatan->nama }}
+                                            @if (old('Kecamatan') == $kecamatan->nama)
+                                                <option value="{{ $kecamatan->nama }}" selected>{{ $kecamatan->nama }}
                                                 </option>
                                             @else
-                                                <option value="{{ $kecamatan->id }}">{{ $kecamatan->nama }}</option>
+                                                <option value="{{ $kecamatan->nama }}">{{ $kecamatan->nama }}</option>
                                             @endif
                                         @endforeach
                                     </select>
@@ -278,6 +278,7 @@
             cache: false,
             success: function(response) {
                 //fill data to form
+                console.log(response.data);
                 $('#modal-form-edit-No').val(response.data.No);
                 $('#modal-form-edit-Tgl_Usul').val(response.data.Tgl_Usul);
                 $('#modal-form-edit-Pengusul').val(response.data.Pengusul);

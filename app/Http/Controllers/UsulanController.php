@@ -21,23 +21,29 @@ class UsulanController extends Controller
     public function index()
     {
         $dt =  Carbon::now()->setTimezone('Asia/Jakarta');
-        return view('dashboard/dashboard',[
+        return view('dashboard/dashboard', [
             'collection' => Usulan::all(),
             'usulan_total' => Usulan::count(),
-            'usulan_weekly' => Usulan::whereBetween("Tgl_Usul",[
-               $dt->startOfWeek()->format('Y-m-d'), 
-               $dt->endOfWeek()->format('Y-m-d')
+            'usulan_weekly' => Usulan::whereBetween("Tgl_Usul", [
+                $dt->startOfWeek()->format('Y-m-d'),
+                $dt->endOfWeek()->format('Y-m-d')
             ])->count(),
-            'usulan_monthly' => Usulan::whereBetween("Tgl_Usul",[
-                $dt->startOfMonth()->format('Y-m-d'), 
+            'usulan_monthly' => Usulan::whereBetween("Tgl_Usul", [
+                $dt->startOfMonth()->format('Y-m-d'),
                 $dt->endOfMonth()->format('Y-m-d')
-             ])->count(),
-            'desas' => Desa::all(),
-            'kecamatans' => Kecamatan::all(),
+            ])->count(),
+            'desas' => DB::table('Usulans')
+                ->select('Desa AS nama', DB::raw('count(*) as total'))
+                ->groupBy('Desa')
+                ->get(),
+            'kecamatans' => DB::table('Usulans')
+                ->select('Kecamatan AS nama', DB::raw('count(*) as total'))
+                ->groupBy('Kecamatan')
+                ->get(),
             'dinas' => DB::table('Usulans')
-                        ->select('SKPD_Tujuan_Akhir AS nama', DB::raw('count(*) as total'))
-                        ->groupBy('SKPD_Tujuan_Akhir')
-                        ->get()
+                ->select('SKPD_Tujuan_Akhir AS nama', DB::raw('count(*) as total'))
+                ->groupBy('SKPD_Tujuan_Akhir')
+                ->get()
         ]);
     }
 
@@ -48,7 +54,7 @@ class UsulanController extends Controller
      */
     public function history()
     {
-        return view('dashboard/history_usulan',[
+        return view('dashboard/history_usulan', [
             'collection' => Usulan::all(),
             'desas' => Desa::all(),
             'kecamatans' => Kecamatan::all()
@@ -60,8 +66,9 @@ class UsulanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function usulan(){
-        return view('dashboard/usulan',[
+    public function usulan()
+    {
+        return view('dashboard/usulan', [
             'collection' => Usulan::all(),
             'desas' => Desa::all(),
             'kecamatans' => Kecamatan::all()
@@ -87,41 +94,40 @@ class UsulanController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'No'=> 'required',
-            'Tgl_Usul'=> 'required',
-            'Pengusul'=> 'required',
-            'Profil'=> 'required',
-            'Urusan'=> 'required',
-            'Usulan'=> 'required',
-            'TipeUsulan'=> 'required',
-            'Permasalahan'=> 'required',
-            'Alamat'=> 'required',
-            'Desa_id'=>'required',
-            'Kecamatan_id'=>'required',
-            'Usul_Ke'=> 'required',
-            'SKPD_Tujuan_Awal'=> 'required',
-            'SKPD_Tujuan_Akhir'=> 'required',
-            'Rekomendasi_Bappeda_Mitra_OPD'=> 'nullable|sometimes',
-            'Koefisien'=> 'nullable|sometimes',
-            'Anggaran'=> 'nullable|sometimes',
-            'Kategori_Usulan'=> 'nullable|sometimes',
-            'Rekomendasi_Kelurahan_Desa'=> 'nullable|sometimes',
-            'Koefisien_1'=> 'nullable|sometimes',
-            'Anggaran_1'=> 'nullable|sometimes',
-            'Rekomendasi_Kecamatan'=> 'nullable|sometimes',
-            'Koefisien_2'=> 'nullable|sometimes',
-            'Anggaran_2'=> 'nullable|sometimes',
-            'Rekomendasi_SKPD'=> 'nullable|sometimes',
-            'Koefisien_3'=> 'nullable|sometimes',
-            'Anggaran_3'=> 'nullable|sometimes',
-            'Rekomendasi_Bappeda'=> 'nullable|sometimes',
-            'Koefisien_4'=> 'nullable|sometimes',
-            'Anggaran_4'=> 'nullable|sometimes',
-            'Status'=> 'nullable|sometimes'
+            'No' => 'required',
+            'Tgl_Usul' => 'required',
+            'Pengusul' => 'required',
+            'Profil' => 'required',
+            'Urusan' => 'required',
+            'Usulan' => 'required',
+            'TipeUsulan' => 'required',
+            'Permasalahan' => 'required',
+            'Alamat' => 'required',
+            'Desa' => 'required',
+            'Kecamatan' => 'required',
+            'Usul_Ke' => 'required',
+            'SKPD_Tujuan_Awal' => 'required',
+            'SKPD_Tujuan_Akhir' => 'required',
+            'Rekomendasi_Bappeda_Mitra_OPD' => 'nullable|sometimes',
+            'Koefisien' => 'nullable|sometimes',
+            'Anggaran' => 'nullable|sometimes',
+            'Kategori_Usulan' => 'nullable|sometimes',
+            'Rekomendasi_Kelurahan_Desa' => 'nullable|sometimes',
+            'Koefisien_1' => 'nullable|sometimes',
+            'Anggaran_1' => 'nullable|sometimes',
+            'Rekomendasi_Kecamatan' => 'nullable|sometimes',
+            'Koefisien_2' => 'nullable|sometimes',
+            'Anggaran_2' => 'nullable|sometimes',
+            'Rekomendasi_SKPD' => 'nullable|sometimes',
+            'Koefisien_3' => 'nullable|sometimes',
+            'Anggaran_3' => 'nullable|sometimes',
+            'Rekomendasi_Bappeda' => 'nullable|sometimes',
+            'Koefisien_4' => 'nullable|sometimes',
+            'Anggaran_4' => 'nullable|sometimes',
+            'Status' => 'nullable|sometimes'
         ]);
         Usulan::create($validated);
-        return redirect()->back()->with('succes','Data berhasil di simpan');
-
+        return redirect()->back()->with('succes', 'Data berhasil di simpan');
     }
 
     /**
@@ -134,8 +140,8 @@ class UsulanController extends Controller
     {
         return response()->json([
             'success' => true,
-             'message' => 'Detail data usulan',
-             'data' => $usulan
+            'message' => 'Detail data usulan',
+            'data' => $usulan
         ]);
     }
 
@@ -160,40 +166,40 @@ class UsulanController extends Controller
     public function update(Request $request, Usulan $usulan)
     {
         $validated = $request->validate([
-            'No'=> 'required',
-            'Tgl_Usul'=> 'required',
-            'Pengusul'=> 'required',
-            'Profil'=> 'required',
-            'Urusan'=> 'required',
-            'Usulan'=> 'required',
-            'TipeUsulan'=> 'required',
-            'Permasalahan'=> 'required',
-            'Alamat'=> 'required',
-            'Desa_id'=>'required',
-            'Kecamatan_id'=>'required',
-            'Usul_Ke'=> 'required',
-            'SKPD_Tujuan_Awal'=> 'required',
-            'SKPD_Tujuan_Akhir'=> 'required',
-            'Rekomendasi_Bappeda_Mitra_OPD'=> 'nullable|sometimes',
-            'Koefisien'=> 'nullable|sometimes',
-            'Anggaran'=> 'nullable|sometimes',
-            'Kategori_Usulan'=> 'nullable|sometimes',
-            'Rekomendasi_Kelurahan_Desa'=> 'nullable|sometimes',
-            'Koefisien_1'=> 'nullable|sometimes',
-            'Anggaran_1'=> 'nullable|sometimes',
-            'Rekomendasi_Kecamatan'=> 'nullable|sometimes',
-            'Koefisien_2'=> 'nullable|sometimes',
-            'Anggaran_2'=> 'nullable|sometimes',
-            'Rekomendasi_SKPD'=> 'nullable|sometimes',
-            'Koefisien_3'=> 'nullable|sometimes',
-            'Anggaran_3'=> 'nullable|sometimes',
-            'Rekomendasi_Bappeda'=> 'nullable|sometimes',
-            'Koefisien_4'=> 'nullable|sometimes',
-            'Anggaran_4'=> 'nullable|sometimes',
-            'Status'=> 'nullable|sometimes'
+            'No' => 'required',
+            'Tgl_Usul' => 'required',
+            'Pengusul' => 'required',
+            'Profil' => 'required',
+            'Urusan' => 'required',
+            'Usulan' => 'required',
+            'TipeUsulan' => 'required',
+            'Permasalahan' => 'required',
+            'Alamat' => 'required',
+            'Desa' => 'required',
+            'Kecamatan' => 'required',
+            'Usul_Ke' => 'required',
+            'SKPD_Tujuan_Awal' => 'required',
+            'SKPD_Tujuan_Akhir' => 'required',
+            'Rekomendasi_Bappeda_Mitra_OPD' => 'nullable|sometimes',
+            'Koefisien' => 'nullable|sometimes',
+            'Anggaran' => 'nullable|sometimes',
+            'Kategori_Usulan' => 'nullable|sometimes',
+            'Rekomendasi_Kelurahan_Desa' => 'nullable|sometimes',
+            'Koefisien_1' => 'nullable|sometimes',
+            'Anggaran_1' => 'nullable|sometimes',
+            'Rekomendasi_Kecamatan' => 'nullable|sometimes',
+            'Koefisien_2' => 'nullable|sometimes',
+            'Anggaran_2' => 'nullable|sometimes',
+            'Rekomendasi_SKPD' => 'nullable|sometimes',
+            'Koefisien_3' => 'nullable|sometimes',
+            'Anggaran_3' => 'nullable|sometimes',
+            'Rekomendasi_Bappeda' => 'nullable|sometimes',
+            'Koefisien_4' => 'nullable|sometimes',
+            'Anggaran_4' => 'nullable|sometimes',
+            'Status' => 'nullable|sometimes'
         ]);
-        Usulan::where('id',$usulan->id)->update($validated);
-        return redirect()->back()->with('success','Data berhasil di update');
+        Usulan::where('id', $usulan->id)->update($validated);
+        return redirect()->back()->with('success', 'Data berhasil di update');
     }
 
     /**
@@ -205,7 +211,7 @@ class UsulanController extends Controller
     public function destroy(Usulan $usulan)
     {
         Usulan::destroy($usulan->id);
-        return redirect()->back()->with('success','Data berhasil di hapus');
+        return redirect()->back()->with('success', 'Data berhasil di hapus');
     }
 
     public function import(Request $request)
@@ -213,9 +219,9 @@ class UsulanController extends Controller
         $request->validate([
             'file' => 'required|file'
         ]);
-        
-        Excel::import(new UsulanImport , $request->file('file'));
 
-        return redirect('/import-usulan')->with('success','Data Usulan Behasil Di Upload');
+        Excel::import(new UsulanImport, $request->file('file'));
+
+        return redirect('/import-usulan')->with('success', 'Data Usulan Behasil Di Upload');
     }
 }

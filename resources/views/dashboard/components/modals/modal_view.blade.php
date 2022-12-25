@@ -73,28 +73,28 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputStatus">Desa</label>
-                                <select id="modal-form-view-Desa_id" class="form-control custom-select"
-                                    name="Desa_id">
+                                <select id="modal-form-view-Desa" class="form-control custom-select"
+                                    name="Desa">
                                     @foreach ($desas as $desa)
-                                        @if (old('Desa_id') == $desa->id)
-                                            <option value="{{ $desa->id }}" selected>{{ $desa->nama }}
+                                        @if (old('Desa') == $desa->nama)
+                                            <option value="{{ $desa->nama }}" selected>{{ $desa->nama }}
                                             </option>
                                         @else
-                                            <option value="{{ $desa->id }}">{{ $desa->nama }}</option>
+                                            <option value="{{ $desa->nama }}">{{ $desa->nama }}</option>
                                         @endif
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="inputStatus">Kecamatan</label>
-                                <select id="modal-form-view-Kecamatan_id" class="form-control custom-select"
-                                    name="Kecamatan_id">
+                                <select id="modal-form-view-Kecamatan" class="form-control custom-select"
+                                    name="Kecamatan">
                                     @foreach ($kecamatans as $kecamatan)
-                                        @if (old('Kecamatan_id') == $kecamatan->id)
-                                            <option value="{{ $kecamatan->id }}" selected>{{ $kecamatan->nama }}
+                                        @if (old('Kecamatan') == $kecamatan->nama)
+                                            <option value="{{ $kecamatan->nama }}" selected>{{ $kecamatan->nama }}
                                             </option>
                                         @else
-                                            <option value="{{ $kecamatan->id }}">{{ $kecamatan->nama }}</option>
+                                            <option value="{{ $kecamatan->nama }}">{{ $kecamatan->nama }}</option>
                                         @endif
                                     @endforeach
                                 </select>

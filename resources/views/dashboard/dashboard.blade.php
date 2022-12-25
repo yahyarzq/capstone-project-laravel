@@ -110,7 +110,7 @@
                           <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $desa->nama }}</td>
-                            <td><span class="badge bg-danger">{{ $desa->usulans->count() }}</span></td>
+                            <td><span class="badge bg-danger">{{ $desa->total }}</span></td>
                           </tr>
                         @endforeach
                       </tbody>
@@ -170,7 +170,7 @@
                           <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $kecamatan->nama }}</td>
-                            <td><span class="badge bg-danger">{{ $kecamatan->usulans->count() }}</span></td>
+                            <td><span class="badge bg-danger">{{ $kecamatan->total }}</span></td>
                           </tr>
                         @endforeach
                       </tbody>
