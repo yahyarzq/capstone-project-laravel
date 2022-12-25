@@ -206,7 +206,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputDescription">Rekomendasi SKPD</label>
-                                <textarea id="modal-form-view-Rekomendasi_SKPD" name="Rekomendasi_SKPD" class="form-control" rows="4"></textarea>
+                                <textarea id="modal-form-view-Rekomendasi_SKPD" name="Rekomendasi_SKPD" class="form-control" rows="4" disabled></textarea>
                                 <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-content">
                                 </div>
                             </div>
