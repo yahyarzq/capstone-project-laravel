@@ -78,8 +78,8 @@
                                             <td>{{ $item->TipeUsulan }}</td>
                                             <td>{{ $item->Permasalahan }}</td>
                                             <td>{{ $item->Alamat }}</td>
-                                            <td>{{ $item->desa->nama }}</td>
-                                            <td>{{ $item->desa->kecamatan->nama }}</td>
+                                            <td>{{ $item->Desa }}</td>
+                                            <td>{{ $item->Kecamatan }}</td>
                                             <td>{{ $item->Usul_Ke }}</td>
                                             <td>{{ $item->SKPD_Tujuan_Awal }}</td>
                                             <td>{{ $item->SKPD_Tujuan_Akhir }}</td>
