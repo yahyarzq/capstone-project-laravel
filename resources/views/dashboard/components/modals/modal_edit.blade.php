@@ -26,10 +26,19 @@
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="inputName">Tanggal Usul</label>
                                     <input type="text" id="modal-form-edit-Tgl_Usul" name="Tgl_Usul" class="form-control">
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Tgl_Usul">
+                                    </div>
+                                </div> --}}
+                                <div class="form-group">
+                                    <label for="inputName">Tanggal Usul</label>
+                                    <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                        <input type="text" id="modal-form-edit-Tgl_Usul" name="Tgl_Usul" class="form-control datetimepicker-input" data-target="#reservationdate"/>
+                                        <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
