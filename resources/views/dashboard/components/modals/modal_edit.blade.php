@@ -18,7 +18,7 @@
                                     <label for="inputName">No</label>
                                     <input type="text" id="modal-form-edit-No" name="No"
                                         class="form-control @error('No') is-invalid @enderror"
-                                        value="{{ old('No') }}">
+                                        value="{{ old('No') }}" disabled>
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-No"></div>
                                     @error('No')
                                         <div class="invalid-feedback">
@@ -35,7 +35,7 @@
                                 <div class="form-group">
                                     <label for="inputName">Tanggal Usul</label>
                                     <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                        <input type="text" id="modal-form-edit-Tgl_Usul" name="Tgl_Usul" class="form-control datetimepicker-input" data-target="#reservationdate"/>
+                                        <input type="text" id="modal-form-edit-Tgl_Usul" name="Tgl_Usul" class="form-control datetimepicker-input" data-target="#reservationdate" disabled/>
                                         <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                         </div>
