@@ -44,7 +44,7 @@
                        {{ auth()->user()->name }}<span class="caret"></span>
                     </a>
                     <div class="dropdown-menu">
-                      <form action="logout" method="post">
+                      <form action="/logout" method="post">
                         @csrf
                         <button class="dropdown-item">
                             <a class="" tabindex="-1"  style="color: inherit">Log out </a>
