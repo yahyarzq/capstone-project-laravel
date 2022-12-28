@@ -182,7 +182,7 @@
     
                 <div class="card">
                   <div class="card-header">
-                    <h3 class="card-title">Usulan</h3>
+                    <h3 class="card-title">Tipe Usulan</h3>
                   </div>
                   <!-- /.card-header -->
                   <div class="card-body p-0">
@@ -190,21 +190,19 @@
                       <thead>
                         <tr>
                           <th style="width: 10px">#</th>
-                          <th>Nama</th>
+                          <th>Tipe Usulan</th>
                           <th style="width: 40px">Label</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>1.</td>
-                          <td>Pondokagung</td>
-                          <td><span class="badge bg-danger">55%</span></td>
-                        </tr>
-                        <tr>
-                          <td>2.</td>
-                          <td>Wonoagung</td>
-                          <td><span class="badge bg-warning">70%</span></td>
-                        </tr>
+                          @foreach ($tipe_usulan as $tu)
+                          <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $tu->nama }}</td>
+                            <td><span class="badge bg-danger">{{ $tu->total }}</span></td>
+                          </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>

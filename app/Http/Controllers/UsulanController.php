@@ -43,6 +43,10 @@ class UsulanController extends Controller
             'dinas' => DB::table('Usulans')
                 ->select('SKPD_Tujuan_Akhir AS nama', DB::raw('count(*) as total'))
                 ->groupBy('SKPD_Tujuan_Akhir')
+                ->get(),
+            'tipe_usulan' => DB::table('Usulans')
+                ->select('TipeUsulan AS nama', DB::raw('count(*) as total'))
+                ->groupBy('TipeUsulan')
                 ->get()
         ]);
     }
