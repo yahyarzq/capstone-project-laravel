@@ -47,7 +47,7 @@ class UsulanFactory extends Factory
             'Rekomendasi_Bappeda'=>$this->faker->paragraph(),
             'Koefisien_4'=>$this->faker->randomDigit(),
             'Anggaran_4'=>$this->faker->randomNumber(9, true),
-            'Status'=>$this->faker->paragraph()
+            'Status'=>$this->faker->paragraph(2)
         ];
     }
 }
