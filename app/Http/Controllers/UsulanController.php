@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
+use Yajra\DataTables\Facades\DataTables;
 
 class UsulanController extends Controller
 {
@@ -49,6 +50,30 @@ class UsulanController extends Controller
                 ->groupBy('TipeUsulan')
                 ->get()
         ]);
+    }
+
+
+    public function getUsulan(Request $request)
+    {
+        if($request->ajax()){
+            
+            $data = Usulan::query();
+            return DataTables::of($data)
+                // ->addIndexColumn()
+                // ->addColumn('action', function($row){
+                //     $actionBtn = '<a class="btn btn-primary btn-sm" id="btn-item-view" data-toggle="modal" data-target="#modal-viewS"><i class="fas fa-folder"></i> View</a>';
+                //     return $actionBtn;
+                // })
+                // ->rawColumns(['action'])
+                ->make(true);
+        }
+        // if($request->ajax()){
+        //     $model = Usulan::with(['Desa','Kecamatan']);
+        //     return DataTables::eloquent();
+
+        // }
+
+        return redirect(404);
     }
 
     /**
