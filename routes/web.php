@@ -40,4 +40,4 @@ Route::get('/dashboard/usulan',[UsulanController::class,'usulan'])->middleware('
 Route::get('/dashboard/history-usulan',[UsulanController::class,'history'])->middleware('auth');
 
 // Route::post('/usulan',[UsulanController::class,'store']);
-Route::resource('/usulan',UsulanController::class);
+Route::resource('/usulan',UsulanController::class)->middleware('auth');
