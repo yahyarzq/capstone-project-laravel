@@ -38,7 +38,7 @@ class KecamatanSeeder extends Seeder
             ],
             [
                 "id" => 3507060,
-                "nama" => "SUMBERMANJING"
+                "nama" => "SUMBERMANJING WETAN"
             ],
             [
                 "id" => 3507070,
