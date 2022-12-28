@@ -72,12 +72,24 @@ class UsulanController extends Controller
      */
     public function usulan()
     {
+        $dt =  Carbon::now()->setTimezone('Asia/Jakarta');
         return view('dashboard/usulan', [
-            'collection' => Usulan::all(),
+            'collection' => Usulan::whereBetween("Tgl_Usul", [
+                $dt->startOfWeek()->format('Y-m-d'),
+                $dt->endOfWeek()->format('Y-m-d')
+            ])->count(),
             'desas' => Desa::all(),
             'kecamatans' => Kecamatan::all()
         ]);
     }
+    // public function usulan()
+    // {
+    //     return view('dashboard/usulan', [
+    //         'collection' => Usulan::all(),
+    //         'desas' => Desa::all(),
+    //         'kecamatans' => Kecamatan::all()
+    //     ]);
+    // }
 
     /**
      * Show the form for creating a new resource.
