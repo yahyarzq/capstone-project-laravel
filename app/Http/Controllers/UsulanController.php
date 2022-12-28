@@ -77,7 +77,7 @@ class UsulanController extends Controller
             'collection' => Usulan::whereBetween("Tgl_Usul", [
                 $dt->startOfWeek()->format('Y-m-d'),
                 $dt->endOfWeek()->format('Y-m-d')
-            ])->count(),
+            ])->get(),
             'desas' => Desa::all(),
             'kecamatans' => Kecamatan::all()
         ]);
