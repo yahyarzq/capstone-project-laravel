@@ -215,6 +215,40 @@ scratch. This page gets rid of all links and provides the needed markup only.
         //      });
         //  });
     </script>
+    <script>
+        // if ({{ $errors->count() }} > 0) {
+        //     $(document).Toasts('create', {
+        //         class: 'bg-danger',
+        //         title: 'Import Gagal',
+        //         subtitle: '',
+        //         body: 'Import Usulan Gagal.'
+        //     })
+        // }
+        // if ({{ session()->has('importSuccess') }}) {
+        //     $(document).Toasts('create', {
+        //         class: 'bg-success',
+        //         title: 'Import Sukses',
+        //         subtitle: '',
+        //         body: 'Import Usulan Berhasil.'
+        //     })
+        // }
+        @if (Session::has('importSuccess'))
+            $(document).Toasts('create', {
+                class: 'bg-success',
+                title: 'Import Sukses',
+                subtitle: '',
+                body: "{{ session('importSuccess') }}"
+            })
+        @endif
+        @if (Session::has('importError'))
+            $(document).Toasts('create', {
+                class: 'bg-danger',
+                title: 'Import Gagal',
+                subtitle: '',
+                body: "{{ session('importError') }}"
+            })
+        @endif
+    </script>
 </body>
 
 </html>
