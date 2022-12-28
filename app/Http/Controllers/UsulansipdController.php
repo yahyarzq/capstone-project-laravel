@@ -105,7 +105,7 @@ class UsulansipdController extends Controller
             }
         }
         Excel::import(new UsulansipdImport, $request->file('file'));
-        //$this->processUsulanSipd();
+        $this->processUsulanSipd();
         return redirect()->back()->with('importSuccess', 'Data Usulan Behasil Di Upload');
         
     }
