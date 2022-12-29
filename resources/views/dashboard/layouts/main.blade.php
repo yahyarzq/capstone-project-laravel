@@ -411,6 +411,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 body: "{{ session('success') }}"
             })
         @endif
+        @if ($errors->any())
+            $(document).Toasts('create', {
+                class: 'bg-danger',
+                title: 'Aksi Gagal',
+                subtitle: '',
+                body: () => {
+                    const data = {!! $errors !!};
+                    //var data = {{json_encode($errors)}};
+                    //const data = document.querySelector('div[id=err-list-details]').textContent;
+                    let list = document.createElement("ul");
+                    data.forEach((item) => {
+                        let li = document.createElement("li");
+                        li.innerText = item;
+                        list.appendChild(li);
+                    });
+                    return list;
+                }
+            })
+        @endif
     </script>
 </body>
 
