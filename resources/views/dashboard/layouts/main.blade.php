@@ -191,8 +191,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 processing: true,
                 serverSide: true,
                 ajax: '/usulan/data',
-                columns: [
-                    {
+                columns: [{
                         data: 'No',
                         name: 'No'
                     },
@@ -319,7 +318,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     {
                         data: 'action',
                         name: 'action',
-                        'render': function (data, type, row) {
+                        'render': function(data, type, row) {
                             return `<a class="btn btn-primary btn-sm" id="btn-item-view"
                                                     data-id="${row.id}" data-toggle="modal"
                                                     data-attr="/usulan/${row.id}" data-target="#modal-view">
@@ -402,6 +401,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 title: 'Import Gagal',
                 subtitle: '',
                 body: "{{ session('importError') }}"
+            })
+        @endif
+        @if (Session::has('success'))
+            $(document).Toasts('create', {
+                class: 'bg-success',
+                title: 'Aksi Sukses',
+                subtitle: '',
+                body: "{{ session('success') }}"
             })
         @endif
     </script>
