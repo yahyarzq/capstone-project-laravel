@@ -81,7 +81,7 @@
                                     @foreach ($collection as $item)
                                         <tr>
                                             <td>{{ $item->No }}</td>
-                                            <td>{{ $item->Tgl_Usul }}</td>
+                                            <td>{{  date('d-m-Y', strtotime($item->Tgl_Usul)) }}</td>
                                             <td>{{ $item->Profil }}</td>
                                             <td>{{ $item->Pengusul }}</td>
                                             <td>{{ $item->Urusan }}</td>
