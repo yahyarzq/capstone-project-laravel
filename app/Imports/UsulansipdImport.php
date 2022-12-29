@@ -3,12 +3,13 @@
 namespace App\Imports;
 
 use App\Models\Usulansipd;
+use Carbon\Carbon;
 use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
 
-class UsulansipdImport implements ToModel, WithHeadingRow
+class UsulansipdImport implements ToModel, WithHeadingRow, WithValidation
 {
     /**
     * @param array $row
@@ -19,8 +20,10 @@ class UsulansipdImport implements ToModel, WithHeadingRow
     {
         return new Usulansipd([
             'No' => $row['no'],
-            'Tgl_Usul' => date('Y-m-d', strtotime($row['tgl_usul'])),
-            'Tgl_Pengajuan' => date('Y-m-d', strtotime($row['tgl_pengajuan'])),
+            //'Tgl_Usul' => date('Y-m-d', strtotime($row['tgl_usul'])),
+            'Tgl_Usul' => Carbon::createFromFormat('Y-m-d',$row['tgl_usul'])->toDateString(),
+            // 'Tgl_Pengajuan' => date('Y-m-d', strtotime($row['tgl_pengajuan'])),
+            'Tgl_Pengajuan' => Carbon::createFromFormat('Y-m-d',$row['tgl_pengajuan'])->toDateString(),
             'Pengusul' => $row['pengusul'],
             'Profil' => $row['profil'],
             'Permasalahan' => $row['permasalahan'],
@@ -53,6 +56,36 @@ class UsulansipdImport implements ToModel, WithHeadingRow
             // 'Rekomendasi_Kecamatan' => $row[14],
             // 'Rekomendasi_SKPD' => $row[15],
         ]);
+    }
+
+    public function rules(): array
+    {
+        return [
+            'no' => 'required',
+            'tgl_usul' => 'required|date_format:Y-m-d',
+            'tgl_pengajuan' => 'required|date_format:Y-m-d',
+            'pengusul' => 'required',
+            'profil' => 'required',
+            'permasalahan' => 'required',
+            'usulan' => 'required',
+            'urusan' => 'required',
+            'alamat' => 'required',
+            'skpd_tujuan_awal' => 'required',
+            'skpd_tujuan_akhir' => 'required',
+            'rekomendasi_bappeda_mitra_opd' => 'required',
+            'kategori_usulan' => 'required',
+            'koefisien' => 'nullable',
+            'rekomendasi_kelurahandesa' => 'nullable',
+            'rekomendasi_ecamatan' => 'nullable',
+            'rekomendasi_skpd' => 'nullable',
+        ];
+    }
+
+    public function prepareForValidation($data, $index){
+
+        $data['tgl_usul'] = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($data['tgl_usul'])->format('Y-m-d');
+        $data['tgl_pengajuan'] = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($data['tgl_pengajuan'])->format('Y-m-d');
+        return $data;
     }
 
     public function chunkSize(): int
