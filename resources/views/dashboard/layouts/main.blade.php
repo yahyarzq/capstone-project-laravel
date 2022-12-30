@@ -198,9 +198,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     {
                         data: 'Tgl_Usul',
                         name: 'Tgl_Usul',
-                        render: function (data) { 
-                            return moment(data,'YYYY-MM-DD').format('DD-MM-YYYY'); 
-                        }
+                        // render: function (data) { 
+                        //     return moment(data,'YYYY-MM-DD').format('DD-MM-YYYY'); 
+                        // }
                     },
                     {
                         data: 'Pengusul',
