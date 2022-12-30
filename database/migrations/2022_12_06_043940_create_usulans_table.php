@@ -25,10 +25,10 @@ return new class extends Migration
             $table->text('Usulan');
             $table->string('TipeUsulan')->nullable();
             $table->text('Permasalahan');
-            $table->string('Alamat');
+            $table->text('Alamat')->nullable();
             $table->string('Desa');
             $table->string('Kecamatan');
-            $table->string('Usul_Ke');
+            $table->string('Usul_Ke')->nullable();
             $table->string('SKPD_Tujuan_Awal');
             $table->string('SKPD_Tujuan_Akhir');
             $table->text('Rekomendasi_Bappeda_Mitra_OPD')->nullable();
