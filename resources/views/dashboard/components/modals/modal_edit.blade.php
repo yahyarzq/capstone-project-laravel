@@ -328,7 +328,6 @@
             cache: false,
             success: function(response) {
                 //fill data to form
-                console.log(response.data);
                 $('#modal-form-edit-No').val(response.data.No);
                 $('#modal-form-edit-Tgl_Usul').val(response.data.Tgl_Usul);
                 $('#modal-form-edit-Pengusul').val(response.data.Pengusul);
