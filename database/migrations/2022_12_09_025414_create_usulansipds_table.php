@@ -26,12 +26,12 @@ return new class extends Migration
             $table->text('Alamat');
             $table->string('SKPD_Tujuan_Awal');
             $table->string('SKPD_Tujuan_Akhir');
-            $table->text('Rekomendasi_Bappeda_Mitra_OPD');
-            $table->string('Kategori_Usulan');
-            $table->string('Koefisien');
-            $table->text('Rekomendasi_Kelurahan_Desa');
-            $table->text('Rekomendasi_Kecamatan');
-            $table->text('Rekomendasi_SKPD');
+            $table->text('Rekomendasi_Bappeda_Mitra_OPD')->nullable();
+            $table->string('Kategori_Usulan')->nullable();
+            $table->string('Koefisien')->nullable();
+            $table->text('Rekomendasi_Kelurahan_Desa')->nullable();
+            $table->text('Rekomendasi_Kecamatan')->nullable();
+            $table->text('Rekomendasi_SKPD')->nullable();
             $table->timestamps();
         });
     }
