@@ -21,9 +21,9 @@ class UsulansipdImport implements ToModel, WithHeadingRow, WithValidation
         return new Usulansipd([
             'No' => $row['no'],
             //'Tgl_Usul' => date('Y-m-d', strtotime($row['tgl_usul'])),
-            'Tgl_Usul' => Carbon::createFromFormat('Y-m-d',$row['tgl_usul'])->toDateString(),
+            'Tgl_Usul' => Carbon::createFromFormat('d/m/Y',$row['tgl_usul'])->toDateString(),
             // 'Tgl_Pengajuan' => date('Y-m-d', strtotime($row['tgl_pengajuan'])),
-            'Tgl_Pengajuan' => Carbon::createFromFormat('Y-m-d',$row['tgl_pengajuan'])->toDateString(),
+            'Tgl_Pengajuan' => Carbon::createFromFormat('d/m/Y',$row['tgl_pengajuan'])->toDateString(),
             'Pengusul' => $row['pengusul'],
             'Profil' => $row['profil'],
             'Permasalahan' => $row['permasalahan'],
@@ -62,8 +62,8 @@ class UsulansipdImport implements ToModel, WithHeadingRow, WithValidation
     {
         return [
             'no' => 'required',
-            'tgl_usul' => 'required|date_format:Y-m-d',
-            'tgl_pengajuan' => 'required|date_format:Y-m-d',
+            'tgl_usul' => 'required|date_format:d/m/Y',
+            'tgl_pengajuan' => 'required|date_format:d/m/Y',
             'pengusul' => 'required',
             'profil' => 'required',
             'permasalahan' => 'required',
@@ -83,8 +83,12 @@ class UsulansipdImport implements ToModel, WithHeadingRow, WithValidation
 
     public function prepareForValidation($data, $index){
 
-        $data['tgl_usul'] = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($data['tgl_usul'])->format('Y-m-d');
-        $data['tgl_pengajuan'] = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($data['tgl_pengajuan'])->format('Y-m-d');
+        try {
+            $data['tgl_usul'] = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($data['tgl_usul'])->format('d/m/Y');
+            $data['tgl_pengajuan'] = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($data['tgl_pengajuan'])->format('d/m/Y');
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
         return $data;
     }
 
