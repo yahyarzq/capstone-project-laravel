@@ -26,13 +26,13 @@
                                         </div>
                                     @enderror
                                 </div>
-                                {{-- <div class="form-group">
+                                <div class="form-group">
                                     <label for="inputName">Tanggal Usul</label>
-                                    <input type="text" id="modal-form-edit-Tgl_Usul" name="Tgl_Usul" class="form-control">
+                                    <input type="text" id="modal-form-edit-Tgl_Usul" name="Tgl_Usul" class="form-control" readonly>
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Tgl_Usul">
                                     </div>
-                                </div> --}}
-                                <div class="form-group">
+                                </div>
+                                {{-- <div class="form-group">
                                     <label for="inputName">Tanggal Usul</label>
                                     <div class="input-group date" id="reservationdate" data-target-input="nearest">
                                         <input type="text" id="modal-form-edit-Tgl_Usul" name="Tgl_Usul" class="form-control datetimepicker-input  @error('Tgl_Usul') is-invalid @enderror" data-target="#reservationdate" readonly/>
@@ -45,7 +45,7 @@
                                             {{ $message }}
                                         </div>
                                     @enderror
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <label for="inputName">Pengusul</label>
                                     <input type="text" id="modal-form-edit-Pengusul" name="Pengusul" class="form-control  @error('Pengusul') is-invalid @enderror">
