@@ -18,7 +18,7 @@
                                     <label for="inputName">No</label>
                                     <input type="text" id="modal-form-edit-No" name="No"
                                         class="form-control @error('No') is-invalid @enderror"
-                                        value="{{ old('No') }}">
+                                        value="{{ old('No') }}" readonly>
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-No"></div>
                                     @error('No')
                                         <div class="invalid-feedback">
@@ -26,33 +26,67 @@
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="inputName">Tanggal Usul</label>
                                     <input type="text" id="modal-form-edit-Tgl_Usul" name="Tgl_Usul" class="form-control">
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Tgl_Usul">
                                     </div>
+                                </div> --}}
+                                <div class="form-group">
+                                    <label for="inputName">Tanggal Usul</label>
+                                    <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                        <input type="text" id="modal-form-edit-Tgl_Usul" name="Tgl_Usul" class="form-control datetimepicker-input  @error('Tgl_Usul') is-invalid @enderror" data-target="#reservationdate" readonly/>
+                                        <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                    @error('Tgl_Usul')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">Pengusul</label>
-                                    <input type="text" id="modal-form-edit-Pengusul" name="Pengusul" class="form-control">
+                                    <input type="text" id="modal-form-edit-Pengusul" name="Pengusul" class="form-control  @error('Pengusul') is-invalid @enderror">
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Pengusul">
                                     </div>
+                                    @error('Pengusul')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">Profil</label>
-                                    <input type="text" id="modal-form-edit-Profil" name="Profil" class="form-control">
+                                    <input type="text" id="modal-form-edit-Profil" name="Profil" class="form-control  @error('Profil') is-invalid @enderror">
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Pengusul">
                                     </div>
+                                    @error('Profil')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">Urusan</label>
-                                    <input type="text" id="modal-form-edit-Urusan" name="Urusan" class="form-control">
+                                    <input type="text" id="modal-form-edit-Urusan" name="Urusan" class="form-control  @error('Urusan') is-invalid @enderror">
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Urusan"></div>
+                                    @error('Urusan')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="inputDescription">Usulan</label>
-                                    <textarea id="modal-form-edit-Usulan" name="Usulan" class="form-control" rows="4"></textarea>
+                                    <textarea id="modal-form-edit-Usulan" name="Usulan" class="form-control @error('Usulan') is-invalid @enderror" rows="4"></textarea>
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Usulan"></div>
+                                    @error('Usulan')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">Tipe Usulan</label>
@@ -62,9 +96,14 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inputDescription">Permasalahan</label>
-                                    <textarea id="modal-form-edit-Permasalahan" name="Permasalahan" class="form-control" rows="4"></textarea>
+                                    <textarea id="modal-form-edit-Permasalahan" name="Permasalahan" class="form-control  @error('Permasalahan') is-invalid @enderror" rows="4"></textarea>
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Permasalahan">
                                     </div>
+                                    @error('Permasalahan')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">Alamat</label>
@@ -74,29 +113,39 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inputStatus">Desa</label>
-                                    <select id="modal-form-edit-Desa_id" class="form-control custom-select" name="Desa_id">
+                                    <select id="modal-form-edit-Desa" class="form-control custom-select @error('Desa') is-invalid @enderror" name="Desa">
                                         @foreach ($desas as $desa)
-                                            @if (old('Desa_id') == $desa->id)
-                                                <option value="{{ $desa->id }}" selected>{{ $desa->nama }}
+                                            @if (old('Desa') == $desa->nama)
+                                                <option value="{{ $desa->nama }}" selected>{{ $desa->nama }}
                                                 </option>
                                             @else
-                                                <option value="{{ $desa->id }}">{{ $desa->nama }}</option>
+                                                <option value="{{ $desa->nama }}">{{ $desa->nama }}</option>
                                             @endif
                                         @endforeach
                                     </select>
+                                    @error('Desa')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="inputStatus">Kecamatan</label>
-                                    <select id="modal-form-edit-Kecamatan_id" class="form-control custom-select" name="Kecamatan_id">
+                                    <select id="modal-form-edit-Kecamatan" class="form-control custom-select @error('Kecamatan') is-invalid @enderror" name="Kecamatan">
                                         @foreach ($kecamatans as $kecamatan)
-                                            @if (old('Kecamatan_id') == $kecamatan->id)
-                                                <option value="{{ $kecamatan->id }}" selected>{{ $kecamatan->nama }}
+                                            @if (old('Kecamatan') == $kecamatan->nama)
+                                                <option value="{{ $kecamatan->nama }}" selected>{{ $kecamatan->nama }}
                                                 </option>
                                             @else
-                                                <option value="{{ $kecamatan->id }}">{{ $kecamatan->nama }}</option>
+                                                <option value="{{ $kecamatan->nama }}">{{ $kecamatan->nama }}</option>
                                             @endif
                                         @endforeach
                                     </select>
+                                    @error('Kecamatan')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 {{-- <div class="form-group">
                                     <label for="inputName">Desa</label>
@@ -118,17 +167,27 @@
                                 <div class="form-group">
                                     <label for="inputName">SKPD Tujuan Awal</label>
                                     <input type="text" id="modal-form-edit-SKPD_Tujuan_Awal" name="SKPD_Tujuan_Awal"
-                                        class="form-control">
+                                        class="form-control @error('SKPD_Tujuan_Awal') is-invalid @enderror">
                                     <div class="alert alert-danger mt-2 d-none" role="alert"
                                         id="alert-SKPD_Tujuan_Awal"></div>
+                                    @error('SKPD_Tujuan_Awal')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">SKPD Tujuan Akhir</label>
                                     <input type="text" id="modal-form-edit-SKPD_Tujuan_Akhir" name="SKPD_Tujuan_Akhir"
-                                        class="form-control">
+                                        class="form-control @error('SKPD_Tujuan_Akhir') is-invalid @enderror">
                                     <div class="alert alert-danger mt-2 d-none" role="alert"
                                         id="alert-SKPD_Tujuan_Akhir">
                                     </div>
+                                    @error('SKPD_Tujuan_Akhir')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col">

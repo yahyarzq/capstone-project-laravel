@@ -54,7 +54,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <footer class="main-footer">
             <!-- To the right -->
             <div class="float-right d-none d-sm-inline">
-                
+
             </div>
             <!-- Default to the left -->
             <strong>Copyright &copy; <a>SIFULAN</a>.</strong> All rights
@@ -94,6 +94,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../../dist/js/adminlte.min.js"></script>
+
     <script>
         $(function() {
             //Initialize Select2 Elements
@@ -104,15 +105,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
             $('#reservationdate').datetimepicker({
                 format: 'L'
             });
-
-
-            $("#example1").DataTable({
+        })
+        bsCustomFileInput.init();
+    </script>
+    <script>
+        $(function() {
+            var datatable = $("#example1").DataTable({
                 initComplete: function() {
-                    var filter_row = $('<div class="row ml-2" id="filter_row"> </div>').appendTo(
-                        ' #example1_wrapper .row');
+                    $("#example1_wrapper > div:nth-child(1").after(
+                        '<div class="d-flex row ml-0 mb-1" id="filter_row"> </div>');
+                    // var filter_row = $('<div class=" d-flex row ml-2" id="filter_row"> </div>')
+                    //     .appendTo(
+                    //         ' #example1_wrapper > div:nth-child(2)');
                     this.api()
-                        .columns([1, 2, 8, 9])
-                        .every(function() {
+                        .columns([6, 1, 9, 10, 13])
+                        .every(function(d) {
                             // var s1=$(`<div class="col-sm-2">
                         //                 <div class="form-group" id="example1_wr_form_control">
                         //                     <label>Select</label>
@@ -131,15 +138,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         //                         </select>
                         //                 </div>
                         //             </div>`;
-
                             var column = this;
+                            var theadname = $('#example1 th').eq([d]).text();
                             var select = $(
-                                    '<select class="form-control col-sm-2"><option value="">Filter</option></select>'
-                                    )
+                                    '<select class="form-control "style="max-width: 140px; height: 38px;" ><option value="">By ' +
+                                    theadname + '</option></select>'
+                                )
                                 .appendTo('#filter_row')
                                 .on('change', function() {
                                     var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
                                     column.search(val ? '^' + val + '$' : '', true, false)
                                         .draw();
                                 });
@@ -149,23 +156,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 .unique()
                                 .sort()
                                 .each(function(d, j) {
-
                                     select.append('<option value="' + d + '">' + d +
                                         '</option>');
-
                                 });
                         });
                     // columns.adjust();
                 },
                 "responsive": false,
-                "lengthChange": false,
+                "lengthChange": true,
                 "autoWidth": false,
                 "scrollX": true,
                 "fixedHeader": false,
                 // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
                 "buttons": ["excel", "print", "colvis"]
-            }).buttons().container('').appendTo('#example1_head');
+            }).buttons().container().appendTo('#example1_head');
 
+        });
+    </script>
+    <script>
+        $(function() {
             $('#table_import').DataTable({
                 "paging": true,
                 "lengthChange": true,
@@ -178,20 +187,176 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 "fixedHeader": true,
             }).columns.adjust();
 
-            $('#table-history').DataTable({
-                "paging": true,
+            $("#table-history").DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '/usulan/data',
+                columns: [{
+                        data: 'No',
+                        name: 'No'
+                    },
+                    {
+                        data: 'Tgl_Usul',
+                        name: 'Tgl_Usul',
+                        // render: function (data) { 
+                        //     return moment(data,'YYYY-MM-DD').format('DD-MM-YYYY'); 
+                        // }
+                    },
+                    {
+                        data: 'Pengusul',
+                        name: 'Pengusul'
+                    },
+                    {
+                        data: 'Profil',
+                        name: 'Profil'
+                    },
+                    {
+                        data: 'Urusan',
+                        name: 'Urusan'
+                    },
+                    {
+                        data: 'Usulan',
+                        name: 'Usulan'
+                    },
+                    {
+                        data: 'TipeUsulan',
+                        name: 'TipeUsulan'
+                    },
+                    {
+                        data: 'Permasalahan',
+                        name: 'Permasalahan'
+                    },
+                    {
+                        data: 'Alamat',
+                        name: 'Alamat'
+                    },
+                    {
+                        data: 'Desa',
+                        name: 'Desa'
+                    },
+                    {
+                        data: 'Kecamatan',
+                        name: 'Kecamatan'
+                    },
+                    {
+                        data: 'Usul_Ke',
+                        name: 'Usul_Ke'
+                    },
+                    {
+                        data: 'SKPD_Tujuan_Awal',
+                        name: 'SKPD_Tujuan_Awal'
+                    },
+                    {
+                        data: 'SKPD_Tujuan_Akhir',
+                        name: 'SKPD_Tujuan_Akhir'
+                    },
+                    {
+                        data: 'Rekomendasi_Bappeda_Mitra_OPD',
+                        name: 'Rekomendasi_Bappeda_Mitra_OPD'
+                    },
+                    {
+                        data: 'Koefisien',
+                        name: 'Koefisien'
+                    },
+                    {
+                        data: 'Anggaran',
+                        name: 'Anggaran'
+                    },
+                    {
+                        data: 'Kategori_Usulan',
+                        name: 'Kategori_Usulan'
+                    },
+                    {
+                        data: 'Rekomendasi_Kelurahan_Desa',
+                        name: 'Rekomendasi_Kelurahan_Desa'
+                    },
+                    {
+                        data: 'Koefisien_1',
+                        name: 'Koefisien_1'
+                    },
+                    {
+                        data: 'Anggaran_1',
+                        name: 'Anggaran_1'
+                    },
+                    {
+                        data: 'Rekomendasi_Kecamatan',
+                        name: 'Rekomendasi_Kecamatan'
+                    },
+                    {
+                        data: 'Koefisien_2',
+                        name: 'Koefisien_2'
+                    },
+                    {
+                        data: 'Anggaran_2',
+                        name: 'Anggaran_2'
+                    },
+                    {
+                        data: 'Rekomendasi_SKPD',
+                        name: 'Rekomendasi_SKPD'
+                    },
+                    {
+                        data: 'Koefisien_3',
+                        name: 'Koefisien_3'
+                    },
+                    {
+                        data: 'Anggaran_3',
+                        name: 'Anggaran_3'
+                    },
+                    {
+                        data: 'Rekomendasi_Bappeda',
+                        name: 'Rekomendasi_Bappeda'
+                    },
+                    {
+                        data: 'Koefisien_4',
+                        name: 'Koefisien_4'
+                    },
+                    {
+                        data: 'Anggaran_4',
+                        name: 'Anggaran_4'
+                    },
+                    {
+                        data: 'Status',
+                        name: 'Status'
+                    },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        'render': function(data, type, row) {
+                            return `<a class="btn btn-primary btn-sm" id="btn-item-view"
+                                                    data-id="${row.id}" data-toggle="modal"
+                                                    data-attr="/usulan/${row.id}" data-target="#modal-view">
+                                                    <i class="fas fa-folder">
+                                                    </i>
+                                                    View
+                                                </a>`
+                        },
+                        orderable: false, //Disable ordering on this column
+                        searchable: false //Disable search on this column
+                    },
+
+                ],
+                initComplete: function() {},
+                "responsive": false,
                 "lengthChange": true,
                 "searching": true,
-                "ordering": true,
-                "info": false,
                 "autoWidth": false,
-                "responsive": false,
                 "scrollX": true,
+                "fixedHeader": false,
+
+
             });
+            // $('#table-history').DataTable({
+            //     "paging": true,
+            //     "lengthChange": true,
+            //     "searching": true,
+            //     "ordering": true,
+            //     "info": false,
+            //     "autoWidth": false,
+            //     "responsive": false,
+            //     "scrollX": true,
+            // });
         });
-        $(function () {
-  bsCustomFileInput.init();
-});
+
 
         //     $(document).ready(function () {
         //      var scrolledOnce;
@@ -207,6 +372,80 @@ scratch. This page gets rid of all links and provides the needed markup only.
         //          }
         //      });
         //  });
+    </script>
+    <script>
+        // if ({{ $errors->count() }} > 0) {
+        //     $(document).Toasts('create', {
+        //         class: 'bg-danger',
+        //         title: 'Import Gagal',
+        //         subtitle: '',
+        //         body: 'Import Usulan Gagal.'
+        //     })
+        // }
+        // if ({{ session()->has('importSuccess') }}) {
+        //     $(document).Toasts('create', {
+        //         class: 'bg-success',
+        //         title: 'Import Sukses',
+        //         subtitle: '',
+        //         body: 'Import Usulan Berhasil.'
+        //     })
+        // }
+        @if (Session::has('importSuccess'))
+            $(document).Toasts('create', {
+                class: 'bg-success',
+                title: 'Import Sukses',
+                subtitle: '',
+                body: "{{ session('importSuccess') }}"
+            })
+        @endif
+        @if (Session::has('importError'))
+            $(document).Toasts('create', {
+                class: 'bg-danger',
+                title: 'Import Gagal',
+                subtitle: '',
+                body: "{{ session('importError') }}"
+            })
+        @endif
+        @if (Session::has('success'))
+            $(document).Toasts('create', {
+                class: 'bg-success',
+                title: 'Aksi Sukses',
+                subtitle: '',
+                body: "{{ session('success') }}"
+            })
+        @endif
+        
+        // @if ($errors->any())
+        //     $(document).Toasts('create', {
+        //         class: 'bg-danger',
+        //         title: 'Aksi Gagal',
+        //         subtitle: '',
+        //         body: () => {
+        //             const data = {!! $errors !!};
+        //             //var data = {{json_encode($errors)}};
+        //             //const data = document.querySelector('div[id=err-list-details]').textContent;
+        //             let list = document.createElement("ul");
+        //             data.forEach((item) => {
+        //                 let li = document.createElement("li");
+        //                 li.innerText = item;
+        //                 list.appendChild(li);
+        //             });
+        //             return list;
+        //         }
+        //     })
+        // @endif
+
+        @if ($errors->any())
+            $(document).Toasts('create', {
+                class: 'bg-danger',
+                title: 'Aksi Gagal',
+                subtitle: '',
+                body: () => {
+                    const data = "{!! implode('', $errors->all('<li>:message</li>')) !!}";
+                    return data;
+                }
+            })
+        @endif
     </script>
 </body>
 

@@ -9,6 +9,7 @@ use App\Models\Usulansipd;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\HeadingRowImport;
 
 class UsulansipdController extends Controller
 {
@@ -19,7 +20,7 @@ class UsulansipdController extends Controller
      */
     public function index()
     {
-        return view('dashboard/import_usulan',[
+        return view('dashboard/import_usulan', [
             'collections' => Usulansipd::all()
         ]);
     }
@@ -96,10 +97,17 @@ class UsulansipdController extends Controller
         $request->validate([
             'file' => 'required|file'
         ]);
-
+        $headings = (new HeadingRowImport)->toArray($request->file('file'));
+        $needles = ['no', 'tgl_usul', 'tgl_pengajuan', 'pengusul', 'profil', 'permasalahan', 'usulan', 'urusan', 'alamat', 'skpd_tujuan_awal', 'skpd_tujuan_akhir', 'rekomendasi_bappeda_mitra_opd', 'kategori_usulan', 'koefisien', 'rekomendasi_kelurahandesa', 'rekomendasi_kecamatan', 'rekomendasi_skpd'];
+        foreach ($headings[0][0] as $head) {
+            if(!Str::contains($head, $needles, true)){
+                return redirect()->back()->with('importError', 'Pastikan Header Kolom Sudah Benar');
+            }
+        }
         Excel::import(new UsulansipdImport, $request->file('file'));
         $this->processUsulanSipd();
-        return redirect()->back()->with('success', 'Data Usulan Behasil Di Upload');
+        return redirect()->back()->with('importSuccess', 'Data Usulan Behasil Di Upload');
+        
     }
 
     public function processUsulanSipd()
@@ -122,7 +130,7 @@ class UsulansipdController extends Controller
 
         function createNewUsulan($usulan, $desa)
         {
-            // regex for prioritas ((P|p)rioritas\s?+:\s?)+(((f|F)|(NF|nf))([0-9])+\s?)
+            // regex for prioritas /((P|p)rioritas\s?+:\s?)+(((f|F)|(NF|nf))([0-9])+\s?)/
             Usulan::create([
                 'No' => $usulan->No,
                 'Tgl_Usul' => date('Y-m-d', strtotime($usulan->Tgl_Usul)),
@@ -130,11 +138,12 @@ class UsulansipdController extends Controller
                 'Profil' => $usulan->Profil,
                 'Urusan' => $usulan->Urusan,
                 'Usulan' => $usulan->Usulan,
-                'TipeUsulan' =>  getValueUsingRegex('/((P|p)rioritas\s?+:\s?)+(((f|F)|(NF|nf))([0-9])+\s?)/', $usulan->Rekomendasi_Bappeda_Mitra_OPD, 3) ?? 'F',
+                // 'TipeUsulan' =>  getValueUsingRegex('/((P|p)rioritas\s?+:\s?)+(((f|F)|(NF|nf))([0-9])+\s?)/', $usulan->Rekomendasi_Bappeda_Mitra_OPD, 3) ?? 'F',
+                'TipeUsulan' => '',
                 'Permasalahan' => $usulan->Permasalahan,
                 'Alamat' => $usulan->Alamat,
-                'Desa_id' => $desa->id ?? null,
-                'Kecamatan_id' => $desa->kecamatan->id ?? null,
+                'Desa' => $desa->nama ?? ' ',
+                'Kecamatan' => $desa->kecamatan->nama ?? ' ',
                 'Usul_Ke' => '',
                 'SKPD_Tujuan_Awal' => $usulan->SKPD_Tujuan_Awal,
                 'SKPD_Tujuan_Akhir' => $usulan->SKPD_Tujuan_Akhir,
@@ -157,7 +166,8 @@ class UsulansipdController extends Controller
                 'Status' => '',
             ]);
         }
-        function getArrayNameDesa(){
+        function getArrayNameDesa()
+        {
             $arr_desa = [];
             foreach (Desa::all('nama') as $desa) {
                 array_push($arr_desa, $desa->nama);
@@ -181,7 +191,7 @@ class UsulansipdController extends Controller
             } else {
                 createNewUsulan($usulan, '');
                 //Usulansipd::destroy($usulan->id);
-            } 
+            }
         }
         return view('welcome');
     }

@@ -28,16 +28,16 @@
                         </div> --}}
                         <!-- /.card-header -->
                         <div class="card-body ">
-                            <div class="row d-flex justify-content-between">
-                                <div id="example1_head" class="col-8 mb-3"></div>
-                                <div class="col-3">
-                                    <a class="btn btn-primary btn-sm ml-4" id="btn-item-create" data-toggle="modal"
+                            <div class="d-flex justify-content-end mb-3">
+                                <div class="p-1">
+                                    <a class="btn btn-primary" id="btn-item-create" data-toggle="modal"
                                         data-target="#modal-import">
                                         <i class="fas fa-folder">
                                         </i>
                                         Import Usulan
                                     </a>
                                 </div>
+                                <div id="example1_head" class="p-1"></div>
                             </div>
                             {{-- add table-responsive to maka table responsive horizontal --}}
                             <table id="example1" class="table table-bordered table-hover table-striped text-nowrap">
@@ -54,23 +54,23 @@
                                         <th>Alamat</th>
                                         <th>Desa</th>
                                         <th>Kecamatan</th>
-                                        <th>Usul_Ke</th>
-                                        <th>SKPD_Tujuan_Awal</th>
-                                        <th>SKPD_Tujuan_Akhir</th>
-                                        <th>Rekomendasi_Bappeda_Mitra_OPD</th>
+                                        <th>Usul Ke</th>
+                                        <th>SKPD Tujuan Awal</th>
+                                        <th>SKPD Tujuan Akhir</th>
+                                        <th>Rekomendasi Bappeda Mitra OPD</th>
                                         <th>Koefisien</th>
                                         <th>Anggaran</th>
-                                        <th>Kategori_Usulan</th>
-                                        <th>Rekomendasi_Kelurahan_Desa</th>
+                                        <th>Kategori Usulan</th>
+                                        <th>Rekomendasi Kelurahan Desa</th>
                                         <th>Koefisien</th>
                                         <th>Anggaran</th>
-                                        <th>Rekomendasi_Kecamatan</th>
+                                        <th>Rekomendasi Kecamatan</th>
                                         <th>Koefisien</th>
                                         <th>Anggaran</th>
-                                        <th>Rekomendasi_SKPD</th>
+                                        <th>Rekomendasi SKPD</th>
                                         <th>Koefisien</th>
                                         <th>Anggaran</th>
-                                        <th>Rekomendasi_Bappeda</th>
+                                        <th>Rekomendasi Bappeda</th>
                                         <th>Koefisien</th>
                                         <th>Anggaran</th>
                                         <th>Status</th>
@@ -81,7 +81,7 @@
                                     @foreach ($collection as $item)
                                         <tr>
                                             <td>{{ $item->No }}</td>
-                                            <td>{{ $item->Tgl_Usul }}</td>
+                                            <td>{{  date('d-m-Y', strtotime($item->Tgl_Usul)) }}</td>
                                             <td>{{ $item->Profil }}</td>
                                             <td>{{ $item->Pengusul }}</td>
                                             <td>{{ $item->Urusan }}</td>
@@ -89,8 +89,8 @@
                                             <td>{{ $item->TipeUsulan }}</td>
                                             <td>{{ $item->Permasalahan }}</td>
                                             <td>{{ $item->Alamat }}</td>
-                                            <td>{{ $item->desa->nama }}</td>
-                                            <td>{{ $item->desa->kecamatan->nama }}</td>
+                                            <td>{{ $item->Desa }}</td>
+                                            <td>{{ $item->Kecamatan }}</td>
                                             <td>{{ $item->Usul_Ke }}</td>
                                             <td>{{ $item->SKPD_Tujuan_Awal }}</td>
                                             <td>{{ $item->SKPD_Tujuan_Akhir }}</td>

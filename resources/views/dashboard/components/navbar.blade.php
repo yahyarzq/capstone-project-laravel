@@ -7,11 +7,11 @@
                             class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index3.html" class="nav-link">Home</a>
+                    <a href="/" class="nav-link">Home</a>
                 </li>
-                <li class="nav-item d-none d-sm-inline-block">
+                {{-- <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
-                </li>
+                </li> --}}
             </ul>
 
             <!-- Right navbar links -->
@@ -44,7 +44,7 @@
                        {{ auth()->user()->name }}<span class="caret"></span>
                     </a>
                     <div class="dropdown-menu">
-                      <form action="logout" method="post">
+                      <form action="/logout" method="post">
                         @csrf
                         <button class="dropdown-item">
                             <a class="" tabindex="-1"  style="color: inherit">Log out </a>
