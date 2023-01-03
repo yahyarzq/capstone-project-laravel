@@ -33,19 +33,19 @@ class UsulanController extends Controller
                 $dt->startOfMonth()->format('Y-m-d'),
                 $dt->endOfMonth()->format('Y-m-d')
             ])->count(),
-            'desas' => DB::table('Usulans')
+            'desas' => DB::table('usulans')
                 ->select('Desa AS nama', DB::raw('count(*) as total'))
                 ->groupBy('Desa')
                 ->get(),
-            'kecamatans' => DB::table('Usulans')
+            'kecamatans' => DB::table('usulans')
                 ->select('Kecamatan AS nama', DB::raw('count(*) as total'))
                 ->groupBy('Kecamatan')
                 ->get(),
-            'dinas' => DB::table('Usulans')
+            'dinas' => DB::table('usulans')
                 ->select('SKPD_Tujuan_Akhir AS nama', DB::raw('count(*) as total'))
                 ->groupBy('SKPD_Tujuan_Akhir')
                 ->get(),
-            'tipe_usulan' => DB::table('Usulans')
+            'tipe_usulan' => DB::table('usulans')
                 ->select('TipeUsulan AS nama', DB::raw('count(*) as total'))
                 ->groupBy('TipeUsulan')
                 ->get()
