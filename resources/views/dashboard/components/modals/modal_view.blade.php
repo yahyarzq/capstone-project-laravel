@@ -65,9 +65,15 @@
                                 <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Permasalahan">
                                 </div>
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="inputName">Alamat</label>
                                 <input type="text" id="modal-form-view-Alamat" name="Alamat" class="form-control" disabled>
+                                <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Alamat">
+                                </div>
+                            </div> --}}
+                            <div class="form-group">
+                                <label for="inputDescription">Alamat</label>
+                                <textarea id="modal-form-view-Alamat" name="Alamat" class="form-control" rows="4"></textarea>
                                 <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Alamat">
                                 </div>
                             </div>
