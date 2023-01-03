@@ -28,7 +28,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title">Monthly Recap Report</h5>
+                            <h5 class="card-title">Rekapan Report</h5>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -102,7 +102,7 @@
                         <tr>
                           <th style="width: 10px">#</th>
                           <th>Nama</th>
-                          <th style="width: 40px">Label</th>
+                          <th style="width: 40px">Jumlah</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -131,7 +131,7 @@
                         <tr>
                           <th style="width: 10px">#</th>
                           <th>Nama</th>
-                          <th style="width: 40px">Label</th>
+                          <th style="width: 40px">Jumlah</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -162,7 +162,7 @@
                         <tr>
                           <th style="width: 10px">#</th>
                           <th>Nama</th>
-                          <th style="width: 40px">Label</th>
+                          <th style="width: 40px">Jumlah</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -191,7 +191,7 @@
                         <tr>
                           <th style="width: 10px">#</th>
                           <th>Tipe Usulan</th>
-                          <th style="width: 40px">Label</th>
+                          <th style="width: 40px">Jumlah</th>
                         </tr>
                       </thead>
                       <tbody>

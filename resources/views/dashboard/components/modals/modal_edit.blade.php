@@ -105,9 +105,15 @@
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="inputName">Alamat</label>
                                     <input type="text" id="modal-form-edit-Alamat" name="Alamat" class="form-control">
+                                    <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Alamat">
+                                    </div>
+                                </div> --}}
+                                <div class="form-group">
+                                    <label for="inputDescription">Alamat</label>
+                                    <textarea id="modal-form-edit-Alamat" name="Alamat" class="form-control" rows="4"></textarea>
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Alamat">
                                     </div>
                                 </div>
