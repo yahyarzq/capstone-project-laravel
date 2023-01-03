@@ -102,7 +102,7 @@
                         <tr>
                           <th style="width: 10px">#</th>
                           <th>Nama</th>
-                          <th style="width: 40px">Label</th>
+                          <th style="width: 40px">Jumlah</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -131,7 +131,7 @@
                         <tr>
                           <th style="width: 10px">#</th>
                           <th>Nama</th>
-                          <th style="width: 40px">Label</th>
+                          <th style="width: 40px">Jumlah</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -162,7 +162,7 @@
                         <tr>
                           <th style="width: 10px">#</th>
                           <th>Nama</th>
-                          <th style="width: 40px">Label</th>
+                          <th style="width: 40px">Jumlah</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -191,7 +191,7 @@
                         <tr>
                           <th style="width: 10px">#</th>
                           <th>Tipe Usulan</th>
-                          <th style="width: 40px">Label</th>
+                          <th style="width: 40px">Jumlah</th>
                         </tr>
                       </thead>
                       <tbody>
