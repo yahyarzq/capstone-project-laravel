@@ -73,7 +73,7 @@
                             </div> --}}
                             <div class="form-group">
                                 <label for="inputDescription">Alamat</label>
-                                <textarea id="modal-form-view-Alamat" name="Alamat" class="form-control" rows="4"></textarea>
+                                <textarea id="modal-form-view-Alamat" name="Alamat" class="form-control" rows="4" disabled></textarea>
                                 <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Alamat">
                                 </div>
                             </div>

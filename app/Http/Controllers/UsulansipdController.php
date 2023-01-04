@@ -185,12 +185,12 @@ class UsulansipdController extends Controller
             $contains = Str::contains($usulan->Alamat, $desas, true);
             if ($contains) {
                 $desa_name = ifFoundGetDesaInAlamat($usulan->Alamat, $desas);
-                $desa_id = Desa::firstWhere('nama', 'like', "%$desa_name%")->get();
-                createNewUsulan($usulan, $desa_id[0]);
-                //Usulansipd::destroy($usulan->id);
+                $desa_id = Desa::firstWhere('nama', 'like', "%$desa_name%");
+                createNewUsulan($usulan, $desa_id);
+                Usulansipd::destroy($usulan->id);
             } else {
                 createNewUsulan($usulan, '');
-                //Usulansipd::destroy($usulan->id);
+                Usulansipd::destroy($usulan->id);
             }
         }
         return view('welcome');
