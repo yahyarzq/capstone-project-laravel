@@ -316,7 +316,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     },
                     {
                         data: 'Status',
-                        name: 'Status'
+                        name: 'Status',
+                        render: function(data,type,row){
+                            let status = (data === 'SETUJU') ? `<span class="badge badge-success">${data}</span>` : `<span class="badge badge-danger">${data}</span>`;
+                            return status;
+                        }
                     },
                     {
                         data: 'action',

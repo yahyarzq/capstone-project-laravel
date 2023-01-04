@@ -295,11 +295,24 @@
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-content">
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="inputName">Status</label>
                                     <input type="text" id="modal-form-edit-Status" name="Status" class="form-control">
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-content">
                                     </div>
+                                </div> --}}
+                                <div class="form-group">
+                                    <label for="inputStatus">Status</label>
+                                    <select id="modal-form-edit-Status" class="form-control custom-select @error('Status') is-invalid @enderror" name="Status">
+                                            <option value="TIDAK SETUJU" selected>TIDAK SETUJU
+                                            </option>
+                                            <option value="SETUJU">SETUJU</option>
+                                    </select>
+                                    @error('Status')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
 
                             </div>
