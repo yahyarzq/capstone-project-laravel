@@ -97,12 +97,14 @@ class UsulanController extends Controller
      */
     public function usulan()
     {
-        $dt =  Carbon::now()->setTimezone('Asia/Jakarta');
+        $dt =  Carbon::now()->setTimezone('Asia/Jakarta');date('2023-01-11');
         return view('dashboard/usulan', [
             'collection' => Usulan::whereBetween("Tgl_Usul", [
                 $dt->startOfWeek()->format('Y-m-d'),
                 $dt->endOfWeek()->format('Y-m-d')
-            ])->get(),
+            ])
+            ->orWhere('Status', 'LIKE','TIDAK SETUJU')
+            ->get(),
             'desas' => Desa::all(),
             'kecamatans' => Kecamatan::all()
         ]);

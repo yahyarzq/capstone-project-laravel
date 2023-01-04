@@ -110,7 +110,14 @@
                                             <td>{{ $item->Rekomendasi_Bappeda }}</td>
                                             <td>{{ $item->Koefisien_4 }}</td>
                                             <td>{{ $item->Anggaran_4 }}</td>
-                                            <td>{{ $item->Status }}</td>
+                                            {{-- <td>{{ $item->Status }}</td> --}}
+                                            <td class="d-flex justify-content-center">
+                                                @if ($item->Status == 'SETUJU')
+                                                    <span class="badge badge-success">{{ $item->Status }}</span>
+                                                @else
+                                                    <span class="badge badge-danger">{{ $item->Status }}</span>
+                                                @endif
+                                            </td>
                                             <td class="project-actions text-right">
                                                 {{-- <div class="d-flex justify-content-between"> --}}
                                                 <a class="btn btn-primary btn-sm" id="btn-item-view"
