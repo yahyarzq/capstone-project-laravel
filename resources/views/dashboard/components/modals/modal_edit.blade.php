@@ -345,6 +345,9 @@
             url: `/usulan/${item_id}`,
             type: "GET",
             cache: false,
+            error: function(xhr, status, error) {
+                alert("Gagal menghubungkan ke Peladen(Server), Silahkan cek koneksi internet anda!");
+            },
             success: function(response) {
                 //fill data to form
                 $('#modal-form-edit-No').val(response.data.No);
