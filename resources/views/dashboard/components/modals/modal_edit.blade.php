@@ -333,6 +333,8 @@
 <script>
     $('body').on('click', '#btn-item-edit', function() {
 
+        $("#overlay").fadeIn(300);
+
         // Get item id from data-id atribute
         let item_id = $(this).data('id');
         // Get item url-id from data-attr atribute
@@ -346,6 +348,7 @@
             type: "GET",
             cache: false,
             error: function(xhr, status, error) {
+                $("#overlay").fadeOut();
                 alert("Gagal menghubungkan ke Peladen(Server), Silahkan cek koneksi internet anda!");
             },
             success: function(response) {
@@ -382,6 +385,7 @@
                 $('#modal-form-edit-Anggaran_4').val(response.data.Anggaran_4);
                 $('#modal-form-edit-Status').val(response.data.Status);
                 //open modal
+                $("#overlay").fadeOut();
                 $('#modal-edit').modal('show');
             }
         });
