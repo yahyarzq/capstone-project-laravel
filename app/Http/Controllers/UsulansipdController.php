@@ -163,7 +163,7 @@ class UsulansipdController extends Controller
                 'Rekomendasi_Bappeda' => '',
                 'Koefisien_4' => '',
                 'Anggaran_4' => '',
-                'Status' => '',
+                'Status' => 'TIDAK SETUJU',
             ]);
         }
         function getArrayNameDesa()
