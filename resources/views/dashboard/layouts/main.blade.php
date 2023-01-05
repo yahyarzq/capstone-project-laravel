@@ -35,6 +35,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </head>
 
 <body class="hold-transition sidebar-mini">
+    <div id="overlay">
+        <div class="cv-spinner">
+          <span class="spinner"></span>
+        </div>
+    </div>
     <div class="wrapper">
 
         <!-- Navbar -->
