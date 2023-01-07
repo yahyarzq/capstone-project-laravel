@@ -272,17 +272,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         name: 'Kategori_Usulan'
                     },
                     {
-                        data: 'Rekomendasi_Kelurahan_Desa',
-                        name: 'Rekomendasi_Kelurahan_Desa'
-                    },
-                    {
                         data: 'Koefisien_1',
                         name: 'Koefisien_1'
                     },
                     {
-                        data: 'Anggaran_1',
-                        name: 'Anggaran_1'
+                        data: 'Rekomendasi_Kelurahan_Desa',
+                        name: 'Rekomendasi_Kelurahan_Desa'
                     },
+                    // {
+                    //     data: 'Koefisien_1',
+                    //     name: 'Koefisien_1'
+                    // },
+                    // {
+                    //     data: 'Anggaran_1',
+                    //     name: 'Anggaran_1'
+                    // },
                     {
                         data: 'Rekomendasi_Kecamatan',
                         name: 'Rekomendasi_Kecamatan'
@@ -323,8 +327,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         data: 'Status',
                         name: 'Status',
                         render: function(data,type,row){
-                            let status = (data === 'SETUJU') ? `<span class="badge badge-success">${data}</span>` : `<span class="badge badge-danger">${data}</span>`;
-                            return status;
+                            if (data === 'Usulan disetujui') {
+                                return `<span class="badge badge-success">${data}</span>`;
+                            } 
+                            else if (data === 'Usulan tidak disetujui') {
+                                return `<span class="badge badge-danger">${data}</span>`;
+                            } 
+                            else {
+                                return `<span class="badge badge-primary">${data}</span>`
+                            }
                         }
                     },
                     {
