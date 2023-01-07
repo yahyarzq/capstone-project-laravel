@@ -77,7 +77,7 @@
                                 <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Alamat">
                                 </div>
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="inputStatus">Desa</label>
                                 <select id="modal-form-view-Desa" class="form-control custom-select"
                                     name="Desa" disabled>
@@ -104,18 +104,18 @@
                                         @endif
                                     @endforeach
                                 </select>
-                            </div>
-                            {{-- <div class="form-group">
+                            </div> --}}
+                            <div class="form-group">
                                     <label for="inputName">Desa</label>
-                                    <input type="text" id="Desa" name="Desa_id" class="form-control">
+                                    <input type="text" id="modal-form-view-Desa" name="Desa" class="form-control">
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Desa"></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">Kecamatan</label>
-                                    <input type="text" id="Kecamatan" name="Kecamatan_id" class="form-control">
+                                    <input type="text" id="modal-form-view-Kecamatan" name="Kecamatan" class="form-control">
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Kecamatan">
                                     </div>
-                                </div> --}}
+                                </div>
                             <div class="form-group">
                                 <label for="inputName">Usul Ke</label>
                                 <input type="text" id="modal-form-view-Usul_Ke" name="Usul_Ke"
