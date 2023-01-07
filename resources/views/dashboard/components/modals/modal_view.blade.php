@@ -107,12 +107,12 @@
                             </div> --}}
                             <div class="form-group">
                                     <label for="inputName">Desa</label>
-                                    <input type="text" id="modal-form-view-Desa" name="Desa" class="form-control">
+                                    <input type="text" id="modal-form-view-Desa" name="Desa" class="form-control" readonly>
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Desa"></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">Kecamatan</label>
-                                    <input type="text" id="modal-form-view-Kecamatan" name="Kecamatan" class="form-control">
+                                    <input type="text" id="modal-form-view-Kecamatan" name="Kecamatan" class="form-control" readonly>
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Kecamatan">
                                     </div>
                                 </div>
