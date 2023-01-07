@@ -224,12 +224,18 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="inputName">Koefisien</label>
+                                    <input type="text" id="modal-form-edit-Koefisien_1" name="Koefisien_1" class="form-control">
+                                    <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-content">
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label for="inputDescription">Rekomendasi Kelurahan/Desa</label>
                                     <textarea id="modal-form-edit-Rekomendasi_Kelurahan_Desa" name="Rekomendasi_Kelurahan_Desa" class="form-control" rows="4"></textarea>
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-content">
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="inputName">Koefisien</label>
                                     <input type="text" id="modal-form-edit-Koefisien_1" name="Koefisien_1" class="form-control">
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-content">
@@ -240,7 +246,7 @@
                                     <input type="text" id="modal-form-edit-Anggaran_1" name="Anggaran_1" class="form-control">
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-content">
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <label for="inputDescription">Rekomendasi Kecamatan</label>
                                     <textarea id="modal-form-edit-Rekomendasi_Kecamatan" name="Rekomendasi_Kecamatan" class="form-control" rows="4"></textarea>
@@ -295,13 +301,13 @@
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-content">
                                     </div>
                                 </div>
-                                {{-- <div class="form-group">
+                                <div class="form-group">
                                     <label for="inputName">Status</label>
                                     <input type="text" id="modal-form-edit-Status" name="Status" class="form-control">
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-content">
                                     </div>
-                                </div> --}}
-                                <div class="form-group">
+                                </div>
+                                {{-- <div class="form-group">
                                     <label for="inputStatus">Status</label>
                                     <select id="modal-form-edit-Status" class="form-control custom-select @error('Status') is-invalid @enderror" name="Status">
                                             <option value="TIDAK SETUJU" selected>TIDAK SETUJU
@@ -313,7 +319,7 @@
                                             {{ $message }}
                                         </div>
                                     @enderror
-                                </div>
+                                </div> --}}
 
                             </div>
                         </div>
@@ -371,9 +377,8 @@
                 $('#modal-form-edit-Koefisien').val(response.data.Koefisien);
                 $('#modal-form-edit-Anggaran').val(response.data.Anggaran);
                 $('#modal-form-edit-Kategori_Usulan').val(response.data.Kategori_Usulan);
-                $('#modal-form-edit-Rekomendasi_Kelurahan_Desa').val(response.data.Rekomendasi_Kelurahan_Desa);
                 $('#modal-form-edit-Koefisien_1').val(response.data.Koefisien_1);
-                $('#modal-form-edit-Anggaran_1').val(response.data.Anggaran_1);
+                $('#modal-form-edit-Rekomendasi_Kelurahan_Desa').val(response.data.Rekomendasi_Kelurahan_Desa);
                 $('#modal-form-edit-Rekomendasi_Kecamatan').val(response.data.Rekomendasi_Kecamatan);
                 $('#modal-form-edit-Koefisien_2').val(response.data.Koefisien_2);
                 $('#modal-form-edit-Anggaran_2').val(response.data.Anggaran_2);
