@@ -50,9 +50,10 @@
                                         <th>Koefisien</th>
                                         <th>Anggaran</th>
                                         <th>Kategori_Usulan</th>
-                                        <th>Rekomendasi_Kelurahan_Desa</th>
                                         <th>Koefisien</th>
-                                        <th>Anggaran</th>
+                                        <th>Rekomendasi_Kelurahan_Desa</th>
+                                        {{-- <th>Koefisien</th>
+                                        <th>Anggaran</th> --}}
                                         <th>Rekomendasi_Kecamatan</th>
                                         <th>Koefisien</th>
                                         <th>Anggaran</th>
