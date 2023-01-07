@@ -32,7 +32,8 @@ Route::post('/logout',[LoginController::class,'logout']);
 
 // Route::resource('/dashboard/import-usulan',UsulansipdController::class )->middleware('auth');
 // Route::get('/dashboard/import-usulan',[UsulansipdController::class,'index'])->middleware('auth');
-Route::post('/dashboard/import-usulan',[UsulansipdController::class,'import']);
+// Route::post('/dashboard/import-usulan',[UsulansipdController::class,'import']);
+Route::post('/dashboard/import-usulan',[UsulanController::class,'import']);
 
 
 Route::get('/dashboard', [UsulanController::class,'index'])->middleware('auth');
