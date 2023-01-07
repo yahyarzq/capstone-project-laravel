@@ -52,7 +52,7 @@
                                         <th>Tipe Usulan</th>
                                         <th>Permasalahan</th>
                                         <th>Alamat</th>
-                                        <th>Desa</th>
+                                        <th>Desa/Kelurahan</th>
                                         <th>Kecamatan</th>
                                         <th>Usul Ke</th>
                                         <th>SKPD Tujuan Awal</th>
