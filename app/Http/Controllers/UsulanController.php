@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UsulanExport;
 use App\Imports\UsulanImport;
 use App\Models\Desa;
 use App\Models\Kecamatan;
@@ -273,5 +274,10 @@ class UsulanController extends Controller
         }
         Excel::import(new UsulanImport, $request->file('file'));
         return redirect()->back()->with('importSuccess', 'Data Usulan Behasil Di Upload');
+    }
+
+    public function export() 
+    {
+        return (new UsulanExport)->download('usulan.xlsx');
     }
 }

@@ -28,6 +28,14 @@
                         </div> --}}
                         <!-- /.card-header -->
                         <div class="card-body ">
+                            <div class="d-flex justify-content-end mb-3">
+                                <div class="p-1">
+                                    <a href="/dashboard/export-usulan" class="btn btn-success">
+                                        <i class="fas fa-folder"></i>
+                                        Export Usulan
+                                    </a>
+                                </div>
+                            </div>
                             {{-- add table-responsive to maka table responsive horizontal --}}
                             <table id="table-history" class="table table-bordered table-hover table-striped text-nowrap">
                                 <thead>
