@@ -127,7 +127,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     //     .appendTo(
                     //         ' #example1_wrapper > div:nth-child(2)');
                     this.api()
-                        .columns([6, 1, 9, 10, 13])
+                        .columns([6, 1, 10, 9, 13])
                         .every(function(d) {
                             // var s1=$(`<div class="col-sm-2">
                         //                 <div class="form-group" id="example1_wr_form_control">
