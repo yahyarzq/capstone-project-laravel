@@ -20,6 +20,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
+    <link rel="stylesheet" href="../../plugins/datatables-fixedcolumns/css/fixedColumns.bootstrap4.min.css">
     <link rel="stylesheet" href="../../plugins/datatables-fixedheader/css/fixedHeader.bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
@@ -87,6 +88,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
+    <script src="../../plugins/datatables-fixedcolumns/js/dataTables.fixedColumns.min.js"></script>
+    <script src="../../plugins/datatables-fixedcolumns/js/fixedColumns.bootstrap4.min.js"></script>
     <script src="../../plugins/datatables-fixedheader/js/dataTables.fixedHeader.min.js"></script>
     <script src="../../plugins/datatables-fixedheader/js/fixedHeader.bootstrap4.min.js"></script>
     <!-- bs-custom-file-input -->
@@ -116,6 +119,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script>
         $(function() {
             var datatable = $("#example1").DataTable({
+                stateSave: true,
                 initComplete: function() {
                     $("#example1_wrapper > div:nth-child(1").after(
                         '<div class="d-flex row ml-0 mb-1" id="filter_row"> </div>');
@@ -123,7 +127,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     //     .appendTo(
                     //         ' #example1_wrapper > div:nth-child(2)');
                     this.api()
-                        .columns([6, 1, 9, 10, 13])
+                        .columns([6, 1, 10, 9, 13])
                         .every(function(d) {
                             // var s1=$(`<div class="col-sm-2">
                         //                 <div class="form-group" id="example1_wr_form_control">
@@ -146,7 +150,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             var column = this;
                             var theadname = $('#example1 th').eq([d]).text();
                             var select = $(
-                                    '<select class="form-control "style="max-width: 140px; height: 38px;" ><option value="">By ' +
+                                    '<select class="form-control "style="max-width: 140px; height: 38px;" ><option value="">' +
                                     theadname + '</option></select>'
                                 )
                                 .appendTo('#filter_row')
@@ -166,6 +170,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 });
                         });
                     // columns.adjust();
+                },
+                fixedColumns: {
+                    left: 0,
+                    right: 0
                 },
                 "responsive": false,
                 "lengthChange": true,
@@ -193,6 +201,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             }).columns.adjust();
 
             $("#table-history").DataTable({
+                stateSave: true,
                 processing: true,
                 serverSide: true,
                 ajax: '/usulan/data',
@@ -272,17 +281,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         name: 'Kategori_Usulan'
                     },
                     {
-                        data: 'Rekomendasi_Kelurahan_Desa',
-                        name: 'Rekomendasi_Kelurahan_Desa'
-                    },
-                    {
                         data: 'Koefisien_1',
                         name: 'Koefisien_1'
                     },
                     {
-                        data: 'Anggaran_1',
-                        name: 'Anggaran_1'
+                        data: 'Rekomendasi_Kelurahan_Desa',
+                        name: 'Rekomendasi_Kelurahan_Desa'
                     },
+                    // {
+                    //     data: 'Koefisien_1',
+                    //     name: 'Koefisien_1'
+                    // },
+                    // {
+                    //     data: 'Anggaran_1',
+                    //     name: 'Anggaran_1'
+                    // },
                     {
                         data: 'Rekomendasi_Kecamatan',
                         name: 'Rekomendasi_Kecamatan'
@@ -323,8 +336,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         data: 'Status',
                         name: 'Status',
                         render: function(data,type,row){
-                            let status = (data === 'SETUJU') ? `<span class="badge badge-success">${data}</span>` : `<span class="badge badge-danger">${data}</span>`;
-                            return status;
+                            if (data === 'Usulan disetujui') {
+                                return `<span class="badge badge-success">${data}</span>`;
+                            } 
+                            else if (data === 'Usulan tidak disetujui') {
+                                return `<span class="badge badge-danger">${data}</span>`;
+                            } 
+                            else {
+                                return `<span class="badge badge-primary">${data}</span>`
+                            }
                         }
                     },
                     {

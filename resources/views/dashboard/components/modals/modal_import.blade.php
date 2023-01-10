@@ -40,3 +40,9 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
+<script>
+$('body').on('click', '#btn-store', function() {
+    $('#modal-import').click();
+    $("#overlay").fadeIn(300);
+});
+</script>

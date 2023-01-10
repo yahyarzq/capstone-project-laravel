@@ -54,7 +54,7 @@
                                         {{-- <span class="description-percentage text-warning"><i class="fas fa-caret-left"></i>
                                             0%</span> --}}
                                         <h5 class="description-header">{{ $usulan_weekly }}</h5>
-                                        <span class="description-text">HARI MINGGU INI</span>
+                                        <span class="description-text">USULAN MINGGU INI</span>
                                     </div>
                                     <!-- /.description-block -->
                                 </div>
@@ -125,8 +125,8 @@
                     <h3 class="card-title">Tujuan Perdinas</h3>
                   </div>
                   <!-- /.card-header -->
-                  <div class="card-body p-0">
-                    <table class="table table-striped table-responsive" style="height: 300px">
+                  <div class="card-body p-0 table-responsive" style="height: 300px">
+                    <table class="table table-striped" >
                       <thead>
                         <tr>
                           <th style="width: 10px">#</th>
@@ -185,7 +185,7 @@
                     <h3 class="card-title">Tipe Usulan</h3>
                   </div>
                   <!-- /.card-header -->
-                  <div class="card-body p-0">
+                  <div class="card-body p-0 table-responsive" style="height: 300px">
                     <table class="table table-striped">
                       <thead>
                         <tr>

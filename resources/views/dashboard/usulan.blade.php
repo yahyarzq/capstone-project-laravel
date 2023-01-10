@@ -52,7 +52,7 @@
                                         <th>Tipe Usulan</th>
                                         <th>Permasalahan</th>
                                         <th>Alamat</th>
-                                        <th>Desa</th>
+                                        <th>Desa/Kelurahan</th>
                                         <th>Kecamatan</th>
                                         <th>Usul Ke</th>
                                         <th>SKPD Tujuan Awal</th>
@@ -61,9 +61,10 @@
                                         <th>Koefisien</th>
                                         <th>Anggaran</th>
                                         <th>Kategori Usulan</th>
-                                        <th>Rekomendasi Kelurahan Desa</th>
                                         <th>Koefisien</th>
-                                        <th>Anggaran</th>
+                                        <th>Rekomendasi Kelurahan Desa</th>
+                                        {{-- <th>Koefisien</th>
+                                        <th>Anggaran</th> --}}
                                         <th>Rekomendasi Kecamatan</th>
                                         <th>Koefisien</th>
                                         <th>Anggaran</th>
@@ -98,9 +99,10 @@
                                             <td>{{ $item->Koefisien }}</td>
                                             <td>{{ $item->Anggaran }}</td>
                                             <td>{{ $item->Kategori_Usulan }}</td>
-                                            <td>{{ $item->Rekomendasi_Kelurahan_Desa }}</td>
                                             <td>{{ $item->Koefisien_1 }}</td>
-                                            <td>{{ $item->Anggaran_1 }}</td>
+                                            <td>{{ $item->Rekomendasi_Kelurahan_Desa }}</td>
+                                            {{-- <td>{{ $item->Koefisien_1 }}</td>
+                                            <td>{{ $item->Anggaran_1 }}</td> --}}
                                             <td>{{ $item->Rekomendasi_Kecamatan }}</td>
                                             <td>{{ $item->Koefisien_2 }}</td>
                                             <td>{{ $item->Anggaran_2 }}</td>
@@ -112,10 +114,12 @@
                                             <td>{{ $item->Anggaran_4 }}</td>
                                             {{-- <td>{{ $item->Status }}</td> --}}
                                             <td class="d-flex justify-content-center">
-                                                @if ($item->Status == 'SETUJU')
+                                                @if ($item->Status == 'Usulan disetujui')
                                                     <span class="badge badge-success">{{ $item->Status }}</span>
-                                                @else
+                                                @elseif ($item->Status == 'Usulan tidak disetujui')
                                                     <span class="badge badge-danger">{{ $item->Status }}</span>
+                                                @else
+                                                    <span class="badge badge-primary">{{ $item->Status }}</span>
                                                 @endif
                                             </td>
                                             <td class="project-actions text-right">

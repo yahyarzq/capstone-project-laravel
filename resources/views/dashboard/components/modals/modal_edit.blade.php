@@ -28,9 +28,14 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">Tanggal Usul</label>
-                                    <input type="text" id="modal-form-edit-Tgl_Usul" name="Tgl_Usul" class="form-control" readonly>
+                                    <input type="text" id="modal-form-edit-Tgl_Usul" name="Tgl_Usul" class="form-control @error('Tgl_Usul') is-invalid @enderror" readonly>
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Tgl_Usul">
                                     </div>
+                                    @error('Tgl_Usul')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 {{-- <div class="form-group">
                                     <label for="inputName">Tanggal Usul</label>
@@ -117,7 +122,7 @@
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Alamat">
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="inputStatus">Desa</label>
                                     <select id="modal-form-edit-Desa" class="form-control custom-select @error('Desa') is-invalid @enderror" name="Desa">
                                         @foreach ($desas as $desa)
@@ -152,18 +157,18 @@
                                             {{ $message }}
                                         </div>
                                     @enderror
-                                </div>
-                                {{-- <div class="form-group">
+                                </div> --}}
+                                <div class="form-group">
                                     <label for="inputName">Desa</label>
-                                    <input type="text" id="Desa" name="Desa_id" class="form-control">
+                                    <input type="text" id="modal-form-edit-Desa" name="Desa" class="form-control">
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Desa"></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">Kecamatan</label>
-                                    <input type="text" id="Kecamatan" name="Kecamatan_id" class="form-control">
+                                    <input type="text" id="modal-form-edit-Kecamatan" name="Kecamatan" class="form-control">
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Kecamatan">
                                     </div>
-                                </div> --}}
+                                </div>
                                 <div class="form-group">
                                     <label for="inputName">Usul Ke</label>
                                     <input type="text" id="modal-form-edit-Usul_Ke" name="Usul_Ke" class="form-control">
@@ -224,12 +229,18 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="inputName">Koefisien</label>
+                                    <input type="text" id="modal-form-edit-Koefisien_1" name="Koefisien_1" class="form-control">
+                                    <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-content">
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label for="inputDescription">Rekomendasi Kelurahan/Desa</label>
                                     <textarea id="modal-form-edit-Rekomendasi_Kelurahan_Desa" name="Rekomendasi_Kelurahan_Desa" class="form-control" rows="4"></textarea>
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-content">
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="inputName">Koefisien</label>
                                     <input type="text" id="modal-form-edit-Koefisien_1" name="Koefisien_1" class="form-control">
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-content">
@@ -240,7 +251,7 @@
                                     <input type="text" id="modal-form-edit-Anggaran_1" name="Anggaran_1" class="form-control">
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-content">
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <label for="inputDescription">Rekomendasi Kecamatan</label>
                                     <textarea id="modal-form-edit-Rekomendasi_Kecamatan" name="Rekomendasi_Kecamatan" class="form-control" rows="4"></textarea>
@@ -295,13 +306,13 @@
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-content">
                                     </div>
                                 </div>
-                                {{-- <div class="form-group">
+                                <div class="form-group">
                                     <label for="inputName">Status</label>
                                     <input type="text" id="modal-form-edit-Status" name="Status" class="form-control">
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-content">
                                     </div>
-                                </div> --}}
-                                <div class="form-group">
+                                </div>
+                                {{-- <div class="form-group">
                                     <label for="inputStatus">Status</label>
                                     <select id="modal-form-edit-Status" class="form-control custom-select @error('Status') is-invalid @enderror" name="Status">
                                             <option value="TIDAK SETUJU" selected>TIDAK SETUJU
@@ -313,7 +324,7 @@
                                             {{ $message }}
                                         </div>
                                     @enderror
-                                </div>
+                                </div> --}}
 
                             </div>
                         </div>
@@ -371,9 +382,8 @@
                 $('#modal-form-edit-Koefisien').val(response.data.Koefisien);
                 $('#modal-form-edit-Anggaran').val(response.data.Anggaran);
                 $('#modal-form-edit-Kategori_Usulan').val(response.data.Kategori_Usulan);
-                $('#modal-form-edit-Rekomendasi_Kelurahan_Desa').val(response.data.Rekomendasi_Kelurahan_Desa);
                 $('#modal-form-edit-Koefisien_1').val(response.data.Koefisien_1);
-                $('#modal-form-edit-Anggaran_1').val(response.data.Anggaran_1);
+                $('#modal-form-edit-Rekomendasi_Kelurahan_Desa').val(response.data.Rekomendasi_Kelurahan_Desa);
                 $('#modal-form-edit-Rekomendasi_Kecamatan').val(response.data.Rekomendasi_Kecamatan);
                 $('#modal-form-edit-Koefisien_2').val(response.data.Koefisien_2);
                 $('#modal-form-edit-Anggaran_2').val(response.data.Anggaran_2);

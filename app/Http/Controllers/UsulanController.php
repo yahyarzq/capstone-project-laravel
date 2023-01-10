@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UsulanExport;
 use App\Imports\UsulanImport;
 use App\Models\Desa;
 use App\Models\Kecamatan;
@@ -11,6 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Str;
+use Maatwebsite\Excel\HeadingRowImport;
 
 class UsulanController extends Controller
 {
@@ -260,11 +263,21 @@ class UsulanController extends Controller
     public function import(Request $request)
     {
         $request->validate([
-            'file' => 'required|file'
+            'file' => 'required|file|mimes:xlsx'
         ]);
-
+        $headings = (new HeadingRowImport)->toArray($request->file('file'));
+        $needles = ['no', 'tgl_usul', 'pengusul', 'profil', 'urusan', 'usulan', 'permasalahan', 'alamat', 'kecamatan', 'kelurahan', 'usul_ke', 'skpd_tujuan_awal', 'skpd_tujuan_akhir', 'rekomendasi_bappeda_mitra_opd', 'koefisien', 'anggaran', 'kategori_usulan', 'koefisien', 'rekomendasi_kelurahandesa', 'rekomendasi_kecamatan', 'koefisien', 'anggaran', 'rekomendasi_skpd', 'koefisien', 'anggaran', 'rekomendasi_bappeda', 'koefisien', 'anggaran', 'status'];
+        foreach ($headings[0][0] as $key => $head) {
+            if( (!Str::contains($head, $needles, true)) and ($key < 29)){
+                return redirect()->back()->with('importError', 'Pastikan Header Kolom Sudah Benar');
+            }
+        }
         Excel::import(new UsulanImport, $request->file('file'));
+        return redirect()->back()->with('importSuccess', 'Data Usulan Behasil Di Upload');
+    }
 
-        return redirect('/import-usulan')->with('success', 'Data Usulan Behasil Di Upload');
+    public function export() 
+    {
+        return (new UsulanExport)->download('usulan.xlsx');
     }
 }
