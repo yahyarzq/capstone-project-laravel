@@ -263,7 +263,7 @@ class UsulanController extends Controller
     public function import(Request $request)
     {
         $request->validate([
-            'file' => 'required|file'
+            'file' => 'required|file|mimes:xlsx'
         ]);
         $headings = (new HeadingRowImport)->toArray($request->file('file'));
         $needles = ['no', 'tgl_usul', 'pengusul', 'profil', 'urusan', 'usulan', 'permasalahan', 'alamat', 'kecamatan', 'kelurahan', 'usul_ke', 'skpd_tujuan_awal', 'skpd_tujuan_akhir', 'rekomendasi_bappeda_mitra_opd', 'koefisien', 'anggaran', 'kategori_usulan', 'koefisien', 'rekomendasi_kelurahandesa', 'rekomendasi_kecamatan', 'koefisien', 'anggaran', 'rekomendasi_skpd', 'koefisien', 'anggaran', 'rekomendasi_bappeda', 'koefisien', 'anggaran', 'status'];
