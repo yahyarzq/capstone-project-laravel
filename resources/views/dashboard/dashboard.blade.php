@@ -54,7 +54,7 @@
                                         {{-- <span class="description-percentage text-warning"><i class="fas fa-caret-left"></i>
                                             0%</span> --}}
                                         <h5 class="description-header">{{ $usulan_weekly }}</h5>
-                                        <span class="description-text">HARI MINGGU INI</span>
+                                        <span class="description-text">USULAN MINGGU INI</span>
                                     </div>
                                     <!-- /.description-block -->
                                 </div>
