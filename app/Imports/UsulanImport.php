@@ -105,11 +105,11 @@ class UsulanImport implements ToModel, WithStartRow, WithValidation, WithBatchIn
 
     public function chunkSize(): int
     {
-        return 50;
+        return 5;
     }
 
     public function batchSize(): int
     {
-        return 50;
+        return 5;
     }
 }
