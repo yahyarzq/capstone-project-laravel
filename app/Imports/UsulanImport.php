@@ -4,6 +4,7 @@ namespace App\Imports;
 
 use App\Models\Usulan;
 use Carbon\Carbon;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
@@ -11,7 +12,7 @@ use Maatwebsite\Excel\Concerns\WithStartRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
 
 
-class UsulanImport implements ToModel, WithStartRow, WithValidation, WithBatchInserts, WithChunkReading
+class UsulanImport implements ToModel, WithStartRow, WithValidation, WithBatchInserts, WithChunkReading, ShouldQueue
 {
     /**
     * @param array $row
@@ -105,11 +106,11 @@ class UsulanImport implements ToModel, WithStartRow, WithValidation, WithBatchIn
 
     public function chunkSize(): int
     {
-        return 50;
+        return 5;
     }
 
     public function batchSize(): int
     {
-        return 50;
+        return 5;
     }
 }
