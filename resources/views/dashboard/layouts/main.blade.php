@@ -35,7 +35,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="../../plugins/jquery/jquery.min.js"></script>
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini accent-success">
     <div id="overlay">
         <div class="cv-spinner">
           <span class="spinner"></span>
@@ -181,7 +181,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 "scrollX": true,
                 "fixedHeader": false,
                 // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-                "buttons": ["excel", "print", "colvis"]
+                "buttons": [
+                {
+                    extend: 'excel',
+                    title:'SIFULAN',
+                    // messageTop: 'Data yang di export hanya data yang tampil',
+                    exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+                    }
+                }   
+                , "print", "colvis"]
             }).buttons().container().appendTo('#example1_head');
 
         });
