@@ -57,7 +57,7 @@ class UsulanImport implements ToModel, WithStartRow, WithValidation, WithBatchIn
     public function rules(): array
     {
         return [
-            '0' => 'required|unique:Usulan,No',
+            '0' => 'required|unique:App\Models\Usulan,No',
             '1' => 'required|date_format:d-m-Y',
             '2' => 'required',
             '3' => 'required',
