@@ -87,9 +87,7 @@ class UsulanController extends Controller
     public function history()
     {
         return view('dashboard/history_usulan', [
-            'collection' => Usulan::all(),
-            'desas' => Desa::all(),
-            'kecamatans' => Kecamatan::all()
+            
         ]);
     }
 
