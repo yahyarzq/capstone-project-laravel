@@ -107,7 +107,8 @@ class UsulanController extends Controller
             ->orWhere('Status', 'NOT LIKE',"%Usulan disetujui%")
             ->get(),
             'desas' => Desa::all(),
-            'kecamatans' => Kecamatan::all()
+            'kecamatans' => Kecamatan::all(),
+            'status' => Usulan::all()->sortBy('Status')->pluck('Status')->unique()
         ]);
     }
     // public function usulan()

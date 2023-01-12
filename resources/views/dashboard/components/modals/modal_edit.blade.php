@@ -306,11 +306,22 @@
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-content">
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="inputName">Status</label>
                                     <input type="text" id="modal-form-edit-Status" name="Status" class="form-control">
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-content">
                                     </div>
+                                </div> --}}
+                                <div class="form-group">
+                                    <label for="modal-form-edit-Status" class="form-label">Status</label>
+                                    <input class="form-control" list="datalistOptions" id="modal-form-edit-Status" name="Status" placeholder="Ketik atau pilih dari opsi...">
+                                    <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-content">
+                                    </div>
+                                    <datalist id="datalistOptions">
+                                        @foreach ($status as $item)
+                                            <option value="{{ $item }}"></option>
+                                        @endforeach
+                                    </datalist>
                                 </div>
                                 {{-- <div class="form-group">
                                     <label for="inputStatus">Status</label>
