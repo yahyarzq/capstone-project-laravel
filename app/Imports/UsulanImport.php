@@ -57,7 +57,7 @@ class UsulanImport implements ToModel, WithStartRow, WithValidation, WithBatchIn
     public function rules(): array
     {
         return [
-            '0' => 'required',
+            '0' => 'required|unique:App\Models\Usulan,No',
             '1' => 'required|date_format:d-m-Y',
             '2' => 'required',
             '3' => 'required',
@@ -97,6 +97,41 @@ class UsulanImport implements ToModel, WithStartRow, WithValidation, WithBatchIn
             //throw $th;
         }
         return $data;
+    }
+
+    public function customValidationAttributes()
+    {
+        return [
+            '0' => 'No',
+            '1' => 'Tgl_Usul',
+            '2' => 'Pengusul',
+            '3' => 'Profil',
+            '4' => 'Urusan',
+            '5' => 'Usulan',
+            '6' => 'Permasalahan',
+            '7' => 'Alamat',
+            '8' => 'Kecamatan',
+            '9' => 'Desa/Kabupaten',
+            '10' => 'Usul Ke',
+            '11' => 'SKPD_Tujuan_Awal',
+            '12' => 'SKPD_Tujuan_Akhir',
+            '13' => 'Rekomendasi_Bappeda_Mitra_OPD',
+            '14' => 'Koefisien',
+            '15' => 'Anggaran',
+            '16' => 'Kategori_Usulan',
+            '17' => 'Koefisien',
+            '18' => 'Rekomendasi_Kelurahan_Desa',
+            '19' => 'Rekomendasi_Kecamatan',
+            '20' => 'Koefisien',
+            '21' => 'Anggaran',
+            '22' => 'Rekomendasi_SKPD',
+            '23' => 'Koefisien',
+            '24' => 'Anggaran',
+            '25' => 'Rekomendasi_Bappeda',
+            '26' => 'Koefisien',
+            '27' => 'Anggaran',
+            '28' => 'Status',
+        ];
     }
 
     public function startRow(): int
