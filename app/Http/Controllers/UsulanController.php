@@ -276,6 +276,6 @@ class UsulanController extends Controller
 
     public function export() 
     {
-        return (new UsulanExport)->download('usulan.xlsx');
+        return (new UsulanExport)->download('Usulan '.date('d-m-y h:i:s').'.xlsx');
     }
 }
