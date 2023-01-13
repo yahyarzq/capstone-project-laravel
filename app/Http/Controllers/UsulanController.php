@@ -229,7 +229,7 @@ class UsulanController extends Controller
             'Kecamatan' => 'required',
             'Usul_Ke' => 'nullable|sometimes',
             'SKPD_Tujuan_Awal' => 'required',
-            'SKPD_Tujuan_Akhir' => 'required',
+            'SKPD_Tujuan_Akhir' => 'nullable|sometimes',
             'Rekomendasi_Bappeda_Mitra_OPD' => 'nullable|sometimes',
             'Koefisien' => 'nullable|sometimes',
             'Anggaran' => 'nullable|sometimes',
