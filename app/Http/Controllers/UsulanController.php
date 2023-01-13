@@ -106,9 +106,14 @@ class UsulanController extends Controller
             ])
             ->orWhere('Status', 'NOT LIKE',"%Usulan disetujui%")
             ->get(),
-            'desas' => Desa::all(),
-            'kecamatans' => Kecamatan::all(),
-            'status' => Usulan::all()->sortBy('Status')->pluck('Status')->unique()
+            // 'status' => Usulan::all()->sortBy('Status')->pluck('Status')->unique(),
+            // 'desa' => Usulan::all()->sortBy('Desa')->pluck('Desa')->unique(),
+            // 'kecamatan' => Usulan::all()->sortBy('Kecamatan')->pluck('Kecamatan')->unique(),
+            'status' => DB::table('usulans')->select('Status')->distinct()->orderBy('Status')->get(),
+            'desa' => DB::table('usulans')->select('Desa')->distinct()->orderBy('Desa')->get(),
+            'kecamatan' => DB::table('usulans')->select('Kecamatan')->distinct()->orderBy('Kecamatan')->get(),
+            'skpd_tujuan_awal' => DB::table('usulans')->select('SKPD_Tujuan_Awal')->distinct()->orderBy('SKPD_Tujuan_Awal')->get(),
+            'skpd_tujuan_akhir' => DB::table('usulans')->select('SKPD_Tujuan_Akhir')->distinct()->orderBy('SKPD_Tujuan_Akhir')->get(),
         ]);
     }
     // public function usulan()

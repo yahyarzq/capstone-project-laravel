@@ -158,16 +158,38 @@
                                         </div>
                                     @enderror
                                 </div> --}}
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="inputName">Desa</label>
                                     <input type="text" id="modal-form-edit-Desa" name="Desa" class="form-control">
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Desa"></div>
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
+                                    <label for="modal-form-edit-Desa" class="form-label">Desa</label>
+                                    <input type="text" class="form-control" list="datalistOptions-Desa" id="modal-form-edit-Desa" name="Desa" placeholder="Ketik atau pilih dari opsi...">
+                                    <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Desa">
+                                    </div>
+                                    <datalist id="datalistOptions-Desa">
+                                        @foreach ($desa as $item)
+                                            <option value="{{ $item->Desa }}"></option>
+                                        @endforeach
+                                    </datalist>
+                                </div>
+                                {{-- <div class="form-group">
                                     <label for="inputName">Kecamatan</label>
                                     <input type="text" id="modal-form-edit-Kecamatan" name="Kecamatan" class="form-control">
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Kecamatan">
                                     </div>
+                                </div> --}}
+                                <div class="form-group">
+                                    <label for="modal-form-edit-Kecamatan" class="form-label">Kecamatan</label>
+                                    <input type="text" class="form-control" list="datalistOptions-Kecamatan" id="modal-form-edit-Kecamatan" name="Kecamatan" placeholder="Ketik atau pilih dari opsi...">
+                                    <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Kecamatan">
+                                    </div>
+                                    <datalist id="datalistOptions-Kecamatan">
+                                        @foreach ($kecamatan as $item)
+                                            <option value="{{ $item->Kecamatan }}"></option>
+                                        @endforeach
+                                    </datalist>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">Usul Ke</label>
@@ -175,7 +197,7 @@
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-Usul_Ke">
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="inputName">SKPD Tujuan Awal</label>
                                     <input type="text" id="modal-form-edit-SKPD_Tujuan_Awal" name="SKPD_Tujuan_Awal"
                                         class="form-control @error('SKPD_Tujuan_Awal') is-invalid @enderror">
@@ -186,14 +208,48 @@
                                             {{ $message }}
                                         </div>
                                     @enderror
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
+                                    <label for="inputName">SKPD Tujuan Awal</label>
+                                    <input type="text" id="modal-form-edit-SKPD_Tujuan_Awal" list="datalistOptions-SKPD_Tujuan_Awal" name="SKPD_Tujuan_Awal"
+                                        class="form-control @error('SKPD_Tujuan_Awal') is-invalid @enderror" placeholder="Ketik atau pilih dari opsi...">
+                                    <div class="alert alert-danger mt-2 d-none" role="alert"
+                                        id="alert-SKPD_Tujuan_Awal"></div>
+                                    <datalist id="datalistOptions-SKPD_Tujuan_Awal">
+                                        @foreach ($skpd_tujuan_awal as $item)
+                                            <option value="{{ $item->SKPD_Tujuan_Awal }}"></option>
+                                        @endforeach
+                                    </datalist>
+                                    @error('SKPD_Tujuan_Awal')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                {{-- <div class="form-group">
                                     <label for="inputName">SKPD Tujuan Akhir</label>
                                     <input type="text" id="modal-form-edit-SKPD_Tujuan_Akhir" name="SKPD_Tujuan_Akhir"
                                         class="form-control @error('SKPD_Tujuan_Akhir') is-invalid @enderror">
                                     <div class="alert alert-danger mt-2 d-none" role="alert"
                                         id="alert-SKPD_Tujuan_Akhir">
                                     </div>
+                                    @error('SKPD_Tujuan_Akhir')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div> --}}
+                                <div class="form-group">
+                                    <label for="inputName">SKPD Tujuan Akhir</label>
+                                    <input type="text" id="modal-form-edit-SKPD_Tujuan_Akhir" list="datalistOptions-SKPD_Tujuan_Akhir" name="SKPD_Tujuan_Akhir"
+                                        class="form-control @error('SKPD_Tujuan_Akhir') is-invalid @enderror" placeholder="Ketik atau pilih dari opsi...">
+                                    <div class="alert alert-danger mt-2 d-none" role="alert"
+                                        id="alert-SKPD_Tujuan_Akhir"></div>
+                                    <datalist id="datalistOptions-SKPD_Tujuan_Akhir">
+                                        @foreach ($skpd_tujuan_akhir as $item)
+                                            <option value="{{ $item->SKPD_Tujuan_Akhir }}"></option>
+                                        @endforeach
+                                    </datalist>
                                     @error('SKPD_Tujuan_Akhir')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -314,12 +370,12 @@
                                 </div> --}}
                                 <div class="form-group">
                                     <label for="modal-form-edit-Status" class="form-label">Status</label>
-                                    <input class="form-control" list="datalistOptions" id="modal-form-edit-Status" name="Status" placeholder="Ketik atau pilih dari opsi...">
+                                    <input class="form-control" list="datalistOptions-Status" id="modal-form-edit-Status" name="Status" placeholder="Ketik atau pilih dari opsi...">
                                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-content">
                                     </div>
-                                    <datalist id="datalistOptions">
+                                    <datalist id="datalistOptions-Status">
                                         @foreach ($status as $item)
-                                            <option value="{{ $item }}"></option>
+                                            <option value="{{ $item->Status }}"></option>
                                         @endforeach
                                     </datalist>
                                 </div>
