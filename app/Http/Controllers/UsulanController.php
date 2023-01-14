@@ -79,6 +79,21 @@ class UsulanController extends Controller
         return redirect(404);
     }
 
+    public function getDataUsulan(Request $request)
+    {
+        if($request->ajax()){
+            $dt =  Carbon::now()->setTimezone('Asia/Jakarta');
+            $data =  Usulan::whereBetween("Tgl_Usul", [
+                $dt->startOfWeek()->format('Y-m-d'),
+                $dt->endOfWeek()->format('Y-m-d')
+            ])
+            ->orWhere(DB::raw('UPPER(Status)'), 'NOT LIKE',"%USULAN DISETUJUI%")
+            ->get();
+            return DataTables::of($data)->toJson();
+        }
+        return redirect(404);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -100,12 +115,12 @@ class UsulanController extends Controller
     {
         $dt =  Carbon::now()->setTimezone('Asia/Jakarta');
         return view('dashboard/usulan', [
-            'collection' => Usulan::whereBetween("Tgl_Usul", [
-                $dt->startOfWeek()->format('Y-m-d'),
-                $dt->endOfWeek()->format('Y-m-d')
-            ])
-            ->orWhere('Status', 'NOT LIKE',"%Usulan disetujui%")
-            ->get(),
+            // 'collection' => Usulan::whereBetween("Tgl_Usul", [
+            //     $dt->startOfWeek()->format('Y-m-d'),
+            //     $dt->endOfWeek()->format('Y-m-d')
+            // ])
+            // ->orWhere('Status', 'NOT LIKE',"%Usulan disetujui%")
+            // ->get(),
             // 'status' => Usulan::all()->sortBy('Status')->pluck('Status')->unique(),
             // 'desa' => Usulan::all()->sortBy('Desa')->pluck('Desa')->unique(),
             // 'kecamatan' => Usulan::all()->sortBy('Kecamatan')->pluck('Kecamatan')->unique(),
