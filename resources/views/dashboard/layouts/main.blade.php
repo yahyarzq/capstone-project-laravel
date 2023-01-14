@@ -358,16 +358,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 "scrollX": true,
                 "fixedHeader": false,
                 // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-                "buttons": [
-                {
+            });
+
+            new $.fn.dataTable.Buttons( datatable, {
+                buttons: [
+                    // {
+                    //     text: 'Button 1',
+                    //     action: function ( e, dt, node, conf ) {
+                    //     console.log( 'Button 1 clicked on' );
+                    //     }
+                    // },
+                    // {
+                    //     text: 'Button 2',
+                    //     action: function ( e, dt, node, conf ) {
+                    //     console.log( 'Button 2 clicked on' );
+                    //         }
+                    // }
+                    {
                     extend: 'excel',
                     title:'SIFULAN',
                     // messageTop: 'Data yang di export hanya data yang tampil',
                     exportOptions: {
                             columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
-                    }
-                }, "print", "colvis"]
-            }).buttons().container().appendTo('#example1_head');
+                        }
+                    }, "print", "colvis"
+                ]
+            });
+ 
+            datatable.buttons( 0, null ).container().prependTo('#example1_head');
 
         });
     </script>
