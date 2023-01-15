@@ -41,6 +41,7 @@ Route::get('/dashboard', [UsulanController::class,'index'])->middleware('auth');
 Route::get('/dashboard/usulan',[UsulanController::class,'usulan'])->middleware('auth');
 Route::get('/dashboard/history-usulan',[UsulanController::class,'history'])->middleware('auth');
 
-Route::get('/usulan/data',[UsulanController::class,'getUsulan'])->middleware('auth');
+Route::get('/usulan/query/data',[UsulanController::class,'getUsulan'])->middleware('auth');
+Route::get('/usulan/data',[UsulanController::class,'getDataUsulan'])->middleware('auth');
 // Route::post('/usulan',[UsulanController::class,'store']);
 Route::resource('/usulan',UsulanController::class)->middleware('auth');
