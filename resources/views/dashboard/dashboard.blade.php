@@ -109,8 +109,8 @@
                         @foreach ($desas as $desa)
                           <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $desa->nama }}</td>
-                            <td><span class="badge bg-danger">{{ $desa->total }}</span></td>
+                            <td>{{ $desa->_id }}</td>
+                            <td><span class="badge bg-danger">{{ $desa->count }}</span></td>
                           </tr>
                         @endforeach
                       </tbody>
@@ -138,8 +138,8 @@
                         @foreach ($dinas as $item)
                           <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->nama }}</td>
-                            <td><span class="badge bg-danger">{{ $item->total }}</span></td>
+                            <td>{{ $item->_id }}</td>
+                            <td><span class="badge bg-danger">{{ $item->count }}</span></td>
                           </tr>
                         @endforeach
                       </tbody>
@@ -169,8 +169,8 @@
                         @foreach ($kecamatans as $kecamatan)
                           <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $kecamatan->nama }}</td>
-                            <td><span class="badge bg-danger">{{ $kecamatan->total }}</span></td>
+                            <td>{{ $kecamatan->_id }}</td>
+                            <td><span class="badge bg-danger">{{ $kecamatan->count }}</span></td>
                           </tr>
                         @endforeach
                       </tbody>
@@ -199,8 +199,8 @@
                           @foreach ($tipe_usulan as $tu)
                           <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $tu->nama }}</td>
-                            <td><span class="badge bg-danger">{{ $tu->total }}</span></td>
+                            <td>{{ $tu->_id }}</td>
+                            <td><span class="badge bg-danger">{{ $tu->count }}</span></td>
                           </tr>
                         @endforeach
                       </tbody>

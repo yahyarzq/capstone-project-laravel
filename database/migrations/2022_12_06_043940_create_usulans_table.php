@@ -17,36 +17,7 @@ return new class extends Migration
     {
         Schema::create('usulans', function (Blueprint $table) {
             $table->id();
-            $table->string('No');
-            $table->date('Tgl_Usul');
-            $table->string('Pengusul');
-            $table->string('Profil');
-            $table->string('Urusan');
-            $table->text('Usulan');
-            $table->text('Permasalahan');
-            $table->text('Alamat')->nullable();
-            $table->string('Desa');
-            $table->string('Kecamatan');
-            $table->string('Usul_Ke')->nullable();
-            $table->string('SKPD_Tujuan_Awal');
-            $table->string('SKPD_Tujuan_Akhir')->nullable();
-            $table->string('TipeUsulan')->nullable();
-            $table->text('Rekomendasi_Bappeda_Mitra_OPD')->nullable();
-            $table->string('Koefisien')->nullable();
-            $table->string('Anggaran')->nullable();
-            $table->string('Kategori_Usulan')->nullable();
-            $table->string('Koefisien_1')->nullable();
-            $table->text('Rekomendasi_Kelurahan_Desa')->nullable();
-            $table->text('Rekomendasi_Kecamatan')->nullable();
-            $table->string('Koefisien_2')->nullable();
-            $table->string('Anggaran_2')->nullable();
-            $table->text('Rekomendasi_SKPD')->nullable();
-            $table->string('Koefisien_3')->nullable();
-            $table->string('Anggaran_3')->nullable();
-            $table->text('Rekomendasi_Bappeda')->nullable();
-            $table->string('Koefisien_4')->nullable();
-            $table->string('Anggaran_4')->nullable();
-            $table->string('Status')->nullable();
+            $table->string('data');
             $table->timestamps();
         });
     }

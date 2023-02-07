@@ -8,6 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>SIFULAN</title>
 
     <!-- Google Font: Source Sans Pro -->
@@ -22,6 +23,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <link rel="stylesheet" href="../../plugins/datatables-fixedcolumns/css/fixedColumns.bootstrap4.min.css">
     <link rel="stylesheet" href="../../plugins/datatables-fixedheader/css/fixedHeader.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../plugins/datatables-select/css/select.bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     <link rel="stylesheet" href="../../css/style.css">
@@ -92,6 +94,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="../../plugins/datatables-fixedcolumns/js/fixedColumns.bootstrap4.min.js"></script>
     <script src="../../plugins/datatables-fixedheader/js/dataTables.fixedHeader.min.js"></script>
     <script src="../../plugins/datatables-fixedheader/js/fixedHeader.bootstrap4.min.js"></script>
+    <script src="../../plugins/datatables-select/js/dataTables.select.min.js"></script>
+    <script src="../../plugins/datatables-select/js/select.bootstrap4.min.js"></script>
+    <script src="../../plugins/dataTables.altEditor.free.js"></script>
     <!-- bs-custom-file-input -->
     <script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
     <!-- Select2 -->

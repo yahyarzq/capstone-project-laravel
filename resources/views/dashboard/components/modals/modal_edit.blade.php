@@ -170,7 +170,7 @@
                                     </div>
                                     <datalist id="datalistOptions-Desa">
                                         @foreach ($desa as $item)
-                                            <option value="{{ $item->Desa }}"></option>
+                                            <option value="{{ $item }}"></option>
                                         @endforeach
                                     </datalist>
                                 </div>
@@ -187,7 +187,7 @@
                                     </div>
                                     <datalist id="datalistOptions-Kecamatan">
                                         @foreach ($kecamatan as $item)
-                                            <option value="{{ $item->Kecamatan }}"></option>
+                                            <option value="{{ $item }}"></option>
                                         @endforeach
                                     </datalist>
                                 </div>
@@ -217,7 +217,7 @@
                                         id="alert-SKPD_Tujuan_Awal"></div>
                                     <datalist id="datalistOptions-SKPD_Tujuan_Awal">
                                         @foreach ($skpd_tujuan_awal as $item)
-                                            <option value="{{ $item->SKPD_Tujuan_Awal }}"></option>
+                                            <option value="{{ $item }}"></option>
                                         @endforeach
                                     </datalist>
                                     @error('SKPD_Tujuan_Awal')
@@ -247,7 +247,7 @@
                                         id="alert-SKPD_Tujuan_Akhir"></div>
                                     <datalist id="datalistOptions-SKPD_Tujuan_Akhir">
                                         @foreach ($skpd_tujuan_akhir as $item)
-                                            <option value="{{ $item->SKPD_Tujuan_Akhir }}"></option>
+                                            <option value="{{ $item }}"></option>
                                         @endforeach
                                     </datalist>
                                     @error('SKPD_Tujuan_Akhir')
@@ -375,7 +375,7 @@
                                     </div>
                                     <datalist id="datalistOptions-Status">
                                         @foreach ($status as $item)
-                                            <option value="{{ $item->Status }}"></option>
+                                            <option value="{{ $item }}"></option>
                                         @endforeach
                                     </datalist>
                                 </div>

@@ -35,48 +35,10 @@
                                         Export Usulan
                                     </a>
                                 </div>
+                                <div id="example1_head" class="p-1"></div>
                             </div>
                             {{-- add table-responsive to maka table responsive horizontal --}}
                             <table id="table-history" class="table table-bordered table-hover table-striped text-nowrap">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Tanggal Usul</th>
-                                        <th>Pengusul</th>
-                                        <th>Profil</th>
-                                        <th>Urusan</th>
-                                        <th>Usulan</th>
-                                        <th>Tipe Usulan</th>
-                                        <th>Permasalahan</th>
-                                        <th>Alamat</th>
-                                        <th>Desa</th>
-                                        <th>Kecamatan</th>
-                                        <th>Usul_Ke</th>
-                                        <th>SKPD_Tujuan_Awal</th>
-                                        <th>SKPD_Tujuan_Akhir</th>
-                                        <th>Rekomendasi_Bappeda_Mitra_OPD</th>
-                                        <th>Koefisien</th>
-                                        <th>Anggaran</th>
-                                        <th>Kategori_Usulan</th>
-                                        <th>Koefisien</th>
-                                        <th>Rekomendasi_Kelurahan_Desa</th>
-                                        {{-- <th>Koefisien</th>
-                                        <th>Anggaran</th> --}}
-                                        <th>Rekomendasi_Kecamatan</th>
-                                        <th>Koefisien</th>
-                                        <th>Anggaran</th>
-                                        <th>Rekomendasi_SKPD</th>
-                                        <th>Koefisien</th>
-                                        <th>Anggaran</th>
-                                        <th>Rekomendasi_Bappeda</th>
-                                        <th>Koefisien</th>
-                                        <th>Anggaran</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
                             </table>
                         </div>
                         <!-- /.card-body -->
@@ -98,192 +60,191 @@
 @section("scripts")
 <script>
     $(function() {
-        // $('#table_import').DataTable({
-        //     "paging": true,
-        //     "lengthChange": true,
-        //     "searching": false,
-        //     "ordering": true,
-        //     "info": true,
-        //     "autoWidth": false,
-        //     "responsive": false,
-        //     "scrollX": true,
-        //     "fixedHeader": true,
-        // }).columns.adjust();
 
-        $("#table-history").DataTable({
-            stateSave: true,
-            processing: true,
-            serverSide: true,
-            ajax: '/usulan/query/data',
-            columns: [{
-                    data: 'No',
-                    name: 'No'
-                },
-                {
-                    data: 'Tgl_Usul',
-                    name: 'Tgl_Usul',
-                    // render: function (data) { 
-                    //     return moment(data,'YYYY-MM-DD').format('DD-MM-YYYY'); 
-                    // }
-                },
-                {
-                    data: 'Pengusul',
-                    name: 'Pengusul'
-                },
-                {
-                    data: 'Profil',
-                    name: 'Profil'
-                },
-                {
-                    data: 'Urusan',
-                    name: 'Urusan'
-                },
-                {
-                    data: 'Usulan',
-                    name: 'Usulan'
-                },
-                {
-                    data: 'TipeUsulan',
-                    name: 'TipeUsulan'
-                },
-                {
-                    data: 'Permasalahan',
-                    name: 'Permasalahan'
-                },
-                {
-                    data: 'Alamat',
-                    name: 'Alamat'
-                },
-                {
-                    data: 'Desa',
-                    name: 'Desa'
-                },
-                {
-                    data: 'Kecamatan',
-                    name: 'Kecamatan'
-                },
-                {
-                    data: 'Usul_Ke',
-                    name: 'Usul_Ke'
-                },
-                {
-                    data: 'SKPD_Tujuan_Awal',
-                    name: 'SKPD_Tujuan_Awal'
-                },
-                {
-                    data: 'SKPD_Tujuan_Akhir',
-                    name: 'SKPD_Tujuan_Akhir'
-                },
-                {
-                    data: 'Rekomendasi_Bappeda_Mitra_OPD',
-                    name: 'Rekomendasi_Bappeda_Mitra_OPD'
-                },
-                {
-                    data: 'Koefisien',
-                    name: 'Koefisien'
-                },
-                {
-                    data: 'Anggaran',
-                    name: 'Anggaran'
-                },
-                {
-                    data: 'Kategori_Usulan',
-                    name: 'Kategori_Usulan'
-                },
-                {
-                    data: 'Koefisien_1',
-                    name: 'Koefisien_1'
-                },
-                {
-                    data: 'Rekomendasi_Kelurahan_Desa',
-                    name: 'Rekomendasi_Kelurahan_Desa'
-                },
-                // {
-                //     data: 'Koefisien_1',
-                //     name: 'Koefisien_1'
-                // },
-                // {
-                //     data: 'Anggaran_1',
-                //     name: 'Anggaran_1'
-                // },
-                {
-                    data: 'Rekomendasi_Kecamatan',
-                    name: 'Rekomendasi_Kecamatan'
-                },
-                {
-                    data: 'Koefisien_2',
-                    name: 'Koefisien_2'
-                },
-                {
-                    data: 'Anggaran_2',
-                    name: 'Anggaran_2'
-                },
-                {
-                    data: 'Rekomendasi_SKPD',
-                    name: 'Rekomendasi_SKPD'
-                },
-                {
-                    data: 'Koefisien_3',
-                    name: 'Koefisien_3'
-                },
-                {
-                    data: 'Anggaran_3',
-                    name: 'Anggaran_3'
-                },
-                {
-                    data: 'Rekomendasi_Bappeda',
-                    name: 'Rekomendasi_Bappeda'
-                },
-                {
-                    data: 'Koefisien_4',
-                    name: 'Koefisien_4'
-                },
-                {
-                    data: 'Anggaran_4',
-                    name: 'Anggaran_4'
-                },
-                {
-                    data: 'Status',
-                    name: 'Status',
-                    render: function(data,type,row){
-                        if (data === 'Usulan disetujui') {
-                            return `<span class="badge badge-success">${data}</span>`;
-                        } 
-                        else if (data === 'Usulan tidak disetujui') {
-                            return `<span class="badge badge-danger">${data}</span>`;
-                        } 
-                        else {
-                            return `<span class="badge badge-primary">${data}</span>`;
-                        }
-                    }
-                },
-                {
-                    data: 'action',
-                    name: 'action',
-                    'render': function(data, type, row) {
-                        return `<a class="btn btn-primary btn-sm" id="btn-item-view"
-                                                data-id="${row.id}" data-toggle="modal"
-                                                data-attr="/usulan/${row.id}" data-target="#modal-view">
-                                                <i class="fas fa-folder">
-                                                </i>
-                                                View
-                                            </a>`
+        function makeColumnHeader(colHeaderName) {
+                let table_header = '<thead class="table-header"><tr>';
+                $.each(colHeaderName, function(data, value) {
+                    table_header += '<th>' + value + '</th>';
+                });
+                table_header += '</thead></tr>';
+                return table_header;
+            }
+
+            function makeColumnFooter(colHeaderName) {
+                let table_footer = '<tfoot class="table-footer"><tr>';
+                $.each(colHeaderName, function(data, value) {
+                    table_footer += '<th>' + value + '</th>';
+                });
+                table_footer += '</tfoot></tr>';
+                return table_footer;
+            }
+
+            function dataTableDef(columnDef) {
+                var tableDef = {
+                    stateSave: true,
+                    processing: true,
+                    serverSide: true,
+                    ajax: '/usulan/data',
+                    columns: columnDef,
+                    dom: 'Blfrtip',
+                    select: 'single',
+                    altEditor: true,
+                    buttons: [
+                        // {
+                        //     text: 'Button 1',
+                        //     action: function ( e, dt, node, conf ) {
+                        //     console.log( 'Button 1 clicked on' );
+                        //     }
+                        // },
+                        // {
+                        //     text: 'Button 2',
+                        //     action: function ( e, dt, node, conf ) {
+                        //     console.log( 'Button 2 clicked on' );
+                        //         }
+                        // }
+                        // {
+                        //     text: 'Add',
+                        //     name: 'add' // do not change name
+                        // },
+                        {
+                            extend: 'selected', // Bind to Selected row
+                            text: 'Edit',
+                            name: 'edit' // do not change name
+                        },
+                        // {
+                        //     extend: 'selected', // Bind to Selected row
+                        //     text: 'Delete',
+                        //     name: 'delete' // do not change name
+                        // },
+                        {
+                            text: 'Refresh',
+                            name: 'refresh' // do not change name
+                        },
+                    ],
+                    onAddRow: function(datatable, rowdata, success, error) {
+                        $.ajax({
+                            // a tipycal url would be / with type='PUT'
+                            url: url_ws_mock_ok,
+                            type: 'POST',
+                            data: rowdata,
+                            success: success,
+                            error: error
+                        });
                     },
-                    orderable: false, //Disable ordering on this column
-                    searchable: false //Disable search on this column
-                },
+                    onDeleteRow: function(datatable, rowdata, success, error) {
+                        $.ajax({
+                            // a tipycal url would be /{id} with type='DELETE'
+                            url: url_ws_mock_ok,
+                            type: 'DELETE',
+                            data: rowdata,
+                            success: success,
+                            error: error
+                        });
+                    },
+                    onEditRow: function(datatable, rowdata, success, error) {
+                        // console.log(rowdata);
+                       $.ajax({
+                            // a tipycal url would be /{id} with type='DELETE'
+                            url: url_ws_mock_ok,
+                            type: 'DELETE',
+                            data: rowdata,
+                            success: success,
+                            error: error
+                        });
 
-            ],
-            initComplete: function() {},
-            "responsive": false,
-            "lengthChange": true,
-            "searching": true,
-            "autoWidth": false,
-            "scrollX": true,
-            "fixedHeader": false,
+                    },
+                    // fixedColumns: {
+                    //     left: 0, // Only for client side rendering
+                    //     right: 0
+                    //     // leftColumns: 1
+                    // },
+                    "responsive": false,
+                    "lengthChange": true,
+                    "searching": true,
+                    "autoWidth": false,
+                    "scrollX": true,
+                    "fixedHeader": false,
+                    // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                };
+                return tableDef;
+            }
+
+            function getTableData() {
+                return $.ajax({
+                    url: '/usulan/query/data',
+                    method: "get"
+                });
+            }
+
+            getTableData().done(function(records) {
+                let headerName = Object.keys(records.data[0]);
+                let headerHtml = makeColumnHeader(headerName);
+                let footerHtml = makeColumnFooter(headerName);
+
+                var columns = [];
+
+                $("#table-history").append(headerHtml);
+                $("#table-history").append(footerHtml);
+
+                for (let i = 0; i < headerName.length; i++) {
+                    columns.push({
+                        "data": headerName[i]
+                    });
 
 
-        });
+                }
+
+                var datatable = $("#table-history").DataTable(dataTableDef(columns));
+
+                datatable.draw();
+
+                new $.fn.dataTable.Buttons(datatable, {
+                    buttons: [
+                        // {
+                        //     text: 'Button 1',
+                        //     action: function ( e, dt, node, conf ) {
+                        //     console.log( 'Button 1 clicked on' );
+                        //     }
+                        // },
+                        // {
+                        //     text: 'Button 2',
+                        //     action: function ( e, dt, node, conf ) {
+                        //     console.log( 'Button 2 clicked on' );
+                        //         }
+                        // }
+                        {
+                            text: 'Add',
+                            name: 'add' // do not change name
+                        },
+                        {
+                            extend: 'selected', // Bind to Selected row
+                            text: 'Edit',
+                            name: 'edit' // do not change name
+                        },
+                        {
+                            extend: 'selected', // Bind to Selected row
+                            text: 'Delete',
+                            name: 'delete' // do not change name
+                        },
+                        {
+                            text: 'Refresh',
+                            name: 'refresh' // do not change name
+                        },
+                        {
+                            extend: 'excel',
+                            title: 'SIFULAN',
+                            messageTop: 'Data yang di export hanya data yang tampil',
+                            exportOptions: {
+                                columns: []
+                            }
+                        }, "print", "colvis"
+                    ]
+                });
+
+                datatable.buttons(0, null).container().prependTo('#example1_head');
+            });
+
+
         // $('#table-history').DataTable({
         //     "paging": true,
         //     "lengthChange": true,

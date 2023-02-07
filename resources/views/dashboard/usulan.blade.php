@@ -41,43 +41,7 @@
                             </div>
                             {{-- add table-responsive to maka table responsive horizontal --}}
                             <table id="example1" class="table table-bordered table-hover table-striped text-nowrap">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Tanggal Usul</th>
-                                        <th>Pengusul</th>
-                                        <th>Profil</th>
-                                        <th>Urusan</th>
-                                        <th>Usulan</th>
-                                        <th>Tipe Usulan</th>
-                                        <th>Permasalahan</th>
-                                        <th>Alamat</th>
-                                        <th>Desa/Kelurahan</th>
-                                        <th>Kecamatan</th>
-                                        <th>Usul Ke</th>
-                                        <th>SKPD Tujuan Awal</th>
-                                        <th>SKPD Tujuan Akhir</th>
-                                        <th>Rekomendasi Bappeda Mitra OPD</th>
-                                        <th>Koefisien</th>
-                                        <th>Anggaran</th>
-                                        <th>Kategori Usulan</th>
-                                        <th>Koefisien</th>
-                                        <th>Rekomendasi Kelurahan Desa</th>
-                                        {{-- <th>Koefisien</th>
-                                        <th>Anggaran</th> --}}
-                                        <th>Rekomendasi Kecamatan</th>
-                                        <th>Koefisien</th>
-                                        <th>Anggaran</th>
-                                        <th>Rekomendasi SKPD</th>
-                                        <th>Koefisien</th>
-                                        <th>Anggaran</th>
-                                        <th>Rekomendasi Bappeda</th>
-                                        <th>Koefisien</th>
-                                        <th>Anggaran</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
+
                                 <tbody>
                                     {{-- @foreach ($collection as $item)
                                         <tr>
@@ -167,278 +131,274 @@
 @endsection
 
 
-@section("scripts")
-<script>
-    $(function() {
-        var datatable = $("#example1").DataTable({
-            stateSave: true,
-            processing: true,
-            serverSide: false,
-            ajax: '/usulan/data',
-            columns: [{
-                    data: 'No',
-                    name: 'No'
-                },
-                {
-                    data: 'Tgl_Usul',
-                    name: 'Tgl_Usul',
-                    // render: function (data) { 
-                    //     return moment(data,'YYYY-MM-DD').format('DD-MM-YYYY'); 
-                    // }
-                },
-                {
-                    data: 'Pengusul',
-                    name: 'Pengusul'
-                },
-                {
-                    data: 'Profil',
-                    name: 'Profil'
-                },
-                {
-                    data: 'Urusan',
-                    name: 'Urusan'
-                },
-                {
-                    data: 'Usulan',
-                    name: 'Usulan'
-                },
-                {
-                    data: 'TipeUsulan',
-                    name: 'TipeUsulan'
-                },
-                {
-                    data: 'Permasalahan',
-                    name: 'Permasalahan'
-                },
-                {
-                    data: 'Alamat',
-                    name: 'Alamat'
-                },
-                {
-                    data: 'Desa',
-                    name: 'Desa'
-                },
-                {
-                    data: 'Kecamatan',
-                    name: 'Kecamatan'
-                },
-                {
-                    data: 'Usul_Ke',
-                    name: 'Usul_Ke'
-                },
-                {
-                    data: 'SKPD_Tujuan_Awal',
-                    name: 'SKPD_Tujuan_Awal'
-                },
-                {
-                    data: 'SKPD_Tujuan_Akhir',
-                    name: 'SKPD_Tujuan_Akhir'
-                },
-                {
-                    data: 'Rekomendasi_Bappeda_Mitra_OPD',
-                    name: 'Rekomendasi_Bappeda_Mitra_OPD'
-                },
-                {
-                    data: 'Koefisien',
-                    name: 'Koefisien'
-                },
-                {
-                    data: 'Anggaran',
-                    name: 'Anggaran'
-                },
-                {
-                    data: 'Kategori_Usulan',
-                    name: 'Kategori_Usulan'
-                },
-                {
-                    data: 'Koefisien_1',
-                    name: 'Koefisien_1'
-                },
-                {
-                    data: 'Rekomendasi_Kelurahan_Desa',
-                    name: 'Rekomendasi_Kelurahan_Desa'
-                },
-                // {
-                //     data: 'Koefisien_1',
-                //     name: 'Koefisien_1'
-                // },
-                // {
-                //     data: 'Anggaran_1',
-                //     name: 'Anggaran_1'
-                // },
-                {
-                    data: 'Rekomendasi_Kecamatan',
-                    name: 'Rekomendasi_Kecamatan'
-                },
-                {
-                    data: 'Koefisien_2',
-                    name: 'Koefisien_2'
-                },
-                {
-                    data: 'Anggaran_2',
-                    name: 'Anggaran_2'
-                },
-                {
-                    data: 'Rekomendasi_SKPD',
-                    name: 'Rekomendasi_SKPD'
-                },
-                {
-                    data: 'Koefisien_3',
-                    name: 'Koefisien_3'
-                },
-                {
-                    data: 'Anggaran_3',
-                    name: 'Anggaran_3'
-                },
-                {
-                    data: 'Rekomendasi_Bappeda',
-                    name: 'Rekomendasi_Bappeda'
-                },
-                {
-                    data: 'Koefisien_4',
-                    name: 'Koefisien_4'
-                },
-                {
-                    data: 'Anggaran_4',
-                    name: 'Anggaran_4'
-                },
-                {
-                    data: 'Status',
-                    name: 'Status',
-                    render: function(data,type,row){
-                        if (data.toUpperCase() === 'USULAN DISETUJUI') {
-                            return `<span class="badge badge-success">${data}</span>`;
-                        } 
-                        else if (data.toUpperCase() === 'USULAN TIDAK DISETUJUI') {
-                            return `<span class="badge badge-danger">${data}</span>`;
-                        } 
-                        else {
-                            return `<span class="badge badge-primary">${data}</span>`;
-                        }
-                    }
-                },
-                {
-                    data: 'action',
-                    name: 'action',
-                    render: function(data, type, row) {
-                        return `<a class="btn btn-primary btn-sm" id="btn-item-view"
-                                                data-id="${row.id}" data-toggle="modal"
-                                                data-attr="/usulan/${row.id}" data-target="#modal-view">
-                                                <i class="fas fa-folder">
-                                                </i>
-                                                View
-                                            </a>
-                                <a class="btn btn-info btn-sm" id="btn-item-edit"
-                                                data-id="${row.id}" data-toggle="modal"
-                                                data-attr="/usulan/${row.id}" data-target="#modal-editS">
-                                                <i class="fas fa-pencil-alt">
-                                                </i>
-                                                Edit
-                                            </a>
-                                <a class="btn btn-danger btn-sm" id="btn-item-delete"
-                                                data-id="${row.id}" data-toggle="modal"
-                                                data-attr="/usulan/${row.id}" data-target="#modal-delete">
-                                                <i class="fas fa-trash">
-                                                </i>
-                                                Delete
-                                            </a>`;
+@section('scripts')
+    <script>
+        $(function() {
+            function makeColumnHeader(colHeaderName) {
+                let table_header = '<thead class="table-header"><tr>';
+                $.each(colHeaderName, function(data, value) {
+                    table_header += '<th>' + value + '</th>';
+                });
+                table_header += '</thead></tr>';
+                return table_header;
+            }
+
+            function makeColumnFooter(colHeaderName) {
+                let table_footer = '<tfoot class="table-footer"><tr>';
+                $.each(colHeaderName, function(data, value) {
+                    table_footer += '<th>' + value + '</th>';
+                });
+                table_footer += '</tfoot></tr>';
+                return table_footer;
+            }
+
+            function dataTableDef(columnDef) {
+                var tableDef = {
+                    stateSave: true,
+                    processing: true,
+                    serverSide: false,
+                    ajax: '/usulan/data',
+                    columns: columnDef,
+                    dom: 'Blfrtip',
+                    select: 'single',
+                    altEditor: true,
+                    buttons: [
+                        // {
+                        //     text: 'Button 1',
+                        //     action: function ( e, dt, node, conf ) {
+                        //     console.log( 'Button 1 clicked on' );
+                        //     }
+                        // },
+                        // {
+                        //     text: 'Button 2',
+                        //     action: function ( e, dt, node, conf ) {
+                        //     console.log( 'Button 2 clicked on' );
+                        //         }
+                        // }
+                        // {
+                        //     text: 'Add',
+                        //     name: 'add' // do not change name
+                        // },
+                        {
+                            extend: 'selected', // Bind to Selected row
+                            text: 'Edit',
+                            name: 'edit' // do not change name
+                        },
+                        // {
+                        //     extend: 'selected', // Bind to Selected row
+                        //     text: 'Delete',
+                        //     name: 'delete' // do not change name
+                        // },
+                        {
+                            text: 'Refresh',
+                            name: 'refresh' // do not change name
+                        },
+                        {
+                            extend: 'excel',
+                            title: 'SIFULAN',
+                            messageTop: 'Data yang di export hanya data yang tampil',
+                            exportOptions: {
+                                columns: []
+                            }
+                        }, "print", "colvis"
+                    ],
+                    onAddRow: function(datatable, rowdata, success, error) {
+                        $.ajax({
+                            // a tipycal url would be / with type='PUT'
+                            url: url_ws_mock_ok,
+                            type: 'POST',
+                            data: rowdata,
+                            success: success,
+                            error: error
+                        });
                     },
-                    orderable: false, //Disable ordering on this column
-                    searchable: false //Disable search on this column
-                }
-            ],
-            initComplete: function() {
-                $("#example1_wrapper > div:nth-child(1").after(
-                    '<div class="d-flex row ml-0 mb-1" id="filter_row"> </div>');
-                // var filter_row = $('<div class=" d-flex row ml-2" id="filter_row"> </div>')
-                //     .appendTo(
-                //         ' #example1_wrapper > div:nth-child(2)');
-                this.api()
-                    .columns([6, 1, 10, 9, 13])
-                    .every(function(d) {
-                        // var s1=$(`<div class="col-sm-2">
-                    //                 <div class="form-group" id="example1_wr_form_control">
-                    //                     <label>Select</label>
-                    //                     <div id="indse">
-                    //                         <select class="form-control" >
-                    //                             <option>option 1</option> 
-                    //                         </select>
-                    //                     </div>
-                    //                 </div>
-                    //             </div>`).appendTo('#fil_row');
-                        // var s1=`<div class="col-sm-2">
-                    //                 <div class="form-group" id="example1_wr_form_control">
-                    //                     <label>Select</label>
-                    //                         <select id="indse" class="form-control" >
-                    //                             <option>option 1</option> 
-                    //                         </select>
-                    //                 </div>
-                    //             </div>`;
-                        var column = this;
-                        var theadname = $('#example1 th').eq([d]).text();
-                        var select = $(
-                                '<select class="form-control "style="max-width: 140px; height: 38px;" ><option value="">' +
-                                theadname + '</option></select>'
-                            )
-                            .appendTo('#filter_row')
-                            .on('change', function() {
-                                var val = $.fn.dataTable.util.escapeRegex($(this).val());
-                                column.search(val ? '^' + val + '$' : '', true, false)
-                                    .draw();
-                            });
+                    onDeleteRow: function(datatable, rowdata, success, error) {
+                        $.ajax({
+                            // a tipycal url would be /{id} with type='DELETE'
+                            url: url_ws_mock_ok,
+                            type: 'DELETE',
+                            data: rowdata,
+                            success: success,
+                            error: error
+                        });
+                    },
+                    onEditRow: function(datatable, rowdata, success, error) {
+                        // console.log(rowdata);
+                        $.ajax({
+                            // a tipycal url would be /{id} with type='POST'
+                            url: `/usulan/${rowdata._id}`,
+                            type: 'PUT',
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data: rowdata,
+                            success: function(params) {
+                                $(document).Toasts('create', {
+                                    class: 'bg-success',
+                                    title: 'Aksi Berhasil',
+                                    subtitle: '',
+                                    body: () => {
+                                        const data = "Data Berhasil Diupdate"
+                                        return data;
+                                    }
+                                });
+                                $('#modal').modal('hide');
+                                return params;
+                            },
+                            error: function(params) {
+                                alert(
+                                    "Gagal menghubungkan ke Peladen(Server), Silahkan cek koneksi internet anda!");
+                            }
+                        });
 
-                        column
-                            .data()
-                            .unique()
-                            .sort()
-                            .each(function(d, j) {
-                                select.append('<option value="' + d + '">' + d +
-                                    '</option>');
+                    },
+                    initComplete: function() {
+                        $("#example1_wrapper > div:nth-child(1").after(
+                            '<div class="d-flex row ml-0 mb-1" id="filter_row"> </div>');
+                        // var filter_row = $('<div class=" d-flex row ml-2" id="filter_row"> </div>')
+                        //     .appendTo(
+                        //         ' #example1_wrapper > div:nth-child(2)');
+                        this.api()
+                            // .columns([6, 1, 10, 9, 13])
+                            .columns()
+                            .every(function(d) {
+                                // var s1=$(`<div class="col-sm-2">
+                            //                 <div class="form-group" id="example1_wr_form_control">
+                            //                     <label>Select</label>
+                            //                     <div id="indse">
+                            //                         <select class="form-control" >
+                            //                             <option>option 1</option> 
+                            //                         </select>
+                            //                     </div>
+                            //                 </div>
+                            //             </div>`).appendTo('#fil_row');
+                                // var s1=`<div class="col-sm-2">
+                            //                 <div class="form-group" id="example1_wr_form_control">
+                            //                     <label>Select</label>
+                            //                         <select id="indse" class="form-control" >
+                            //                             <option>option 1</option> 
+                            //                         </select>
+                            //                 </div>
+                            //             </div>`;
+                                var column = this;
+                                var theadname = $('#example1 th').eq([d]).text();
+                                // var select = $(
+                                //         '<select class="form-control "style="max-width: 140px; height: 38px;" ><option value="">' +
+                                //         theadname + '</option></select>'
+                                //     )
+                                var select = $('<select><option value="">' + theadname +
+                                        '</option></select>')
+                                    // .appendTo('#filter_row')
+                                    .appendTo($(column.footer()).empty())
+                                    .on('change', function() {
+                                        var val = $.fn.dataTable.util.escapeRegex($(this).val());
+                                        column.search(val ? '^' + val + '$' : '', true, false)
+                                            .draw();
+                                    });
+
+                                column
+                                    .data()
+                                    .unique()
+                                    .sort()
+                                    .each(function(d, j) {
+                                        select.append('<option value="' + d + '">' + d +
+                                            '</option>');
+                                    });
                             });
+                        // columns.adjust();
+                    },
+                    // fixedColumns: {
+                    //     left: 0, // Only for client side rendering
+                    //     right: 0
+                    //     // leftColumns: 1
+                    // },
+                    "responsive": false,
+                    "lengthChange": true,
+                    "searching": true,
+                    "autoWidth": false,
+                    "scrollX": true,
+                    "fixedHeader": false,
+                    // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                };
+                return tableDef;
+            }
+
+            function getTableData() {
+                return $.ajax({
+                    url: '/usulan/data',
+                    method: "get"
+                });
+            }
+
+            getTableData().done(function(records) {
+                let headerName = Object.keys(records.data[0]);
+                let headerHtml = makeColumnHeader(headerName);
+                let footerHtml = makeColumnFooter(headerName);
+
+                var columns = [];
+
+                $("#example1").append(headerHtml);
+                $("#example1").append(footerHtml);
+
+                for (let i = 0; i < headerName.length; i++) {
+                    columns.push({
+                        "data": headerName[i]
                     });
-                // columns.adjust();
-            },
-            // fixedColumns: {
-            //     left: 0, // Only for client side rendering
-            //     right: 0
-            //     // leftColumns: 1
-            // },
-            "responsive": false,
-            "lengthChange": true,
-            "searching": true,
-            "autoWidth": false,
-            "scrollX": true,
-            "fixedHeader": false,
-            // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+
+
+                }
+
+                var datatable = $("#example1").DataTable(dataTableDef(columns));
+
+                datatable.draw();
+
+                new $.fn.dataTable.Buttons(datatable, {
+                    buttons: [
+                        // {
+                        //     text: 'Button 1',
+                        //     action: function ( e, dt, node, conf ) {
+                        //     console.log( 'Button 1 clicked on' );
+                        //     }
+                        // },
+                        // {
+                        //     text: 'Button 2',
+                        //     action: function ( e, dt, node, conf ) {
+                        //     console.log( 'Button 2 clicked on' );
+                        //         }
+                        // }
+                        {
+                            text: 'Add',
+                            name: 'add' // do not change name
+                        },
+                        {
+                            extend: 'selected', // Bind to Selected row
+                            text: 'Edit',
+                            name: 'edit' // do not change name
+                        },
+                        {
+                            extend: 'selected', // Bind to Selected row
+                            text: 'Delete',
+                            name: 'delete' // do not change name
+                        },
+                        {
+                            text: 'Refresh',
+                            name: 'refresh' // do not change name
+                        },
+                        {
+                            extend: 'excel',
+                            title: 'SIFULAN',
+                            messageTop: 'Data yang di export hanya data yang tampil',
+                            exportOptions: {
+                                columns: []
+                            }
+                        }, "print", "colvis"
+                    ]
+                });
+
+                datatable.buttons(0, null).container().prependTo('#example1_head');
+            });
+
+
         });
-
-        new $.fn.dataTable.Buttons( datatable, {
-            buttons: [
-                // {
-                //     text: 'Button 1',
-                //     action: function ( e, dt, node, conf ) {
-                //     console.log( 'Button 1 clicked on' );
-                //     }
-                // },
-                // {
-                //     text: 'Button 2',
-                //     action: function ( e, dt, node, conf ) {
-                //     console.log( 'Button 2 clicked on' );
-                //         }
-                // }
-                {
-                extend: 'excel',
-                title:'SIFULAN',
-                // messageTop: 'Data yang di export hanya data yang tampil',
-                exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
-                    }
-                }, "print", "colvis"
-            ]
-        });
-
-        datatable.buttons( 0, null ).container().prependTo('#example1_head');
-
-    });
-</script>
+    </script>
 @endsection

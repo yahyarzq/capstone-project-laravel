@@ -36,39 +36,77 @@ class UsulanController extends Controller
                 $dt->startOfMonth()->format('Y-m-d'),
                 $dt->endOfMonth()->format('Y-m-d')
             ])->count(),
-            'desas' => DB::table('usulans')
-                ->select('Desa AS nama', DB::raw('count(*) as total'))
-                ->groupBy('Desa')
-                ->get(),
-            'kecamatans' => DB::table('usulans')
-                ->select('Kecamatan AS nama', DB::raw('count(*) as total'))
-                ->groupBy('Kecamatan')
-                ->get(),
-            'dinas' => DB::table('usulans')
-                ->select('SKPD_Tujuan_Akhir AS nama', DB::raw('count(*) as total'))
-                ->groupBy('SKPD_Tujuan_Akhir')
-                ->get(),
-            'tipe_usulan' => DB::table('usulans')
-                ->select('TipeUsulan AS nama', DB::raw('count(*) as total'))
-                ->groupBy('TipeUsulan')
-                ->get()
+            'desas' => DB::collection('usulans')
+                ->raw(function ($collection) {
+                    return $collection->aggregate([
+                        [
+                            '$group' => [
+                                '_id' => '$kelurahan',
+                                'count' => [
+                                    '$sum' => 1
+                                ]
+                            ]
+                        ]
+                    ]);
+                }),
+            'kecamatans' => DB::collection('usulans')
+                ->raw(function ($collection) {
+                    return $collection->aggregate([
+                        [
+                            '$group' => [
+                                '_id' => '$kecamatan',
+                                'count' => [
+                                    '$sum' => 1
+                                ]
+                            ]
+                        ]
+                    ]);
+                }),
+            'dinas' => DB::collection('usulans')
+                ->raw(function ($collection) {
+                    return $collection->aggregate([
+                        [
+                            '$group' => [
+                                '_id' => '$usulan_ke',
+                                'count' => [
+                                    '$sum' => 1
+                                ]
+                            ]
+                        ]
+                    ]);
+                }),
+            'tipe_usulan' => DB::collection('usulans')
+            ->raw(function ($collection) {
+                return $collection->aggregate([
+                    [
+                        '$group' => [
+                            '_id' => '$TipeUsulan',
+                            'count' => [
+                                '$sum' => 1
+                            ]
+                        ]
+                    ]
+                ]);
+            }),
         ]);
     }
 
 
     public function getUsulan(Request $request)
     {
-        if($request->ajax()){
-            
-            $data = Usulan::query();
-            return DataTables::of($data)
+        if (true) {
+
+            $data = Usulan::all();
+            $dats = collect($data);
+            $datas = DataTables::of($dats)->toJson();
                 // ->addIndexColumn()
                 // ->addColumn('action', function($row){
                 //     $actionBtn = '<a class="btn btn-primary btn-sm" id="btn-item-view" data-toggle="modal" data-target="#modal-viewS"><i class="fas fa-folder"></i> View</a>';
                 //     return $actionBtn;
                 // })
                 // ->rawColumns(['action'])
-                ->make(true);
+                // ->make(true);
+            return $datas;
         }
         // if($request->ajax()){
         //     $model = Usulan::with(['Desa','Kecamatan']);
@@ -81,15 +119,17 @@ class UsulanController extends Controller
 
     public function getDataUsulan(Request $request)
     {
-        if($request->ajax()){
+        if (true) {
             $dt =  Carbon::now()->setTimezone('Asia/Jakarta');
             $data =  Usulan::whereBetween("Tgl_Usul", [
                 $dt->startOfWeek()->format('Y-m-d'),
                 $dt->endOfWeek()->format('Y-m-d')
             ])
-            ->orWhere(DB::raw('UPPER(Status)'), 'NOT LIKE',"%USULAN DISETUJUI%")
-            ->get();
-            return DataTables::of($data)->toJson();
+                ->orWhere('Status', 'NOT LIKE', "%Usulan Disetujui%")
+                ->get();
+            $dats = collect($data);
+            return DataTables::of($dats)->toJson();
+            // return $data->toJson();
         }
         return redirect(404);
     }
@@ -101,9 +141,7 @@ class UsulanController extends Controller
      */
     public function history()
     {
-        return view('dashboard/history_usulan', [
-            
-        ]);
+        return view('dashboard/history_usulan', []);
     }
 
     /**
@@ -113,6 +151,7 @@ class UsulanController extends Controller
      */
     public function usulan()
     {
+
         $dt =  Carbon::now()->setTimezone('Asia/Jakarta');
         return view('dashboard/usulan', [
             // 'collection' => Usulan::whereBetween("Tgl_Usul", [
@@ -124,11 +163,11 @@ class UsulanController extends Controller
             // 'status' => Usulan::all()->sortBy('Status')->pluck('Status')->unique(),
             // 'desa' => Usulan::all()->sortBy('Desa')->pluck('Desa')->unique(),
             // 'kecamatan' => Usulan::all()->sortBy('Kecamatan')->pluck('Kecamatan')->unique(),
-            'status' => DB::table('usulans')->select('Status')->distinct()->orderBy('Status')->get(),
-            'desa' => DB::table('usulans')->select('Desa')->distinct()->orderBy('Desa')->get(),
-            'kecamatan' => DB::table('usulans')->select('Kecamatan')->distinct()->orderBy('Kecamatan')->get(),
-            'skpd_tujuan_awal' => DB::table('usulans')->select('SKPD_Tujuan_Awal')->distinct()->orderBy('SKPD_Tujuan_Awal')->get(),
-            'skpd_tujuan_akhir' => DB::table('usulans')->select('SKPD_Tujuan_Akhir')->distinct()->orderBy('SKPD_Tujuan_Akhir')->get(),
+            'status' => DB::collection('usulans')->distinct('Status')->orderBy('Status')->get(),
+            'desa' => DB::collection('usulans')->distinct('Desa')->orderBy('Desa')->get(),
+            'kecamatan' => DB::collection('usulans')->distinct('Kecamatan')->orderBy('Kecamatan')->get(),
+            'skpd_tujuan_awal' => DB::collection('usulans')->distinct('SKPD_Tujuan_Awal')->orderBy('SKPD_Tujuan_Awal')->get(),
+            'skpd_tujuan_akhir' => DB::collection('usulans')->distinct('SKPD_Tujuan_Akhir')->orderBy('SKPD_Tujuan_Akhir')->get(),
         ]);
     }
     // public function usulan()
@@ -230,41 +269,12 @@ class UsulanController extends Controller
      */
     public function update(Request $request, Usulan $usulan)
     {
-        $validated = $request->validate([
-            'No' => 'required',
-            'Tgl_Usul' => 'required',
-            'Pengusul' => 'required',
-            'Profil' => 'required',
-            'Urusan' => 'required',
-            'Usulan' => 'required',
-            'TipeUsulan' => 'nullable|sometimes',
-            'Permasalahan' => 'required',
-            'Alamat' => 'nullable|sometimes',
-            'Desa' => 'required',
-            'Kecamatan' => 'required',
-            'Usul_Ke' => 'nullable|sometimes',
-            'SKPD_Tujuan_Awal' => 'required',
-            'SKPD_Tujuan_Akhir' => 'nullable|sometimes',
-            'Rekomendasi_Bappeda_Mitra_OPD' => 'nullable|sometimes',
-            'Koefisien' => 'nullable|sometimes',
-            'Anggaran' => 'nullable|sometimes',
-            'Kategori_Usulan' => 'nullable|sometimes',
-            'Rekomendasi_Kelurahan_Desa' => 'nullable|sometimes',
-            'Koefisien_1' => 'nullable|sometimes',
-            'Anggaran_1' => 'nullable|sometimes',
-            'Rekomendasi_Kecamatan' => 'nullable|sometimes',
-            'Koefisien_2' => 'nullable|sometimes',
-            'Anggaran_2' => 'nullable|sometimes',
-            'Rekomendasi_SKPD' => 'nullable|sometimes',
-            'Koefisien_3' => 'nullable|sometimes',
-            'Anggaran_3' => 'nullable|sometimes',
-            'Rekomendasi_Bappeda' => 'nullable|sometimes',
-            'Koefisien_4' => 'nullable|sometimes',
-            'Anggaran_4' => 'nullable|sometimes',
-            'Status' => 'nullable|sometimes'
-        ]);
-        Usulan::where('id', $usulan->id)->update($validated);
-        return redirect()->back()->with('success', 'Data berhasil di update');
+        // DB::collection('usulans')
+        // ->where('_id', $usulan->_id)
+        // ->update($request->query('data'),['upsert'=> true]);
+        $usulan = Usulan::where('_id', $usulan->_id)->update($request->except('_id'),['upsert'=> true]);
+        // $usulan->update($request->data,['upsert'=> true]);
+        return response()->json($usulan);
     }
 
     /**
@@ -284,19 +294,19 @@ class UsulanController extends Controller
         $request->validate([
             'file' => 'required|file|mimes:xlsx'
         ]);
-        $headings = (new HeadingRowImport)->toArray($request->file('file'));
-        $needles = ['no', 'tgl_usul', 'pengusul', 'profil', 'urusan', 'usulan', 'permasalahan', 'alamat', 'kecamatan', 'kelurahan', 'usul_ke', 'skpd_tujuan_awal', 'skpd_tujuan_akhir', 'rekomendasi_bappeda_mitra_opd', 'koefisien', 'anggaran', 'kategori_usulan', 'koefisien', 'rekomendasi_kelurahandesa', 'rekomendasi_kecamatan', 'koefisien', 'anggaran', 'rekomendasi_skpd', 'koefisien', 'anggaran', 'rekomendasi_bappeda', 'koefisien', 'anggaran', 'status'];
-        foreach ($headings[0][0] as $key => $head) {
-            if( (!Str::contains($head, $needles, true)) and ($key < 29)){
-                return redirect()->back()->with('importError', 'Pastikan Header Kolom Sudah Benar');
-            }
-        }
+        // $headings = (new HeadingRowImport)->toArray($request->file('file'));
+        // $needles = ['no', 'tgl_usul', 'pengusul', 'profil', 'urusan', 'usulan', 'permasalahan', 'alamat', 'kecamatan', 'kelurahan', 'usul_ke', 'skpd_tujuan_awal', 'skpd_tujuan_akhir', 'rekomendasi_bappeda_mitra_opd', 'koefisien', 'anggaran', 'kategori_usulan', 'koefisien', 'rekomendasi_kelurahandesa', 'rekomendasi_kecamatan', 'koefisien', 'anggaran', 'rekomendasi_skpd', 'koefisien', 'anggaran', 'rekomendasi_bappeda', 'koefisien', 'anggaran', 'status'];
+        // foreach ($headings[0][0] as $key => $head) {
+        //     if ((!Str::contains($head, $needles, true)) and ($key < 29)) {
+        //         return redirect()->back()->with('importError', 'Pastikan Header Kolom Sudah Benar');
+        //     }
+        // }
         Excel::import(new UsulanImport, $request->file('file'));
         return redirect()->back()->with('importSuccess', 'Data Usulan Behasil Di Upload');
     }
 
-    public function export() 
+    public function export()
     {
-        return (new UsulanExport)->download('Usulan '.date('d-m-y h:i:s').'.xlsx');
+        return (new UsulanExport)->download('Usulan ' . date('d-m-y h:i:s') . '.xlsx');
     }
 }

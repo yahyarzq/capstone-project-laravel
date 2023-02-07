@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
             'username' => 'admin',
             'email' => 'admin@admin.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('malang@sfl2022'), // password
+            'password' => Hash::make(env('ADMIN_LOGIN_PASSWORD','')), // password
             'remember_token' => Str::random(10),
         ]);
         //User::factory()->count(2)->create();
